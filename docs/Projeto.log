@@ -1,0 +1,73 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2018.1.10)  2 MAY 2018 17:23
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Projeto.tex
+(./Projeto.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 4 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./Projeto.aux)
+\openout1 = `Projeto.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 11.
+
+[1
+
+{/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./Projeto.aux) ) 
+Here is how much of TeX's memory you used:
+ 232 strings out of 494911
+ 2502 string characters out of 6180105
+ 48666 words of memory out of 5000000
+ 3605 multiletter control sequences out of 15000+600000
+ 8196 words of font info for 29 fonts, out of 8000000 for 9000
+ 34 hyphenation exceptions out of 8191
+ 21i,6n,19p,123b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/ec2014/ra157637/.cache/texlive/texmf-var/fonts/pk/ljfo
+ur/public/cm/cmbx12.720pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/publi
+c/cm/dpi600/cmr8.pk> </home/ec2014/ra157637/.cache/texlive/texmf-var/fonts/pk/l
+jfour/public/cm/cmr10.657pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/pub
+lic/cm/dpi600/cmr12.pk> </usr/share/texlive/texmf-dist/fonts/pk/ljfour/public/c
+m/dpi600/cmr17.pk>
+Output written on Projeto.pdf (1 page, 28867 bytes).
+PDF statistics:
+ 118 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
