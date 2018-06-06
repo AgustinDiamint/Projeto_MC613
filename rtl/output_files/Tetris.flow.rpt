@@ -1,5 +1,5 @@
 Flow report for Tetris
-Tue Jun 05 20:50:38 2018
+Wed Jun  6 15:21:47 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -37,29 +37,24 @@ refer to the applicable agreement for further details.
 
 
 
-+-------------------------------------------------------------------------------+
-; Flow Summary                                                                  ;
-+---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Jun 05 20:50:38 2018       ;
-; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
-; Revision Name                   ; Tetris                                      ;
-; Top-level Entity Name           ; create_piece                                ;
-; Family                          ; Cyclone V                                   ;
-; Device                          ; 5CSEMA5F31C6                                ;
-; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 4                                           ;
-; Total pins                      ; 40                                          ;
-; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 0                                           ;
-; Total DSP Blocks                ; 0                                           ;
-; Total HSSI RX PCSs              ; 0                                           ;
-; Total HSSI PMA RX Deserializers ; 0                                           ;
-; Total HSSI TX PCSs              ; 0                                           ;
-; Total HSSI PMA TX Serializers   ; 0                                           ;
-; Total PLLs                      ; 0                                           ;
-; Total DLLs                      ; 0                                           ;
-+---------------------------------+---------------------------------------------+
++---------------------------------------------------------------------------+
+; Flow Summary                                                              ;
++-----------------------------+---------------------------------------------+
+; Flow Status                 ; Successful - Wed Jun  6 15:21:47 2018       ;
+; Quartus Prime Version       ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name               ; Tetris                                      ;
+; Top-level Entity Name       ; create_piece                                ;
+; Family                      ; Cyclone V                                   ;
+; Device                      ; 5CSEMA5F31C6                                ;
+; Timing Models               ; Final                                       ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
 
 
 +-----------------------------------------+
@@ -67,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/05/2018 20:50:16 ;
+; Start date & time ; 06/06/2018 15:21:36 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Tetris              ;
 +-------------------+---------------------+
@@ -78,7 +73,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+--------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name  ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+--------------+------------+
-; COMPILER_SIGNATURE_ID               ; 60431458785295.152824261521076         ; --            ; --           ; --         ;
+; COMPILER_SIGNATURE_ID               ; 273615397566037.152830929606386        ; --            ; --           ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --           ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --           ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; create_piece ; Top        ;
@@ -89,29 +84,29 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+--------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4872 MB             ; 00:00:25                           ;
-; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:25                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                          ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 1329 MB             ; 00:00:26                           ;
+; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:26                           ;
++------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                    ;
-+----------------------+------------------+------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
-+----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-80KMCDQ  ; Windows 10 ; 10.0       ; x86_64         ;
-+----------------------+------------------+------------+------------+----------------+
++---------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                   ;
++------------------------+-------------------------------+------------+------------+----------------+
+; Module Name            ; Machine Hostname              ; OS Name    ; OS Version ; Processor type ;
++------------------------+-------------------------------+------------+------------+----------------+
+; Analysis & Elaboration ; gabrieljgimenez-Inspiron-7460 ; Linux Mint ; 18         ; x86_64         ;
++------------------------+-------------------------------+------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
+quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris --analysis_and_elaboration
 
 
 
