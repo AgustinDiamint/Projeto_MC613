@@ -13,15 +13,13 @@ port (
 end menu;
 
 architecture rtl of menu is
-	signal temp: std_logic_vector(15 downto 0);
 begin
 	process (key_on(0), clock)
 	begin
 		if (rising_edge(clock)) then
-			temp 	<= key_code(15 downto 0);
-			if temp = x"0015" then
+			if key_code(15 downto 0) = x"0015" then
 				quit <= '1';
-			elsif temp = x"005a" then
+			elsif key_code(15 downto 0) = x"005a" then
 				start <= '1';
 			end if;
 		end if;

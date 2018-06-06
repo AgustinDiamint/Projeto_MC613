@@ -1,0 +1,13 @@
+library ieee; 
+use ieee.std_logic_1164.all;
+USE ieee.numeric_std.ALL;
+
+
+entity menu is 
+port (
+	clock		: in 	std_logic;
+	key_on 	: in 	std_logic_vector(2 downto 0);
+   key_code : in 	std_logic_vector(47 downto 0);
+	quit		: out std_logic;
+	start		: out std_logic);
+end menu;

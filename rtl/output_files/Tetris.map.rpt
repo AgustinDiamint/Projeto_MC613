@@ -1,5 +1,5 @@
 Analysis & Elaboration report for Tetris
-Wed Jun  6 15:21:47 2018
+Wed Jun  6 16:49:59 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Jun  6 15:21:47 2018       ;
+; Analysis & Elaboration Status ; Successful - Wed Jun  6 16:49:59 2018       ;
 ; Quartus Prime Version         ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; Tetris                                      ;
 ; Top-level Entity Name         ; create_piece                                ;
@@ -57,7 +57,7 @@ refer to the applicable agreement for further details.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -160,27 +160,33 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed Jun  6 15:21:36 2018
+    Info: Processing started: Wed Jun  6 16:49:48 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file create_piece/create_piece.vhd
-    Info (12022): Found design unit 1: create_piece-rtl File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 16
-    Info (12023): Found entity 1: create_piece File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
+    Info (12022): Found design unit 1: create_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 16
+    Info (12023): Found entity 1: create_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file menu/menu.vhd
-    Info (12022): Found design unit 1: menu-rtl File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 15
-    Info (12023): Found entity 1: menu File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 6
+    Info (12022): Found design unit 1: menu-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 15
+    Info (12023): Found entity 1: menu File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/kbdex_ctrl.vhd
-    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
-    Info (12023): Found entity 1: kbdex_ctrl File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
+    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
+    Info (12023): Found entity 1: kbdex_ctrl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/ps2_iobase.vhd
-    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
-    Info (12023): Found entity 1: ps2_iobase File: /home/gabrieljgimenez/Documents/Unicamp/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
+    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
+    Info (12023): Found entity 1: ps2_iobase File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
+Info (12021): Found 2 design units, including 1 entities, in source file clock/clk_div.vhd
+    Info (12022): Found design unit 1: clock_div-behavioral File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clk_div.vhd Line: 12
+    Info (12023): Found entity 1: clock_div File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clk_div.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mov_piece/mov_piece.vhd
+    Info (12022): Found design unit 1: mov_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
+    Info (12023): Found entity 1: mov_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
 Info (12127): Elaborating entity "create_piece" for the top level hierarchy
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1329 megabytes
-    Info: Processing ended: Wed Jun  6 15:21:47 2018
+    Info: Peak virtual memory: 1450 megabytes
+    Info: Processing ended: Wed Jun  6 16:49:59 2018
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Total CPU time (on all processors): 00:00:23
 
 
