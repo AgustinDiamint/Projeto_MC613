@@ -1,0 +1,169 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "piece[0]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[1]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[2]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[3]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[4]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[5]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[6]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[7]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[8]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[9]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[10]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[11]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[12]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[13]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[14]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[15]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[16]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[17]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[18]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[19]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[20]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[21]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[22]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[23]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[24]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[25]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[26]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[27]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[28]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[29]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[30]",
+					"strict" : false
+				},
+				{
+					"name" : "piece[31]",
+					"strict" : false
+				},
+				{
+					"name" : "sync_reset",
+					"strict" : false
+				},
+				{
+					"name" : "seed[0]",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "en",
+					"strict" : false
+				},
+				{
+					"name" : "seed[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seed[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seed[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
