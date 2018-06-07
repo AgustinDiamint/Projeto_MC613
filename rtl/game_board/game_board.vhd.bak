@@ -37,7 +37,7 @@ architecture behavior OF game_board IS
     constant VERT_SIZE : integer := 22;
 
     signal slow_clock : std_logic;
-	 signal video_word : std_logic_vector( 2 downto 0);
+
     signal clear_video_address	,
         normal_video_address	,
         video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
@@ -142,17 +142,17 @@ begin  -- process conta_linha
 end if;
 end process conta_linha;
 
- video_address  <= col + (HORZ_SIZE * line);
+  addr  <= col + (128 * line);
 
 draw_edge: process(CLOCK_50)
 begin
         for i in 0 to 21 loop
                 for j in 20 to 29 loop
                     if (i = 0 or i = 21) then
-                        pos_color(i+(j*HORZ_SIZE)) <= "111";
+                        pos_color(i+(j*VERT_SIZE)) <= '111';
                     else
                         if(j=19 or j = 29) then
-                            pos_color(i+(j*HORZ_SIZE)) <= "111";
+                            pos_color(i+(j*VERT_SIZE)) <= '111';
                         end if;
                     end if;
                 end loop; 

@@ -1,5 +1,5 @@
 Flow report for Tetris
-Wed Jun  6 16:49:59 2018
+Thu Jun  7 19:23:04 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,10 +40,10 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Wed Jun  6 16:49:59 2018       ;
+; Flow Status                 ; Flow Failed - Thu Jun  7 19:23:04 2018      ;
 ; Quartus Prime Version       ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name               ; Tetris                                      ;
-; Top-level Entity Name       ; create_piece                                ;
+; Top-level Entity Name       ; game_board                                  ;
 ; Family                      ; Cyclone V                                   ;
 ; Device                      ; 5CSEMA5F31C6                                ;
 ; Timing Models               ; Final                                       ;
@@ -62,51 +62,53 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/06/2018 16:49:49 ;
+; Start date & time ; 06/07/2018 19:22:54 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Tetris              ;
 +-------------------+---------------------+
 
 
++-------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                        ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID               ; 180720257651863.152841017430755        ; --            ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
+; MISC_FILE                           ; game_board/vga_pll.cmp                 ; --            ; --          ; --         ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
+; SYNTHESIS_ONLY_QIP                  ; On                                     ; --            ; --          ; --         ;
+; TOP_LEVEL_ENTITY                    ; game_board                             ; Tetris        ; --          ; --         ;
++-------------------------------------+----------------------------------------+---------------+-------------+------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                         ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name  ; Section Id ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
-; COMPILER_SIGNATURE_ID               ; 180720257655958.152831458906627        ; --            ; --           ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --           ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --           ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; create_piece ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; create_piece ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; create_piece ; Top        ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --           ; --         ;
-; TOP_LEVEL_ENTITY                    ; create_piece                           ; Tetris        ; --           ; --         ;
-+-------------------------------------+----------------------------------------+---------------+--------------+------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 1133 MB             ; 00:00:23                           ;
+; Total                ; 00:00:10     ; --                      ; --                  ; 00:00:23                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                          ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 1450 MB             ; 00:00:23                           ;
-; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:23                           ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                               ;
-+------------------------+-------------------------+-------------+-------------+----------------+
-; Module Name            ; Machine Hostname        ; OS Name     ; OS Version  ; Processor type ;
-+------------------------+-------------------------+-------------+-------------+----------------+
-; Analysis & Elaboration ; verne.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
-+------------------------+-------------------------+-------------+-------------+----------------+
++------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                ;
++----------------------+----------------------------+-------------+-------------+----------------+
+; Module Name          ; Machine Hostname           ; OS Name     ; OS Version  ; Processor type ;
++----------------------+----------------------------+-------------+-------------+----------------+
+; Analysis & Synthesis ; saramago.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
++----------------------+----------------------------+-------------+-------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 
 
 

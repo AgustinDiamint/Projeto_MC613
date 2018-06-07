@@ -1,5 +1,5 @@
-Analysis & Elaboration report for Tetris
-Wed Jun  6 16:49:59 2018
+Analysis & Synthesis report for Tetris
+Thu Jun  7 19:23:04 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -7,10 +7,10 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Messages
 
 
 
@@ -33,47 +33,31 @@ refer to the applicable agreement for further details.
 
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                              ;
-+-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Jun  6 16:49:59 2018       ;
-; Quartus Prime Version         ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
-; Revision Name                 ; Tetris                                      ;
-; Top-level Entity Name         ; create_piece                                ;
-; Family                        ; Cyclone V                                   ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
-; Total registers               ; N/A until Partition Merge                   ;
-; Total pins                    ; N/A until Partition Merge                   ;
-; Total virtual pins            ; N/A until Partition Merge                   ;
-; Total block memory bits       ; N/A until Partition Merge                   ;
-; Total PLLs                    ; N/A until Partition Merge                   ;
-; Total DLLs                    ; N/A until Partition Merge                   ;
-+-------------------------------+---------------------------------------------+
-
-
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++---------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                              ;
++-----------------------------+---------------------------------------------+
+; Analysis & Synthesis Status ; Failed - Thu Jun  7 19:23:04 2018           ;
+; Quartus Prime Version       ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name               ; Tetris                                      ;
+; Top-level Entity Name       ; game_board                                  ;
+; Family                      ; Cyclone V                                   ;
+; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
+; Total registers             ; N/A until Partition Merge                   ;
+; Total pins                  ; N/A until Partition Merge                   ;
+; Total virtual pins          ; N/A until Partition Merge                   ;
+; Total block memory bits     ; N/A until Partition Merge                   ;
+; Total PLLs                  ; N/A until Partition Merge                   ;
+; Total DLLs                  ; N/A until Partition Merge                   ;
++-----------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                           ;
+; Analysis & Synthesis Settings                                                                                             ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
-; Top-level entity name                                                           ; create_piece       ; Tetris             ;
+; Top-level entity name                                                           ; game_board         ; Tetris             ;
 ; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
 ; Use smart compilation                                                           ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
@@ -154,39 +138,70 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed Jun  6 16:49:48 2018
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris --analysis_and_elaboration
+    Info: Processing started: Thu Jun  7 19:22:54 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
+Warning (125092): Tcl Script File game_board/vga_pll/vga_pll_0002.qip not found
+    Info (125063): set_global_assignment -name QIP_FILE game_board/vga_pll/vga_pll_0002.qip -qip game_board/vga_pll.qip -library vga_pll
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file create_piece/create_piece.vhd
-    Info (12022): Found design unit 1: create_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 16
-    Info (12023): Found entity 1: create_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
+    Info (12022): Found design unit 1: create_piece-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 16
+    Info (12023): Found entity 1: create_piece File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file menu/menu.vhd
-    Info (12022): Found design unit 1: menu-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 15
-    Info (12023): Found entity 1: menu File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 6
+    Info (12022): Found design unit 1: menu-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 15
+    Info (12023): Found entity 1: menu File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/kbdex_ctrl.vhd
-    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
-    Info (12023): Found entity 1: kbdex_ctrl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
+    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
+    Info (12023): Found entity 1: kbdex_ctrl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/ps2_iobase.vhd
-    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
-    Info (12023): Found entity 1: ps2_iobase File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
+    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
+    Info (12023): Found entity 1: ps2_iobase File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
 Info (12021): Found 2 design units, including 1 entities, in source file clock/clk_div.vhd
-    Info (12022): Found design unit 1: clock_div-behavioral File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clk_div.vhd Line: 12
-    Info (12023): Found entity 1: clock_div File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clk_div.vhd Line: 5
+    Info (12022): Found design unit 1: clock_div-behavioral File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/clock/clk_div.vhd Line: 12
+    Info (12023): Found entity 1: clock_div File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/clock/clk_div.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file mov_piece/mov_piece.vhd
-    Info (12022): Found design unit 1: mov_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
-    Info (12023): Found entity 1: mov_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
-Info (12127): Elaborating entity "create_piece" for the top level hierarchy
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1450 megabytes
-    Info: Processing ended: Wed Jun  6 16:49:59 2018
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:23
+    Info (12022): Found design unit 1: mov_piece-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
+    Info (12023): Found entity 1: mov_piece File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file game_board/game_board.vhd
+    Info (12022): Found design unit 1: game_board-behavior File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 17
+    Info (12023): Found entity 1: game_board File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file game_board/vga_pll.vhd
+    Info (12022): Found design unit 1: vga_pll-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 19
+    Info (12023): Found entity 1: vga_pll File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 11
+Warning (12019): Can't analyze file -- file game_board/vga_pll/vga_pll_0002.v is missing
+Info (12021): Found 4 design units, including 2 entities, in source file game_board/vgacon.vhd
+    Info (12022): Found design unit 1: vgacon-behav File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 96
+    Info (12022): Found design unit 2: dual_clock_ram-behav File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 269
+    Info (12023): Found entity 1: vgacon File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
+    Info (12023): Found entity 2: dual_clock_ram File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
+Error (10482): VHDL error at game_board.vhd(110): object "clear_video_word" is used but not declared File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 110
+Error (10482): VHDL error at game_board.vhd(110): object "normal_video_word" is used but not declared File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 110
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 3 warnings
+    Error: Peak virtual memory: 1133 megabytes
+    Error: Processing ended: Thu Jun  7 19:23:04 2018
+    Error: Elapsed time: 00:00:10
+    Error: Total CPU time (on all processors): 00:00:23
 
 
