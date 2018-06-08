@@ -31,7 +31,8 @@ architecture behavior OF game_board IS
 			sync, blank               : out std_logic
 		);
 	end component;
-    
+	
+	 
     component clock_div is
         port (
             clock : in std_logic;
@@ -40,13 +41,12 @@ architecture behavior OF game_board IS
         );
     end component;
 
-	
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
     constant VERT_SIZE : integer := 22;
 
     signal slow_clock : std_logic;
-	signal video_word : std_logic_vector( 2 downto 0);
+	 signal video_word : std_logic_vector( 2 downto 0);
     signal clear_video_address	,
         normal_video_address	,
         video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
@@ -101,10 +101,10 @@ BEGIN
         clk50M          => clk50M,
         rstn            => rstn,
         write_clk		=> clk50M,
-        write_enable	=> we,
+        write_enable	=> '1',
         write_addr      => video_address,
         vga_clk         => VGA_CLK,
-        data_in         => "000",
+        data_in         => pixel,
         red				=> VGA_R,
         green			=> VGA_G,
         blue			=> VGA_B,
