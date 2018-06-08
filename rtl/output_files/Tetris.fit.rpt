@@ -1,5 +1,5 @@
 Fitter report for Tetris
-Fri Jun  8 18:36:56 2018
+Fri Jun  8 18:40:51 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -68,7 +68,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Fri Jun  8 18:36:56 2018       ;
+; Fitter Status                   ; Successful - Fri Jun  8 18:40:51 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
@@ -2462,7 +2462,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "USB_SCL" is assigned to location or region, but does not exist in design
     Warning (15706): Node "USB_SDA" is assigned to location or region, but does not exist in design
     Warning (15706): Node "USB_WR_N" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:13
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:12
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:01
@@ -2476,7 +2476,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.47 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.48 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2488,10 +2488,10 @@ Warning (169064): Following 2 pins have no output enable or a GND or VCC output 
     Info (169065): Pin PS2_CLK has a permanently disabled output enable File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 15
 Info (144001): Generated suppressed messages file /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/output_files/Tetris.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 232 warnings
-    Info: Peak virtual memory: 2635 megabytes
-    Info: Processing ended: Fri Jun  8 18:36:57 2018
-    Info: Elapsed time: 00:00:34
-    Info: Total CPU time (on all processors): 00:00:53
+    Info: Peak virtual memory: 2630 megabytes
+    Info: Processing ended: Fri Jun  8 18:40:52 2018
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:00:52
 
 
 +----------------------------+
