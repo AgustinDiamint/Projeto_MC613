@@ -67,7 +67,7 @@ architecture behavior OF game_board IS
     -- Sinais dos contadores de linhas e colunas utilizados para percorrer
     -- as posições da memória de vídeo (pixels) no momento de construir um quadro.
     
-    signal line : integer range 0 to HORZ_SIZE-1;  -- linha atual
+    signal linha : integer range 0 to HORZ_SIZE-1;  -- linha atual
     signal col : integer range 0 to VERT_SIZE-1;  -- coluna atual
 
     signal col_rstn : std_logic;          -- reset do contador de colunas
@@ -122,39 +122,34 @@ BEGIN
 -- mandar todas as posicoes da tela ao vgacon. 
 conta_coluna: process (CLOCK_50, col_rstn)
 begin  -- process conta_coluna
-    if col_rstn = '0' then                  -- asynchronous reset (active low)
-    col <= 0;
-    elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
-    if col_enable = '1' then
-        if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
-        col <= 0;
-        else
-        col <= col + 1;  
-        end if;
-    end if;
-    end if;
+    if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+          if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
+          col <= 0;
+          else
+          col <= col + 1;  
+          end if;
+     end if;
 end process conta_coluna;
 
 conta_linha: process (CLOCK_50, line_rstn)
 begin  -- process conta_linha
-    if line_rstn = '0' then                  -- asynchronous reset (active low)
-        line <= 0;
-    elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+    
+    if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
     -- o contador de linha só incrementa quando o contador de colunas
-    -- chegou ao fim (valor 127)
-        if line_enable = '1' and col = HORZ_SIZE -1 then
-        if line = VERT_SIZE-1 then               -- conta de 0 a 95 (96 linhas)
-            line <= 0;
-        else
-            line <= line + 1;  
-        end if;        
+    -- chegou ao fim 
+        if col = HORZ_SIZE -1 then
+            if linha = VERT_SIZE-1 then               -- conta de 0 a 95 (96 linhas)
+                linha <= 0;
+            else
+                linha <= linha + 1;  
+            end if;        
     end if;
-end if;
+	end if;
 end process conta_linha;
 
 -- manda o endereco atual e a cor desse endereco para o vgacon. 
-video_address  <= col + (VERT_SIZE * line);
-pixel <= pos_color(col + (VERT_SIZE*line)); 
+video_address  <= col + (VERT_SIZE * linha);
+pixel <= pos_color(col + (VERT_SIZE*linha)); 
 
 --desenha uma linha branca ao redor do tabuleiro
 draw_edge: process(CLOCK_50)

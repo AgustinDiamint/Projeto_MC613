@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Tetris
-Fri Jun  8 16:00:23 2018
+Fri Jun  8 16:36:14 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -17,7 +17,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   9. Analysis & Synthesis DSP Block Usage Summary
  10. General Register Statistics
  11. Registers Packed Into Inferred Megafunctions
- 12. Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_irk1:auto_generated
+ 12. Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated
  13. Parameter Settings for User Entity Instance: vgacon:vga_component
  14. Parameter Settings for User Entity Instance: vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i
  15. Parameter Settings for User Entity Instance: vgacon:vga_component|dual_clock_ram:vgamem
@@ -54,17 +54,17 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Jun  8 16:00:23 2018       ;
+; Analysis & Synthesis Status     ; Successful - Fri Jun  8 16:36:14 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 40                                          ;
+; Total registers                 ; 45                                          ;
 ; Total pins                      ; 32                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 3,300                                       ;
-; Total DSP Blocks                ; 2                                           ;
+; Total DSP Blocks                ; 3                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
 ; Total HSSI TX PCSs              ; 0                                           ;
@@ -174,7 +174,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -197,7 +198,7 @@ refer to the applicable agreement for further details.
 ; altrom.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altrom.inc                     ;         ;
 ; altram.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altram.inc                     ;         ;
 ; altdpram.inc                      ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altdpram.inc                   ;         ;
-; db/altsyncram_irk1.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_irk1.tdf            ;         ;
+; db/altsyncram_egl1.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_egl1.tdf            ;         ;
 ; lpm_divide.tdf                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_divide.tdf                 ;         ;
 ; abs_divider.inc                   ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/abs_divider.inc                ;         ;
 ; sign_div_unsign.inc               ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc            ;         ;
@@ -215,30 +216,30 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                                 ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 94                                                                                                    ;
+; Estimate of Logic utilization (ALMs needed) ; 114                                                                                                   ;
 ;                                             ;                                                                                                       ;
-; Combinational ALUT usage for logic          ; 176                                                                                                   ;
+; Combinational ALUT usage for logic          ; 212                                                                                                   ;
 ;     -- 7 input functions                    ; 1                                                                                                     ;
-;     -- 6 input functions                    ; 5                                                                                                     ;
-;     -- 5 input functions                    ; 10                                                                                                    ;
-;     -- 4 input functions                    ; 24                                                                                                    ;
-;     -- <=3 input functions                  ; 136                                                                                                   ;
+;     -- 6 input functions                    ; 11                                                                                                    ;
+;     -- 5 input functions                    ; 13                                                                                                    ;
+;     -- 4 input functions                    ; 27                                                                                                    ;
+;     -- <=3 input functions                  ; 160                                                                                                   ;
 ;                                             ;                                                                                                       ;
-; Dedicated logic registers                   ; 40                                                                                                    ;
+; Dedicated logic registers                   ; 45                                                                                                    ;
 ;                                             ;                                                                                                       ;
 ; I/O pins                                    ; 32                                                                                                    ;
 ; Total MLAB memory bits                      ; 0                                                                                                     ;
 ; Total block memory bits                     ; 3300                                                                                                  ;
 ;                                             ;                                                                                                       ;
-; Total DSP Blocks                            ; 2                                                                                                     ;
+; Total DSP Blocks                            ; 3                                                                                                     ;
 ;                                             ;                                                                                                       ;
 ; Total PLLs                                  ; 1                                                                                                     ;
 ;     -- PLLs                                 ; 1                                                                                                     ;
 ;                                             ;                                                                                                       ;
 ; Maximum fan-out node                        ; vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
 ; Maximum fan-out                             ; 45                                                                                                    ;
-; Total fan-out                               ; 735                                                                                                   ;
-; Average fan-out                             ; 2.57                                                                                                  ;
+; Total fan-out                               ; 897                                                                                                   ;
+; Average fan-out                             ; 2.73                                                                                                  ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
 
 
@@ -247,11 +248,11 @@ refer to the applicable agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |game_board                                  ; 176 (1)             ; 40 (0)                    ; 3300              ; 2          ; 32   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
+; |game_board                                  ; 212 (37)            ; 45 (5)                    ; 3300              ; 3          ; 32   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
 ;    |vgacon:vga_component|                    ; 175 (35)            ; 40 (40)                   ; 3300              ; 1          ; 0    ; 0            ; |game_board|vgacon:vga_component                                                                                                 ; vgacon              ; work         ;
 ;       |dual_clock_ram:vgamem|                ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem                                                                           ; dual_clock_ram      ; work         ;
 ;          |altsyncram:ram_block_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0                                                ; altsyncram          ; work         ;
-;             |altsyncram_irk1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_irk1:auto_generated                 ; altsyncram_irk1     ; work         ;
+;             |altsyncram_egl1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated                 ; altsyncram_egl1     ; work         ;
 ;       |lpm_divide:Div0|                      ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
 ;          |lpm_divide_ebm:auto_generated|     ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0|lpm_divide_ebm:auto_generated                                                   ; lpm_divide_ebm      ; work         ;
 ;             |sign_div_unsign_klh:divider|    ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider                       ; sign_div_unsign_klh ; work         ;
@@ -272,7 +273,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 ; Name                                                                                                            ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
 +-----------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
-; vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_irk1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1100         ; 3            ; 1100         ; 3            ; 3300 ; None ;
+; vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 1100         ; 3            ; 1100         ; 3            ; 3300 ; None ;
 +-----------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
@@ -281,11 +282,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+-------------+
 ; Statistic                       ; Number Used ;
 +---------------------------------+-------------+
-; Independent 9x9                 ; 1           ;
+; Two Independent 18x18           ; 2           ;
 ; Independent 18x18 plus 36       ; 1           ;
-; Total number of DSP blocks      ; 2           ;
+; Total number of DSP blocks      ; 3           ;
 ;                                 ;             ;
-; Fixed Point Unsigned Multiplier ; 2           ;
+; Fixed Point Unsigned Multiplier ; 3           ;
 +---------------------------------+-------------+
 
 
@@ -294,7 +295,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 40    ;
+; Total registers                              ; 45    ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 40    ;
@@ -314,7 +315,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +-----------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_irk1:auto_generated ;
+; Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                            ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------+
@@ -646,7 +647,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                    ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                    ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                    ;
-; CBXI_PARAMETER                     ; altsyncram_irk1      ; Untyped                                                    ;
+; CBXI_PARAMETER                     ; altsyncram_egl1      ; Untyped                                                    ;
 +------------------------------------+----------------------+------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -719,11 +720,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +--------------------------------------------------+
 ; Port Connectivity Checks: "vgacon:vga_component" ;
-+---------+-------+----------+---------------------+
-; Port    ; Type  ; Severity ; Details             ;
-+---------+-------+----------+---------------------+
-; data_in ; Input ; Info     ; Stuck at GND        ;
-+---------+-------+----------+---------------------+
++--------------+-------+----------+----------------+
+; Port         ; Type  ; Severity ; Details        ;
++--------------+-------+----------+----------------+
+; write_enable ; Input ; Info     ; Stuck at VCC   ;
++--------------+-------+----------+----------------+
 
 
 +-----------------------------------------------------+
@@ -731,36 +732,38 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 40                          ;
+; arriav_ff             ; 45                          ;
 ;     CLR               ; 20                          ;
 ;     CLR SCLR          ; 10                          ;
 ;     ENA CLR SCLR      ; 10                          ;
-; arriav_lcell_comb     ; 177                         ;
-;     arith             ; 103                         ;
+;     plain             ; 5                           ;
+; arriav_lcell_comb     ; 214                         ;
+;     arith             ; 124                         ;
 ;         0 data inputs ; 18                          ;
-;         1 data inputs ; 44                          ;
-;         2 data inputs ; 4                           ;
+;         1 data inputs ; 55                          ;
+;         2 data inputs ; 14                          ;
 ;         3 data inputs ; 24                          ;
 ;         4 data inputs ; 13                          ;
 ;     extend            ; 1                           ;
 ;         7 data inputs ; 1                           ;
-;     normal            ; 68                          ;
+;     normal            ; 84                          ;
 ;         0 data inputs ; 2                           ;
-;         2 data inputs ; 29                          ;
-;         3 data inputs ; 11                          ;
-;         4 data inputs ; 11                          ;
-;         5 data inputs ; 10                          ;
-;         6 data inputs ; 5                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 14                          ;
+;         5 data inputs ; 13                          ;
+;         6 data inputs ; 11                          ;
 ;     shared            ; 5                           ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 4                           ;
-; arriav_mac            ; 2                           ;
+; arriav_mac            ; 3                           ;
 ; boundary_port         ; 32                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 3                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 13.40                       ;
-; Average LUT depth     ; 7.43                        ;
+; Average LUT depth     ; 6.71                        ;
 +-----------------------+-----------------------------+
 
 
@@ -779,7 +782,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Jun  8 16:00:11 2018
+    Info: Processing started: Fri Jun  8 16:36:02 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -815,13 +818,18 @@ Info (12021): Found 4 design units, including 2 entities, in source file game_bo
     Info (12023): Found entity 1: vgacon File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
     Info (12023): Found entity 2: dual_clock_ram File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
 Info (12127): Elaborating entity "game_board" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(53): used implicit default value for signal "we" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 53
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(55): object "pixel" assigned a value but never read File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 55
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(64): used implicit default value for signal "col_rstn" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 64
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(65): used implicit default value for signal "col_enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 65
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(67): used implicit default value for signal "line_rstn" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 67
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(68): used implicit default value for signal "line_enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 68
-Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 88
+Warning (10873): Using initial value X (don't care) for net "pos_color[0..439]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[441..460]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[463..482]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[485..504]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[507..526]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[529..548]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[551..570]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[573..592]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[595..614]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[617..636]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[660..1099]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 97
 Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
 Info (12128): Elaborating entity "vga_pll_0002" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 31
 Info (12128): Elaborating entity "altera_pll" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
@@ -926,8 +934,8 @@ Info (12133): Instantiated megafunction "vgacon:vga_component|dual_clock_ram:vga
     Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "vga_mem.mif"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_irk1.tdf
-    Info (12023): Found entity 1: altsyncram_irk1 File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_irk1.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_egl1.tdf
+    Info (12023): Found entity 1: altsyncram_egl1 File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_egl1.tdf Line: 27
 Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|lpm_divide:Div1" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
 Info (12133): Instantiated megafunction "vgacon:vga_component|lpm_divide:Div1" with the following parameter: File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
     Info (12134): Parameter "LPM_WIDTHN" = "10"
@@ -960,17 +968,17 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[0]" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 7
-Info (21057): Implemented 234 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 271 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 196 logic cells
+    Info (21061): Implemented 232 logic cells
     Info (21064): Implemented 3 RAM segments
     Info (21065): Implemented 1 PLLs
-    Info (21062): Implemented 2 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 1241 megabytes
-    Info: Processing ended: Fri Jun  8 16:00:23 2018
+    Info (21062): Implemented 3 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
+    Info: Peak virtual memory: 1240 megabytes
+    Info: Processing ended: Fri Jun  8 16:36:14 2018
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:25
+    Info: Total CPU time (on all processors): 00:00:24
 
 
