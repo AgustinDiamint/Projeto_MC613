@@ -67,8 +67,8 @@ architecture behavior OF game_board IS
     -- Sinais dos contadores de linhas e colunas utilizados para percorrer
     -- as posições da memória de vídeo (pixels) no momento de construir um quadro.
 
-    signal linha : integer range 0 to HORZ_SIZE-1;  -- linha atual
-    signal col : integer range 0 to VERT_SIZE-1;  -- coluna atual
+    signal linha : integer range 0 to VERT_SIZE-1;  -- linha atual
+    signal col : integer range 0 to HORZ_SIZE-1;  -- coluna atual
 
     signal col_rstn : std_logic;          -- reset do contador de colunas
     signal col_enable : std_logic;        -- enable do contador de colunas
@@ -149,18 +149,18 @@ architecture behavior OF game_board IS
 
     -- manda o endereco atual e a cor desse endereco para o vgacon. 
     video_address  <= col + (VERT_SIZE * linha);
-    pixel <= pos_color(col + (VERT_SIZE*linha)); 
+    pixel <= pos_color(col + (VERT_SIZE * linha)); 
 
     --desenha uma linha branca ao redor do tabuleiro
     draw_edge: process(CLOCK_50)
     begin
-        for i in 0 to 21 loop
-            for j in 20 to 29 loop
-                if (i = 0 or i = 21) then
-                    pos_color(i+(j*VERT_SIZE)) <= "111";
+        for lin_y in 0 to 21 loop
+            for col_x in 20 to 29 loop
+                if (lin_y = 0 or lin_y = 21) then
+                    pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                 else
-                    if(j=19 or j = 29) then
-                        pos_color(i+(j*VERT_SIZE)) <= "111";
+                    if(col_x=19 or col_x = 29) then
+                        pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                     end if;
                 end if;
             end loop; 

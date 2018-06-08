@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Tetris
-Fri Jun  8 16:36:14 2018
+Fri Jun  8 16:55:40 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -54,13 +54,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Jun  8 16:36:14 2018       ;
+; Analysis & Synthesis Status     ; Successful - Fri Jun  8 16:55:40 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 45                                          ;
+; Total registers                 ; 51                                          ;
 ; Total pins                      ; 32                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 3,300                                       ;
@@ -174,8 +174,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -216,16 +215,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                                 ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 114                                                                                                   ;
+; Estimate of Logic utilization (ALMs needed) ; 115                                                                                                   ;
 ;                                             ;                                                                                                       ;
-; Combinational ALUT usage for logic          ; 212                                                                                                   ;
-;     -- 7 input functions                    ; 1                                                                                                     ;
-;     -- 6 input functions                    ; 11                                                                                                    ;
-;     -- 5 input functions                    ; 13                                                                                                    ;
-;     -- 4 input functions                    ; 27                                                                                                    ;
-;     -- <=3 input functions                  ; 160                                                                                                   ;
+; Combinational ALUT usage for logic          ; 206                                                                                                   ;
+;     -- 7 input functions                    ; 3                                                                                                     ;
+;     -- 6 input functions                    ; 17                                                                                                    ;
+;     -- 5 input functions                    ; 18                                                                                                    ;
+;     -- 4 input functions                    ; 26                                                                                                    ;
+;     -- <=3 input functions                  ; 142                                                                                                   ;
 ;                                             ;                                                                                                       ;
-; Dedicated logic registers                   ; 45                                                                                                    ;
+; Dedicated logic registers                   ; 51                                                                                                    ;
 ;                                             ;                                                                                                       ;
 ; I/O pins                                    ; 32                                                                                                    ;
 ; Total MLAB memory bits                      ; 0                                                                                                     ;
@@ -238,8 +237,8 @@ refer to the applicable agreement for further details.
 ;                                             ;                                                                                                       ;
 ; Maximum fan-out node                        ; vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
 ; Maximum fan-out                             ; 45                                                                                                    ;
-; Total fan-out                               ; 897                                                                                                   ;
-; Average fan-out                             ; 2.73                                                                                                  ;
+; Total fan-out                               ; 872                                                                                                   ;
+; Average fan-out                             ; 2.66                                                                                                  ;
 +---------------------------------------------+-------------------------------------------------------------------------------------------------------+
 
 
@@ -248,7 +247,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |game_board                                  ; 212 (37)            ; 45 (5)                    ; 3300              ; 3          ; 32   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
+; |game_board                                  ; 206 (31)            ; 51 (11)                   ; 3300              ; 3          ; 32   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
 ;    |vgacon:vga_component|                    ; 175 (35)            ; 40 (40)                   ; 3300              ; 1          ; 0    ; 0            ; |game_board|vgacon:vga_component                                                                                                 ; vgacon              ; work         ;
 ;       |dual_clock_ram:vgamem|                ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem                                                                           ; dual_clock_ram      ; work         ;
 ;          |altsyncram:ram_block_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0                                                ; altsyncram          ; work         ;
@@ -282,8 +281,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------+-------------+
 ; Statistic                       ; Number Used ;
 +---------------------------------+-------------+
-; Two Independent 18x18           ; 2           ;
-; Independent 18x18 plus 36       ; 1           ;
+; Independent 18x18 plus 36       ; 3           ;
 ; Total number of DSP blocks      ; 3           ;
 ;                                 ;             ;
 ; Fixed Point Unsigned Multiplier ; 3           ;
@@ -295,12 +293,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 45    ;
+; Total registers                              ; 51    ;
 ; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 40    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 14    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -732,28 +730,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 45                          ;
+; arriav_ff             ; 51                          ;
 ;     CLR               ; 20                          ;
 ;     CLR SCLR          ; 10                          ;
+;     ENA               ; 4                           ;
 ;     ENA CLR SCLR      ; 10                          ;
-;     plain             ; 5                           ;
-; arriav_lcell_comb     ; 214                         ;
-;     arith             ; 124                         ;
+;     plain             ; 7                           ;
+; arriav_lcell_comb     ; 208                         ;
+;     arith             ; 103                         ;
 ;         0 data inputs ; 18                          ;
-;         1 data inputs ; 55                          ;
-;         2 data inputs ; 14                          ;
+;         1 data inputs ; 44                          ;
+;         2 data inputs ; 4                           ;
 ;         3 data inputs ; 24                          ;
 ;         4 data inputs ; 13                          ;
-;     extend            ; 1                           ;
-;         7 data inputs ; 1                           ;
-;     normal            ; 84                          ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 97                          ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 30                          ;
-;         3 data inputs ; 13                          ;
-;         4 data inputs ; 14                          ;
-;         5 data inputs ; 13                          ;
-;         6 data inputs ; 11                          ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 13                          ;
+;         5 data inputs ; 18                          ;
+;         6 data inputs ; 17                          ;
 ;     shared            ; 5                           ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 4                           ;
@@ -763,7 +762,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 3                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 13.40                       ;
-; Average LUT depth     ; 6.71                        ;
+; Average LUT depth     ; 6.73                        ;
 +-----------------------+-----------------------------+
 
 
@@ -782,7 +781,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Jun  8 16:36:02 2018
+    Info: Processing started: Fri Jun  8 16:55:28 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -818,17 +817,29 @@ Info (12021): Found 4 design units, including 2 entities, in source file game_bo
     Info (12023): Found entity 1: vgacon File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
     Info (12023): Found entity 2: dual_clock_ram File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
 Info (12127): Elaborating entity "game_board" for the top level hierarchy
-Warning (10873): Using initial value X (don't care) for net "pos_color[0..439]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[441..460]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[463..482]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[485..504]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[507..526]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[529..548]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[551..570]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[573..592]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[595..614]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[617..636]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
-Warning (10873): Using initial value X (don't care) for net "pos_color[660..1099]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[0..19]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[30..78]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[80..128]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[130..178]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[180..228]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[230..278]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[280..328]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[330..378]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[380..428]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[430..478]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[480..528]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[530..578]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[580..628]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[630..678]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[680..728]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[730..778]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[780..828]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[830..878]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[880..928]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[930..978]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[980..1028]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[1030..1069]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
+Warning (10873): Using initial value X (don't care) for net "pos_color[1080..1099]" at game_board.vhd(57) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 57
 Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 97
 Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
 Info (12128): Elaborating entity "vga_pll_0002" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 31
@@ -968,17 +979,17 @@ Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[0]" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 7
-Info (21057): Implemented 271 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 265 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 232 logic cells
+    Info (21061): Implemented 226 logic cells
     Info (21064): Implemented 3 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 3 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 1240 megabytes
-    Info: Processing ended: Fri Jun  8 16:36:14 2018
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
+    Info: Peak virtual memory: 1239 megabytes
+    Info: Processing ended: Fri Jun  8 16:55:40 2018
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Total CPU time (on all processors): 00:00:25
 
 
