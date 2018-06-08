@@ -32,7 +32,7 @@ architecture behavior OF game_board IS
         );
     end component;
 
-	 
+    
     component clock_div is
         port (
             clock : in std_logic;
@@ -50,7 +50,11 @@ architecture behavior OF game_board IS
     signal clear_video_address	,
     normal_video_address	,
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
-
+    
+    --definicao da peca atual, matriz 4x2 que guarda a posicao de cada quadrado
+    type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE * VERT_SIZE- 1
+    type piece : pieces_type; 
+    
     --definicao da matriz que contem a cor de cada "pixel"
     -- o vetor eh definido em ordem crescente como o video_adress
     TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
