@@ -46,16 +46,6 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name VHDL_FILE create_piece/create_piece.vhd
-set_global_assignment -name VHDL_FILE menu/menu.vhd
-set_global_assignment -name VHDL_FILE keyboard/kbdex_ctrl.vhd
-set_global_assignment -name VHDL_FILE keyboard/ps2_iobase.vhd
-set_global_assignment -name VHDL_FILE clock/clk_div.vhd
-set_global_assignment -name VHDL_FILE mov_piece/mov_piece.vhd
-set_global_assignment -name VHDL_FILE game_board/game_board.vhd
-set_global_assignment -name QIP_FILE game_board/vga_pll.qip
-set_global_assignment -name VHDL_FILE game_board/vga_pll.vhd
-set_global_assignment -name VHDL_FILE game_board/vgacon.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -317,6 +307,18 @@ set_location_assignment PIN_E12 -to VGA_R[6]
 set_location_assignment PIN_F13 -to VGA_R[7]
 set_location_assignment PIN_C10 -to VGA_SYNC_N
 set_location_assignment PIN_D11 -to VGA_VS
-set_global_assignment -name QIP_FILE game_board/vga_pll/vga_pll_0002.qip
-set_global_assignment -name VERILOG_FILE game_board/vga_pll/vga_pll_0002.v
+set_global_assignment -name VHDL_FILE clock/clock_div.vhd
+set_global_assignment -name VHDL_FILE create_piece/create_piece.vhd
+set_global_assignment -name VHDL_FILE menu/menu.vhd
+set_global_assignment -name VHDL_FILE keyboard/kbdex_ctrl.vhd
+set_global_assignment -name VHDL_FILE keyboard/ps2_iobase.vhd
+set_global_assignment -name VHDL_FILE mov_piece/mov_piece.vhd
+set_global_assignment -name VHDL_FILE game_board/game_board.vhd
+set_global_assignment -name QIP_FILE game_board/vga_pll.qip
+set_global_assignment -name VHDL_FILE game_board/vga_pll.vhd -library vga_pll
+set_global_assignment -name VHDL_FILE game_board/vgacon.vhd -library vga_pll
+set_global_assignment -name QIP_FILE game_board/vga_pll/vga_pll_0002.qip -library vga_pll
+set_global_assignment -name VERILOG_FILE game_board/vga_pll/vga_pll_0002.v -library vga_pll
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

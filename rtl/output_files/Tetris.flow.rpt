@@ -1,5 +1,5 @@
 Flow report for Tetris
-Fri Jun  8 17:45:58 2018
+Fri Jun  8 18:06:32 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -37,24 +37,29 @@ refer to the applicable agreement for further details.
 
 
 
-+---------------------------------------------------------------------------+
-; Flow Summary                                                              ;
-+-----------------------------+---------------------------------------------+
-; Flow Status                 ; Flow Failed - Fri Jun  8 17:45:58 2018      ;
-; Quartus Prime Version       ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
-; Revision Name               ; Tetris                                      ;
-; Top-level Entity Name       ; game_board                                  ;
-; Family                      ; Cyclone V                                   ;
-; Device                      ; 5CSEMA5F31C6                                ;
-; Timing Models               ; Final                                       ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
-; Total registers             ; N/A until Partition Merge                   ;
-; Total pins                  ; N/A until Partition Merge                   ;
-; Total virtual pins          ; N/A until Partition Merge                   ;
-; Total block memory bits     ; N/A until Partition Merge                   ;
-; Total PLLs                  ; N/A until Partition Merge                   ;
-; Total DLLs                  ; N/A until Partition Merge                   ;
-+-----------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------+
+; Flow Summary                                                                  ;
++---------------------------------+---------------------------------------------+
+; Flow Status                     ; Successful - Fri Jun  8 18:06:24 2018       ;
+; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                   ; Tetris                                      ;
+; Top-level Entity Name           ; game_board                                  ;
+; Family                          ; Cyclone V                                   ;
+; Device                          ; 5CSEMA5F31C6                                ;
+; Timing Models                   ; Final                                       ;
+; Logic utilization (in ALMs)     ; 120 / 32,070 ( < 1 % )                      ;
+; Total registers                 ; 68                                          ;
+; Total pins                      ; 34 / 457 ( 7 % )                            ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 3,300 / 4,065,280 ( < 1 % )                 ;
+; Total DSP Blocks                ; 3 / 87 ( 3 % )                              ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1 / 6 ( 17 % )                              ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                               ;
++---------------------------------+---------------------------------------------+
 
 
 +-----------------------------------------+
@@ -62,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/08/2018 17:45:48 ;
+; Start date & time ; 06/08/2018 18:05:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Tetris              ;
 +-------------------+---------------------+
@@ -73,42 +78,53 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 180720257651816.152849074826325        ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 180720257651816.152849192227174        ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; game_board/vga_pll.cmp                 ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; game_board  ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                     ; --            ; --          ; --         ;
 ; TOP_LEVEL_ENTITY                    ; game_board                             ; Tetris        ; --          ; --         ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                          ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 1449 MB             ; 00:00:23                           ;
-; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:23                           ;
-+------------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 1194 MB             ; 00:00:24                           ;
+; Fitter                    ; 00:00:37     ; 1.0                     ; 2631 MB             ; 00:00:52                           ;
+; Assembler                 ; 00:00:08     ; 1.0                     ; 1100 MB             ; 00:00:06                           ;
+; TimeQuest Timing Analyzer ; 00:00:08     ; 1.1                     ; 1381 MB             ; 00:00:06                           ;
+; Total                     ; 00:01:06     ; --                      ; --                  ; 00:01:28                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                                ;
-+------------------------+--------------------------+-------------+-------------+----------------+
-; Module Name            ; Machine Hostname         ; OS Name     ; OS Version  ; Processor type ;
-+------------------------+--------------------------+-------------+-------------+----------------+
-; Analysis & Elaboration ; camoes.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
-+------------------------+--------------------------+-------------+-------------+----------------+
++---------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                   ;
++---------------------------+--------------------------+-------------+-------------+----------------+
+; Module Name               ; Machine Hostname         ; OS Name     ; OS Version  ; Processor type ;
++---------------------------+--------------------------+-------------+-------------+----------------+
+; Analysis & Synthesis      ; camoes.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
+; Fitter                    ; camoes.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
+; Assembler                 ; camoes.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
+; TimeQuest Timing Analyzer ; camoes.lab.ic.unicamp.br ; Fedora Core ; Fedora Core ; x86_64         ;
++---------------------------+--------------------------+-------------+-------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
-quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris --analysis_and_elaboration
+quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
+quartus_fit --read_settings_files=off --write_settings_files=off Tetris -c Tetris
+quartus_asm --read_settings_files=off --write_settings_files=off Tetris -c Tetris
+quartus_sta Tetris -c Tetris
 
 
 

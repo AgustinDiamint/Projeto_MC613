@@ -43,7 +43,7 @@ architecture behavior OF game_board IS
             clk			:	in 	std_logic;
             en			:	in 	std_logic;
             resetn		:	in 	std_logic;		
-            lights		: in	std_logic_vector(2 downto 0); -- lights(Caps, Nun, Scroll)
+            lights		:   in	std_logic_vector(2 downto 0); -- lights(Caps, Nun, Scroll)
             key_on		:	out	std_logic_vector(2 downto 0);
             key_code	:	out	std_logic_vector(47 downto 0)
         );
@@ -51,9 +51,9 @@ architecture behavior OF game_board IS
 
     component clock_div is
         port (
-            clock : in std_logic;
-            clock_hz : out std_logic;
-            clock_half : out std_logic
+            clock       : in std_logic;
+            clock_hz    : out std_logic;
+            clock_half  : out std_logic
         );
     end component;
 
@@ -149,7 +149,7 @@ architecture behavior OF game_board IS
     port map(
 		ps2_data    => PS2_DAT,
         ps2_clk		=> PS2_CLK,
-        clk			=> clock,
+        clk			=> CLOCK_50,
         en			=> '1',
         resetn		=> '0',
         lights		=> lights(1) & lights(2) & lights(0),
