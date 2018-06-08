@@ -121,7 +121,7 @@ architecture behavior OF game_board IS
 
     --precisamos dos processos de conta_coluna e conta_linha para 
     -- mandar todas as posicoes da tela ao vgacon. 
-    conta_coluna: process (CLOCK_50, col_rstn)
+    conta_coluna: process (CLOCK_50)
     begin  -- process conta_coluna
         if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
             if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
@@ -148,18 +148,18 @@ architecture behavior OF game_board IS
     end process conta_linha;
 
     -- manda o endereco atual e a cor desse endereco para o vgacon. 
-    video_address  <= col + (VERT_SIZE * linha);
-    pixel <= pos_color(col + (VERT_SIZE * linha)); 
+    video_address  <= col + (HORZ_SIZE * linha);
+    pixel <= pos_color(col + (HORZ_SIZE * linha)); 
 
     --desenha uma linha branca ao redor do tabuleiro
     draw_edge: process(CLOCK_50)
     begin
         for lin_y in 0 to 21 loop
-            for col_x in 20 to 29 loop
+            for col_x in 19 to 30 loop
                 if (lin_y = 0 or lin_y = 21) then
                     pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                 else
-                    if(col_x=19 or col_x = 29) then
+                    if(col_x=19 or col_x = 30) then
                         pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                     end if;
                 end if;
