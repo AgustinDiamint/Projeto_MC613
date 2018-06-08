@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Tetris
-Fri Jun  8 17:08:00 2018
+Fri Jun  8 17:14:36 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -104,8 +104,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   2.7%      ;
-;     Processor 3            ;   2.6%      ;
+;     Processor 2            ;   2.6%      ;
+;     Processor 3            ;   2.5%      ;
 ;     Processor 4            ;   2.5%      ;
 +----------------------------+-------------+
 
@@ -710,7 +710,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Jun  8 17:07:52 2018
+    Info: Processing started: Fri Jun  8 17:14:29 2018
 Info: Command: quartus_sta Tetris -c Tetris
 Info: qsta_default_script.tcl version: #3
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -831,8 +831,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 1379 megabytes
-    Info: Processing ended: Fri Jun  8 17:08:00 2018
-    Info: Elapsed time: 00:00:08
+    Info: Processing ended: Fri Jun  8 17:14:36 2018
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:06
 
 

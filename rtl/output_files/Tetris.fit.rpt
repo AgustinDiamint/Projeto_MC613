@@ -1,5 +1,5 @@
 Fitter report for Tetris
-Fri Jun  8 17:07:43 2018
+Fri Jun  8 17:14:19 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Fri Jun  8 17:07:42 2018       ;
+; Fitter Status                   ; Successful - Fri Jun  8 17:14:19 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
@@ -162,7 +162,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.7%      ;
+;     Processor 2            ;   0.6%      ;
 ;     Processor 3            ;   0.6%      ;
 ;     Processor 4            ;   0.6%      ;
 +----------------------------+-------------+
@@ -2442,19 +2442,19 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.56 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.51 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/output_files/Tetris.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 233 warnings
-    Info: Peak virtual memory: 2622 megabytes
-    Info: Processing ended: Fri Jun  8 17:07:44 2018
-    Info: Elapsed time: 00:00:36
-    Info: Total CPU time (on all processors): 00:00:55
+    Info: Peak virtual memory: 2631 megabytes
+    Info: Processing ended: Fri Jun  8 17:14:20 2018
+    Info: Elapsed time: 00:00:35
+    Info: Total CPU time (on all processors): 00:00:54
 
 
 +----------------------------+
