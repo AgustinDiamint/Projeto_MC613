@@ -56,15 +56,6 @@ architecture behavior OF game_board IS
             clock_half  : out std_logic
         );
     end component;
-    
-    component create_piece is 
-        port (
-            clock         : in  std_logic;
-            sync_reset    : in  std_logic;
-            en            : in  std_logic;
-            piece         : out std_logic_vector(2 downto 0));
-    end component;
-
 
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
@@ -86,9 +77,7 @@ architecture behavior OF game_board IS
     TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
     signal pos_color: color_matrix;
 
-    -- Interface com o create_piece
-    signal new_piece_flag : std_logic;
-    signal new_piece_type : std_logic_vector(2 downto 0);
+
     -- Interface com a memória de vídeo do controlador
 
     signal we : std_logic;                        -- write enable ('1' p/ escrita)
@@ -117,15 +106,13 @@ architecture behavior OF game_board IS
     signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
-    signal START_GAME   : std_logic;
-    signal CLASH        : std_logic;
+    signal START_GAME : std_logic;
     
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
     TYPE VGA_STATES IS (MENU, NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW); 
-    signal state, NEXT_STATE : VGA_STATES;
-   
+    signal state : VGA_STATES;
 
     signal switch, rstn, clk50m, sync, blank : std_logic;
     BEGIN
@@ -222,19 +209,9 @@ architecture behavior OF game_board IS
         end loop; 
     end process;
     
-    --faz a peca atual cair
-    piece_mov: process(slow_clock)
-    begin
-        if slow_clock'event and slow_clock= '1' then 
-            for i in 0 to 3 loop
-            piece(i, 1) <= piece(i, 1) + 1;
-            end loop; 
-        end if; 
-    end process;
-    
-    logica_mealy: process (state, CLASH, START_GAME, not_so_slow_clock)
+    logica_mealy: process (VGA_STATES, CLASH, START_GAME, not_so_slow_clock)
     begin  -- process logica_mealy
-        case NEXT_STATE is
+        case VGA_STATES is
             when NEW_GAME  => 
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= NEW_PIECE;
@@ -249,13 +226,14 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= MOVE;
                 end if;
             
-            when COLISION => NEXT_STATE <= DRAW;
+            when COLISION =>
+                NEXT_STATE <= DRAW;
                 
             when DRAW =>
                 if CLASH = '1' then
-                    NEXT_STATE <= NEW_PIECE;
+                    NEXT_STATE => NEW_PIECE;
                 else
-                    NEXT_STATE <= MOVE;
+                    NEXT_STATE => MOVE;
                 end if;
                     
             when NEW_PIECE =>
@@ -280,9 +258,9 @@ architecture behavior OF game_board IS
     seq_fsm: process (CLOCK_50, rstn)
     begin  -- process seq_fsm
         if rstn = '0' then                  -- asynchronous reset (active low)
-            state <= NEW_GAME;
+            VGA_STATES <= NEW_GAME;
         elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
-            state <= NEXT_STATE;
+            VGA_STATES <= NEXT_STATE;
         end if;
     end process seq_fsm;
 

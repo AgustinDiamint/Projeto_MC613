@@ -1,4 +1,13 @@
 
+State Machine - |game_board|state
+Name state.DRAW state.NEW_PIECE state.COLISION state.MOVE state.MENU state.NEW_GAME 
+state.NEW_GAME 0 0 0 0 0 0 
+state.MENU 0 0 0 0 1 1 
+state.MOVE 0 0 0 1 0 1 
+state.COLISION 0 0 1 0 0 1 
+state.NEW_PIECE 0 1 0 0 0 1 
+state.DRAW 1 0 0 0 0 1 
+
 State Machine - |game_board|kbdex_ctrl:kbd_ctrl|cmdstate
 Name cmdstate.CLEAR cmdstate.WAITACK1 cmdstate.SENDVAL cmdstate.SETLIGHTS cmdstate.WAITACK cmdstate.SEND cmdstate.SETCMD 
 cmdstate.SETCMD 0 0 0 0 0 0 0 
