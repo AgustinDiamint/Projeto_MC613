@@ -56,6 +56,14 @@ architecture behavior OF game_board IS
             clock_half  : out std_logic
         );
     end component;
+    
+    component create_piece is 
+        port (
+            clock         : in  std_logic;
+            sync_reset    : in  std_logic;
+            en            : in  std_logic;
+            piece         : out std_logic_vector(2 downto 0));
+    end component;
 
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
@@ -77,7 +85,9 @@ architecture behavior OF game_board IS
     TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
     signal pos_color: color_matrix;
 
-
+    -- Interface com o create_piece
+    signal new_game, new_piece : std_logic;
+    signal new_piece_type : std_logic_vector(2 downto 0);
     -- Interface com a memória de vídeo do controlador
 
     signal we : std_logic;                        -- write enable ('1' p/ escrita)
@@ -106,6 +116,7 @@ architecture behavior OF game_board IS
     signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
+
     
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
@@ -114,6 +125,7 @@ architecture behavior OF game_board IS
     signal state : VGA_STATES;
 
     signal switch, rstn, clk50m, sync, blank : std_logic;
+    
     BEGIN
     rstn <= KEY(0);
     clk50M <= CLOCK_50;
@@ -155,7 +167,12 @@ architecture behavior OF game_board IS
         lights		=> lights(1) & lights(2) & lights(0),
         key_on		=> key_on,
         key_code	=> key_code);
-        
+    
+    crt_piece : create_piece port map(
+        clock         => slow_clock,
+        sync_reset    => new_game,
+        en            => new_piece,
+        piece         => new_piece_type);
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
@@ -207,6 +224,14 @@ architecture behavior OF game_board IS
             end loop; 
         end loop; 
     end process;
-
+    
+    piece_mov: process(slow_clock)
+    begin
+        if slow_clock'event and slow_clock= '1' then 
+            for i in 0 to 3 loop
+            piece(i, 1) <= piece(i, 1) + 1;
+            end loop; 
+        end if;
+    end process; 
 END ARCHITECTURE;
   
