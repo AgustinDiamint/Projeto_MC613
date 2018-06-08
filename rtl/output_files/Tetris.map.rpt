@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Tetris
-Fri Jun  8 18:05:36 2018
+Fri Jun  8 18:36:22 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -32,12 +32,13 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
  24. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div1
  25. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div0
  26. altsyncram Parameter Settings by Entity Instance
- 27. Port Connectivity Checks: "kbdex_ctrl:kbd_ctrl"
- 28. Port Connectivity Checks: "clock_div:clock_component"
- 29. Port Connectivity Checks: "vgacon:vga_component"
- 30. Post-Synthesis Netlist Statistics for Top Partition
- 31. Elapsed Time Per Partition
- 32. Analysis & Synthesis Messages
+ 27. Port Connectivity Checks: "create_piece:crt_piece"
+ 28. Port Connectivity Checks: "kbdex_ctrl:kbd_ctrl"
+ 29. Port Connectivity Checks: "clock_div:clock_component"
+ 30. Port Connectivity Checks: "vgacon:vga_component"
+ 31. Post-Synthesis Netlist Statistics for Top Partition
+ 32. Elapsed Time Per Partition
+ 33. Analysis & Synthesis Messages
 
 
 
@@ -63,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Jun  8 18:05:36 2018       ;
+; Analysis & Synthesis Status     ; Successful - Fri Jun  8 18:36:22 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
@@ -187,39 +188,40 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                   ;
-+-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path  ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                              ; Library ;
-+-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
-; clock/clock_div.vhd               ; yes             ; User VHDL File               ; /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clock_div.vhd               ;         ;
-; keyboard/kbdex_ctrl.vhd           ; yes             ; User VHDL File               ; /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd           ;         ;
-; keyboard/ps2_iobase.vhd           ; yes             ; User VHDL File               ; /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd           ;         ;
-; game_board/game_board.vhd         ; yes             ; User VHDL File               ; /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd         ;         ;
-; game_board/vga_pll.vhd            ; yes             ; User Wizard-Generated File   ; /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll.vhd            ; vga_pll ;
-; game_board/vga_pll/vga_pll_0002.v ; yes             ; User Verilog HDL File        ; /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v ; vga_pll ;
-; game_board/vgacon.vhd             ; yes             ; User VHDL File               ; /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd             ; vga_pll ;
-; altera_pll.v                      ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altera_pll.v             ;         ;
-; altsyncram.tdf                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altsyncram.tdf           ;         ;
-; stratix_ram_block.inc             ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc    ;         ;
-; lpm_mux.inc                       ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_mux.inc              ;         ;
-; lpm_decode.inc                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_decode.inc           ;         ;
-; aglobal171.inc                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/aglobal171.inc           ;         ;
-; a_rdenreg.inc                     ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/a_rdenreg.inc            ;         ;
-; altrom.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altrom.inc               ;         ;
-; altram.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altram.inc               ;         ;
-; altdpram.inc                      ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altdpram.inc             ;         ;
-; db/altsyncram_egl1.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/altsyncram_egl1.tdf            ;         ;
-; lpm_divide.tdf                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_divide.tdf           ;         ;
-; abs_divider.inc                   ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/abs_divider.inc          ;         ;
-; sign_div_unsign.inc               ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc      ;         ;
-; db/lpm_divide_fbm.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/lpm_divide_fbm.tdf             ;         ;
-; db/sign_div_unsign_llh.tdf        ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/sign_div_unsign_llh.tdf        ;         ;
-; db/alt_u_div_gve.tdf              ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/alt_u_div_gve.tdf              ;         ;
-; db/lpm_divide_ebm.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/lpm_divide_ebm.tdf             ;         ;
-; db/sign_div_unsign_klh.tdf        ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/sign_div_unsign_klh.tdf        ;         ;
-; db/alt_u_div_eve.tdf              ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra155449/Projeto_MC613/rtl/db/alt_u_div_eve.tdf              ;         ;
-+-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path  ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                    ; Library ;
++-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
+; clock/clock_div.vhd               ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/clock/clock_div.vhd               ;         ;
+; create_piece/create_piece.vhd     ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd     ;         ;
+; keyboard/kbdex_ctrl.vhd           ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd           ;         ;
+; keyboard/ps2_iobase.vhd           ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd           ;         ;
+; game_board/game_board.vhd         ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd         ;         ;
+; game_board/vga_pll.vhd            ; yes             ; User Wizard-Generated File   ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd            ; vga_pll ;
+; game_board/vga_pll/vga_pll_0002.v ; yes             ; User Verilog HDL File        ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v ; vga_pll ;
+; game_board/vgacon.vhd             ; yes             ; User VHDL File               ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd             ; vga_pll ;
+; altera_pll.v                      ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altera_pll.v                   ;         ;
+; altsyncram.tdf                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altsyncram.tdf                 ;         ;
+; stratix_ram_block.inc             ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/stratix_ram_block.inc          ;         ;
+; lpm_mux.inc                       ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_mux.inc                    ;         ;
+; lpm_decode.inc                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_decode.inc                 ;         ;
+; aglobal171.inc                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/aglobal171.inc                 ;         ;
+; a_rdenreg.inc                     ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/a_rdenreg.inc                  ;         ;
+; altrom.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altrom.inc                     ;         ;
+; altram.inc                        ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altram.inc                     ;         ;
+; altdpram.inc                      ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/altdpram.inc                   ;         ;
+; db/altsyncram_egl1.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_egl1.tdf            ;         ;
+; lpm_divide.tdf                    ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/lpm_divide.tdf                 ;         ;
+; abs_divider.inc                   ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/abs_divider.inc                ;         ;
+; sign_div_unsign.inc               ; yes             ; Megafunction                 ; /opt/altera/17.1/quartus/libraries/megafunctions/sign_div_unsign.inc            ;         ;
+; db/lpm_divide_fbm.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/lpm_divide_fbm.tdf             ;         ;
+; db/sign_div_unsign_llh.tdf        ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/sign_div_unsign_llh.tdf        ;         ;
+; db/alt_u_div_gve.tdf              ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/alt_u_div_gve.tdf              ;         ;
+; db/lpm_divide_ebm.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/lpm_divide_ebm.tdf             ;         ;
+; db/sign_div_unsign_klh.tdf        ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/sign_div_unsign_klh.tdf        ;         ;
+; db/alt_u_div_eve.tdf              ; yes             ; Auto-Generated Megafunction  ; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/alt_u_div_eve.tdf              ;         ;
++-----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -937,6 +939,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------------------+-----------------------------------------------------------------------+
 
 
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "create_piece:crt_piece"                                                              ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; piece ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +--------------------------------------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "kbdex_ctrl:kbd_ctrl"                                                                    ;
 +----------+--------+----------+-------------------------------------------------------------------------------------+
@@ -954,7 +965,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port       ; Type   ; Severity ; Details                                                                             ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
-; clock_hz   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; clock_half ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------+--------+----------+-------------------------------------------------------------------------------------+
 
@@ -1025,97 +1035,100 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Jun  8 18:05:22 2018
+    Info: Processing started: Fri Jun  8 18:36:10 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file clock/clock_div.vhd
-    Info (12022): Found design unit 1: clock_div-behavioral File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clock_div.vhd Line: 13
-    Info (12023): Found entity 1: clock_div File: /home/ec2014/ra155449/Projeto_MC613/rtl/clock/clock_div.vhd Line: 5
+    Info (12022): Found design unit 1: clock_div-behavioral File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/clock/clock_div.vhd Line: 13
+    Info (12023): Found entity 1: clock_div File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/clock/clock_div.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file create_piece/create_piece.vhd
-    Info (12022): Found design unit 1: create_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 16
-    Info (12023): Found entity 1: create_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
+    Info (12022): Found design unit 1: create_piece-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 14
+    Info (12023): Found entity 1: create_piece File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file menu/menu.vhd
-    Info (12022): Found design unit 1: menu-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 15
-    Info (12023): Found entity 1: menu File: /home/ec2014/ra155449/Projeto_MC613/rtl/menu/menu.vhd Line: 6
+    Info (12022): Found design unit 1: menu-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 15
+    Info (12023): Found entity 1: menu File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/menu/menu.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/kbdex_ctrl.vhd
-    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
-    Info (12023): Found entity 1: kbdex_ctrl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
+    Info (12022): Found design unit 1: kbdex_ctrl-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 63
+    Info (12023): Found entity 1: kbdex_ctrl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 47
 Info (12021): Found 2 design units, including 1 entities, in source file keyboard/ps2_iobase.vhd
-    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
-    Info (12023): Found entity 1: ps2_iobase File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
+    Info (12022): Found design unit 1: ps2_iobase-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 41
+    Info (12023): Found entity 1: ps2_iobase File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 20
 Info (12021): Found 2 design units, including 1 entities, in source file mov_piece/mov_piece.vhd
-    Info (12022): Found design unit 1: mov_piece-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
-    Info (12023): Found entity 1: mov_piece File: /home/ec2014/ra155449/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
+    Info (12022): Found design unit 1: mov_piece-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
+    Info (12023): Found entity 1: mov_piece File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file game_board/game_board.vhd
-    Info (12022): Found design unit 1: game_board-behavior File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 19
-    Info (12023): Found entity 1: game_board File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 5
+    Info (12022): Found design unit 1: game_board-behavior File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 19
+    Info (12023): Found entity 1: game_board File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file game_board/vga_pll.vhd
-    Info (12022): Found design unit 1: vga_pll-rtl File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 19
-    Info (12023): Found entity 1: vga_pll File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 11
+    Info (12022): Found design unit 1: vga_pll-rtl File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 19
+    Info (12023): Found entity 1: vga_pll File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file game_board/vga_pll/vga_pll_0002.v
-    Info (12023): Found entity 1: vga_pll_0002 File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 2
+    Info (12023): Found entity 1: vga_pll_0002 File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 2
 Info (12021): Found 4 design units, including 2 entities, in source file game_board/vgacon.vhd
-    Info (12022): Found design unit 1: vgacon-behav File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 96
-    Info (12022): Found design unit 2: dual_clock_ram-behav File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 269
-    Info (12023): Found entity 1: vgacon File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
-    Info (12023): Found entity 2: dual_clock_ram File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
+    Info (12022): Found design unit 1: vgacon-behav File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 96
+    Info (12022): Found design unit 2: dual_clock_ram-behav File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 269
+    Info (12023): Found entity 1: vgacon File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
+    Info (12023): Found entity 2: dual_clock_ram File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
 Info (12127): Elaborating entity "game_board" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(64): object "slow_clock" assigned a value but never read File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 64
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(65): object "not_so_slow_clock" assigned a value but never read File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 65
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(110): used implicit default value for signal "lights" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 110
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(110): object "key_on" assigned a value but never read File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 110
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(111): object "key_code" assigned a value but never read File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 111
-Warning (10873): Using initial value X (don't care) for net "pos_color[0..18]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[31..68]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[70..79]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[81..118]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[120..129]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[131..168]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[170..179]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[181..218]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[220..229]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[231..268]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[270..279]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[281..318]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[320..329]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[331..368]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[370..379]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[381..418]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[420..429]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[431..468]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[470..479]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[481..518]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[520..529]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[531..568]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[570..579]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[581..618]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[620..629]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[631..668]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[670..679]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[681..718]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[720..729]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[731..768]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[770..779]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[781..818]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[820..829]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[831..868]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[870..879]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[881..918]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[920..929]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[931..968]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[970..979]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[981..1018]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[1020..1029]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[1031..1068]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Warning (10873): Using initial value X (don't care) for net "pos_color[1081..1099]" at game_board.vhd(78) File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 78
-Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 121
-Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
-Info (12128): Elaborating entity "vga_pll_0002" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 31
-Info (12128): Elaborating entity "altera_pll" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(73): object "not_so_slow_clock" assigned a value but never read File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 73
+Warning (10541): VHDL Signal Declaration warning at game_board.vhd(89): used implicit default value for signal "new_game" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 89
+Warning (10541): VHDL Signal Declaration warning at game_board.vhd(89): used implicit default value for signal "new_piece" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 89
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(90): object "new_piece_type" assigned a value but never read File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 90
+Warning (10541): VHDL Signal Declaration warning at game_board.vhd(121): used implicit default value for signal "lights" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 121
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(121): object "key_on" assigned a value but never read File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 121
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(122): object "key_code" assigned a value but never read File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 122
+Warning (10873): Using initial value X (don't care) for net "pos_color[0..18]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[31..68]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[70..79]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[81..118]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[120..129]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[131..168]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[170..179]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[181..218]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[220..229]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[231..268]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[270..279]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[281..318]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[320..329]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[331..368]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[370..379]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[381..418]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[420..429]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[431..468]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[470..479]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[481..518]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[520..529]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[531..568]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[570..579]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[581..618]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[620..629]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[631..668]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[670..679]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[681..718]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[720..729]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[731..768]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[770..779]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[781..818]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[820..829]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[831..868]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[870..879]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[881..918]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[920..929]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[931..968]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[970..979]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[981..1018]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[1020..1029]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[1031..1068]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Warning (10873): Using initial value X (don't care) for net "pos_color[1081..1099]" at game_board.vhd(86) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "piece" into its bus
+Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 133
+Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
+Info (12128): Elaborating entity "vga_pll_0002" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 31
+Info (12128): Elaborating entity "altera_pll" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
-Info (12133): Instantiated megafunction "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" with the following parameter: File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
+Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
+Info (12133): Instantiated megafunction "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" with the following parameter: File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -1176,47 +1189,51 @@ Info (12133): Instantiated megafunction "vgacon:vga_component|vga_pll:divider|vg
     Info (12134): Parameter "duty_cycle17" = "50"
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
-Info (12128): Elaborating entity "dual_clock_ram" for hierarchy "vgacon:vga_component|dual_clock_ram:vgamem" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 124
-Info (12128): Elaborating entity "clock_div" for hierarchy "clock_div:clock_component" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 143
-Info (12128): Elaborating entity "kbdex_ctrl" for hierarchy "kbdex_ctrl:kbd_ctrl" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 148
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(125): signal "en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 125
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(148): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 148
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(150): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 150
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(152): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 152
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(203): signal "sigfetch" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 203
-Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(212): inferring latch(es) for signal or variable "selE0", which holds its previous value in one or more paths through the process File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 212
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(237): signal "key0en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 237
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(247): signal "key1en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 247
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(257): signal "key2en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 257
-Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(266): inferring latch(es) for signal or variable "relbt", which holds its previous value in one or more paths through the process File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 266
-Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(276): inferring latch(es) for signal or variable "selbt", which holds its previous value in one or more paths through the process File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 276
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(294): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 294
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(294): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 294
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(295): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 295
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(297): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 297
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(299): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 299
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(306): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 306
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(307): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 307
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(309): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 309
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(311): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 311
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(314): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 314
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(315): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 315
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(317): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 317
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(319): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 319
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(324): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 324
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(324): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 324
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(326): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 326
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(326): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 326
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(328): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 328
-Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(328): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 328
-Info (10041): Inferred latch for "selbt" at kbdex_ctrl.vhd(276) File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 276
-Info (10041): Inferred latch for "relbt" at kbdex_ctrl.vhd(266) File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 266
-Info (10041): Inferred latch for "selE0" at kbdex_ctrl.vhd(212) File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 212
-Info (12128): Elaborating entity "ps2_iobase" for hierarchy "kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl" File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 114
-Warning (10492): VHDL Process Statement warning at ps2_iobase.vhd(161): signal "sigsending" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra155449/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 161
+Info (12128): Elaborating entity "dual_clock_ram" for hierarchy "vgacon:vga_component|dual_clock_ram:vgamem" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 124
+Info (12128): Elaborating entity "clock_div" for hierarchy "clock_div:clock_component" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 155
+Info (12128): Elaborating entity "kbdex_ctrl" for hierarchy "kbdex_ctrl:kbd_ctrl" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 160
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(125): signal "en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 125
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(148): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 148
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(150): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 150
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(152): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 152
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(203): signal "sigfetch" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 203
+Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(212): inferring latch(es) for signal or variable "selE0", which holds its previous value in one or more paths through the process File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 212
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(237): signal "key0en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 237
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(247): signal "key1en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 247
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(257): signal "key2en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 257
+Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(266): inferring latch(es) for signal or variable "relbt", which holds its previous value in one or more paths through the process File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 266
+Warning (10631): VHDL Process Statement warning at kbdex_ctrl.vhd(276): inferring latch(es) for signal or variable "selbt", which holds its previous value in one or more paths through the process File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 276
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(293): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 293
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(294): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 294
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(294): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 294
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(295): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 295
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(297): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 297
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(299): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 299
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(306): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 306
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(307): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 307
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(309): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 309
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(311): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 311
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(314): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 314
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(315): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 315
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(317): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 317
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(319): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 319
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(324): signal "key0code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 324
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(324): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 324
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(326): signal "key1code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 326
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(326): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 326
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(328): signal "key2code" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 328
+Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(328): signal "datacode" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 328
+Info (10041): Inferred latch for "selbt" at kbdex_ctrl.vhd(276) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 276
+Info (10041): Inferred latch for "relbt" at kbdex_ctrl.vhd(266) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 266
+Info (10041): Inferred latch for "selE0" at kbdex_ctrl.vhd(212) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 212
+Info (12128): Elaborating entity "ps2_iobase" for hierarchy "kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 114
+Warning (10492): VHDL Process Statement warning at ps2_iobase.vhd(161): signal "sigsending" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 161
+Info (12128): Elaborating entity "create_piece" for hierarchy "create_piece:crt_piece" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 171
+Info (10041): Inferred latch for "piece[0]" at create_piece.vhd(32) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
+Info (10041): Inferred latch for "piece[1]" at create_piece.vhd(32) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
+Info (10041): Inferred latch for "piece[2]" at create_piece.vhd(32) File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "vgacon:vga_component|dual_clock_ram:vgamem|ram_block_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
@@ -1235,8 +1252,8 @@ Info (19000): Inferred 1 megafunctions from design logic
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter INIT_FILE set to vga_mem.mif
 Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vgacon:vga_component|Div1" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vgacon:vga_component|Div0" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vgacon:vga_component|Div1" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "vgacon:vga_component|Div0" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
 Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0"
 Info (12133): Instantiated megafunction "vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
@@ -1255,41 +1272,40 @@ Info (12133): Instantiated megafunction "vgacon:vga_component|dual_clock_ram:vga
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "vga_mem.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_egl1.tdf
-    Info (12023): Found entity 1: altsyncram_egl1 File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/altsyncram_egl1.tdf Line: 27
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File /home/ec2014/ra155449/Projeto_MC613/rtl/vga_mem.mif -- setting all initial values to 0 File: /opt/altera/17.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
-Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|lpm_divide:Div1" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
-Info (12133): Instantiated megafunction "vgacon:vga_component|lpm_divide:Div1" with the following parameter: File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
+    Info (12023): Found entity 1: altsyncram_egl1 File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/altsyncram_egl1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|lpm_divide:Div1" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
+Info (12133): Instantiated megafunction "vgacon:vga_component|lpm_divide:Div1" with the following parameter: File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 230
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_fbm.tdf
-    Info (12023): Found entity 1: lpm_divide_fbm File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/lpm_divide_fbm.tdf Line: 24
+    Info (12023): Found entity 1: lpm_divide_fbm File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/lpm_divide_fbm.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_llh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_llh File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/sign_div_unsign_llh.tdf Line: 24
+    Info (12023): Found entity 1: sign_div_unsign_llh File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/sign_div_unsign_llh.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_gve.tdf
-    Info (12023): Found entity 1: alt_u_div_gve File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/alt_u_div_gve.tdf Line: 22
-Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|lpm_divide:Div0" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
-Info (12133): Instantiated megafunction "vgacon:vga_component|lpm_divide:Div0" with the following parameter: File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
+    Info (12023): Found entity 1: alt_u_div_gve File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/alt_u_div_gve.tdf Line: 22
+Info (12130): Elaborated megafunction instantiation "vgacon:vga_component|lpm_divide:Div0" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
+Info (12133): Instantiated megafunction "vgacon:vga_component|lpm_divide:Div0" with the following parameter: File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 229
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ebm.tdf
-    Info (12023): Found entity 1: lpm_divide_ebm File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/lpm_divide_ebm.tdf Line: 24
+    Info (12023): Found entity 1: lpm_divide_ebm File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/lpm_divide_ebm.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_klh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_klh File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/sign_div_unsign_klh.tdf Line: 24
+    Info (12023): Found entity 1: sign_div_unsign_klh File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/sign_div_unsign_klh.tdf Line: 24
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eve.tdf
-    Info (12023): Found entity 1: alt_u_div_eve File: /home/ec2014/ra155449/Projeto_MC613/rtl/db/alt_u_div_eve.tdf Line: 22
+    Info (12023): Found entity 1: alt_u_div_eve File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/db/alt_u_div_eve.tdf Line: 22
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 21 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: /home/ec2014/ra155449/Projeto_MC613/rtl/game_board/game_board.vhd Line: 7
+    Warning (15610): No output dependent on input pin "SW[0]" File: /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 7
 Info (21057): Implemented 274 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
@@ -1298,10 +1314,10 @@ Info (21057): Implemented 274 device resources after synthesis - the final resou
     Info (21064): Implemented 3 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 3 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 89 warnings
-    Info: Peak virtual memory: 1238 megabytes
-    Info: Processing ended: Fri Jun  8 18:05:36 2018
-    Info: Elapsed time: 00:00:14
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 90 warnings
+    Info: Peak virtual memory: 1236 megabytes
+    Info: Processing ended: Fri Jun  8 18:36:22 2018
+    Info: Elapsed time: 00:00:12
     Info: Total CPU time (on all processors): 00:00:24
 
 
