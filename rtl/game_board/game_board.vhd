@@ -31,13 +31,22 @@ architecture behavior OF game_board IS
 			sync, blank               : out std_logic
 		);
 	end component;
+    
+    component clock_div is
+        port (
+            clock : in std_logic;
+            clock_hz : out std_logic;
+            clock_half : out std_logic
+        );
+    end component;
+
 	
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
     constant VERT_SIZE : integer := 22;
 
     signal slow_clock : std_logic;
-	 signal video_word : std_logic_vector( 2 downto 0);
+	signal video_word : std_logic_vector( 2 downto 0);
     signal clear_video_address	,
         normal_video_address	,
         video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
