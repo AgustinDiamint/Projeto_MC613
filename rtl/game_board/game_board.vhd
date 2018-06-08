@@ -10,7 +10,9 @@ entity game_board IS
         VGA_R, VGA_G, VGA_B	    : out std_logic_vector(7 DOWNTO 0);
         VGA_HS, VGA_VS		    : out std_logic;
         VGA_BLANK_N, VGA_SYNC_N : out std_logic;
-        VGA_CLK                 : out std_logic
+        VGA_CLK                 : out std_logic;
+        PS2_DAT 	            : inout	STD_LOGIC;	--	PS2 Data
+		PS2_CLK		            : inout	STD_LOGIC		--	PS2 Clock
     );
 end entity;
 
@@ -31,8 +33,22 @@ architecture behavior OF game_board IS
             sync, blank               : out std_logic
         );
     end component;
-
     
+    component kbdex_ctrl is
+        generic(
+            clkfreq : integer);
+        port(
+            ps2_data	:	inout	std_logic;
+            ps2_clk		:	inout	std_logic;
+            clk			:	in 	std_logic;
+            en			:	in 	std_logic;
+            resetn		:	in 	std_logic;		
+            lights		: in	std_logic_vector(2 downto 0); -- lights(Caps, Nun, Scroll)
+            key_on		:	out	std_logic_vector(2 downto 0);
+            key_code	:	out	std_logic_vector(47 downto 0)
+        );
+    end component;
+
     component clock_div is
         port (
             clock : in std_logic;
@@ -46,13 +62,14 @@ architecture behavior OF game_board IS
     constant VERT_SIZE : integer := 22;
 
     signal slow_clock : std_logic;
+    signal not_so_slow_clock : std_logic;
     signal video_word : std_logic_vector( 2 downto 0);
     signal clear_video_address	,
     normal_video_address	,
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
     
     --definicao da peca atual, matriz 4x2 que guarda a posicao de cada quadrado
-    type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE * VERT_SIZE- 1
+    type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
     type piece : pieces_type; 
     
     --definicao da matriz que contem a cor de cada "pixel"
@@ -89,6 +106,9 @@ architecture behavior OF game_board IS
     signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
+    
+    signal lights, key_on		: std_logic_vector(2 downto 0);
+    signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
     TYPE VGA_STATES IS (NORMAL, CLEAR); 
     signal state : VGA_STATES;
@@ -119,6 +139,23 @@ architecture behavior OF game_board IS
         
         VGA_SYNC_N <= NOT sync;
         VGA_BLANK_N <= NOT blank;
+        
+    clock_component: clock_div port map (
+        clock       => CLOCK_50,
+        clock_hz    => slow_clock,
+        clock_half  => not_so_slow_clock);
+        
+    kbd_ctrl : kbdex_ctrl generic map (50000)
+    port map(
+		ps2_data    => PS2_DAT,
+        ps2_clk		=> PS2_CLK,
+        clk			=> clock,
+        en			=> '1',
+        resetn		=> '0',
+        lights		=> lights(1) & lights(2) & lights(0),
+        key_on		=> key_on,
+        key_code	=> key_code);
+        
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
