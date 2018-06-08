@@ -44,8 +44,8 @@ architecture behavior OF game_board IS
 
     --definicao da matriz que contem a cor de cada "pixel"
     -- o vetor eh definido em ordem crescente como o video_adress
-    TYPE color_matrix is array (2 downto 0) of std_logic_vector;
-    signal pos_color: color_matrix(0 to  HORZ_SIZE * VERT_SIZE- 1);
+    TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
+    signal pos_color: color_matrix;
   
     
     -- Interface com a memória de vídeo do controlador
@@ -70,11 +70,11 @@ architecture behavior OF game_board IS
     signal fim_escrita : std_logic;       -- '1' quando um quadro terminou de ser
                                             -- escrito na memória de vídeo
     --
-    signal piece_x : integer range 0 to HORZ_SIZE-1;  -- coluna atual da bola
-    signal piece_y : integer range 0 to VERT_SIZE-1;   -- linha atual da bola
+    signal piece_x : integer range 0 to HORZ_SIZE-1;  -- coluna atual da peca
+    signal piece_y : integer range 0 to VERT_SIZE-1;   -- linha atual da peca
     
-    signal atualiza_piece_x : std_logic;    -- se '1' = bola muda sua pos. no eixo x
-    signal atualiza_piece_y : std_logic;    -- se '1' = bola muda sua pos. no eixo y
+    signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
+    signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
     
     --acho que aqui um dos estados que pode ser definido eh o menu...
     TYPE VGA_STATES IS (NORMAL, CLEAR); 
@@ -95,7 +95,7 @@ BEGIN
         write_enable	=> we,
         write_addr      => video_address,
         vga_clk         => VGA_CLK,
-        data_in         => video_word,
+        data_in         => pixel,
         red				=> VGA_R,
         green			=> VGA_G,
         blue			=> VGA_B,
@@ -107,16 +107,17 @@ BEGIN
     VGA_BLANK_N <= NOT blank;
     
     -- precisamos de funcoes para atualizar cada um dos dois signals
-    video_word <= normal_video_word when state = NORMAL else clear_video_word;
-    video_address <= normal_video_address when state = NORMAL else clear_video_address;
+   -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
     
+--precisamos dos processos de conta_coluna e conta_linha para 
+-- mandar todas as posicoes da tela ao vgacon. 
 conta_coluna: process (CLOCK_50, col_rstn)
 begin  -- process conta_coluna
     if col_rstn = '0' then                  -- asynchronous reset (active low)
     col <= 0;
     elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
     if col_enable = '1' then
-        if col = 127 then               -- conta de 0 a 127 (128 colunas)
+        if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
         col <= 0;
         else
         col <= col + 1;  
@@ -132,8 +133,8 @@ begin  -- process conta_linha
     elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
     -- o contador de linha só incrementa quando o contador de colunas
     -- chegou ao fim (valor 127)
-        if line_enable = '1' and col = 127 then
-        if line = 95 then               -- conta de 0 a 95 (96 linhas)
+        if line_enable = '1' and col = HORZ_SIZE -1 then
+        if line = VERT_SIZE-1 then               -- conta de 0 a 95 (96 linhas)
             line <= 0;
         else
             line <= line + 1;  
@@ -142,8 +143,11 @@ begin  -- process conta_linha
 end if;
 end process conta_linha;
 
- video_address  <= col + (HORZ_SIZE * line);
+-- manda o endereco atual e a cor desse endereco para o vgacon. 
+video_address  <= col + (HORZ_SIZE * line);
+pixel <= pos_color(col + (HORZ_SIZE*line)); 
 
+--desenha uma linha branca ao redor do tabuleiro
 draw_edge: process(CLOCK_50)
 begin
         for i in 0 to 21 loop
