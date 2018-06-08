@@ -110,7 +110,7 @@ architecture behavior OF game_board IS
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
-    TYPE VGA_STATES IS (NORMAL, CLEAR); 
+    TYPE VGA_STATES IS (MENU, NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW); 
     signal state : VGA_STATES;
 
     signal switch, rstn, clk50m, sync, blank : std_logic;
@@ -197,16 +197,69 @@ architecture behavior OF game_board IS
     begin
         for lin_y in 0 to 21 loop
             for col_x in 19 to 30 loop
-                if (lin_y = 0 or lin_y = 21) then
+                if(lin_y = 0 or lin_y = 21) then
+                    pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
+                elsif(col_x=19 or col_x = 30) then
                     pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                 else
-                    if(col_x=19 or col_x = 30) then
-                        pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
-                    end if;
+                    pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
                 end if;
             end loop; 
         end loop; 
     end process;
+    
+    logica_mealy: process (VGA_STATES, END_DRAW, CLASH, not_so_slow_clock)
+    begin  -- process logica_mealy
+        case VGA_STATES is
+            when NEW_GAME  => 
+                if not_so_slow_clock = '1' then
+                    NEXT_STATE <= NEW_PIECE;
+                else
+                    NEXT_STATE <= NEW_GAME;
+                end if;
+
+            when MOVE =>
+                if not_so_slow_clock = '1' then
+                    NEXT_STATE <= COLISION;
+                else
+                    NEXT_STATE <= MOVE;
+                end if;
+            
+            when COLISION =>
+                NEXT_STATE <= DRAW;
+                
+            when DRAW =>
+                if CLASH = '1' then
+                    NEXT_STATE => NEW_PIECE;
+                else
+                    NEXT_STATE => MOVE;
+                
+
+      
+      
+      
+        when others         => proximo_estado <= inicio;
+        atualiza_pos_x <= '0';
+        atualiza_pos_y <= '0';
+        line_rstn      <= '1';
+        line_enable    <= '0';
+        col_rstn       <= '1';
+        col_enable     <= '0';
+        we             <= '0';
+        timer_rstn     <= '1'; 
+        timer_enable   <= '0';
+
+        end case;
+    end process logica_mealy;
+    
+    seq_fsm: process (CLOCK_50, rstn)
+    begin  -- process seq_fsm
+        if rstn = '0' then                  -- asynchronous reset (active low)
+            VGA_STATES <= NEW_GAME;
+        elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+            VGA_STATES <= NEXT_STATE;
+        end if;
+    end process seq_fsm;
 
 END ARCHITECTURE;
   
