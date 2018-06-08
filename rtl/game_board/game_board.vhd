@@ -95,7 +95,7 @@ BEGIN
         write_enable	=> we,
         write_addr      => video_address,
         vga_clk         => VGA_CLK,
-        data_in         => pixel,
+        data_in         => "000",
         red				=> VGA_R,
         green			=> VGA_G,
         blue			=> VGA_B,
@@ -144,8 +144,8 @@ end if;
 end process conta_linha;
 
 -- manda o endereco atual e a cor desse endereco para o vgacon. 
-video_address  <= col + (HORZ_SIZE * line);
-pixel <= pos_color(col + (HORZ_SIZE*line)); 
+video_address  <= col + (VERT_SIZE * line);
+pixel <= pos_color(col + (VERT_SIZE*line)); 
 
 --desenha uma linha branca ao redor do tabuleiro
 draw_edge: process(CLOCK_50)
@@ -153,10 +153,10 @@ begin
         for i in 0 to 21 loop
                 for j in 20 to 29 loop
                     if (i = 0 or i = 21) then
-                        pos_color(i+(j*HORZ_SIZE)) <= "111";
+                        pos_color(i+(j*VERT_SIZE)) <= "111";
                     else
                         if(j=19 or j = 29) then
-                            pos_color(i+(j*HORZ_SIZE)) <= "111";
+                            pos_color(i+(j*VERT_SIZE)) <= "111";
                         end if;
                     end if;
                 end loop; 
