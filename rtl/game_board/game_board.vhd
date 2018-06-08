@@ -56,14 +56,6 @@ architecture behavior OF game_board IS
             clock_half  : out std_logic
         );
     end component;
-    
-    component create_piece is 
-        port (
-            clock         : in  std_logic;
-            sync_reset    : in  std_logic;
-            en            : in  std_logic;
-            piece         : out std_logic_vector(2 downto 0));
-    end component;
 
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
@@ -85,9 +77,7 @@ architecture behavior OF game_board IS
     TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
     signal pos_color: color_matrix;
 
-    -- Interface com o create_piece
-    signal new_game, new_piece : std_logic;
-    signal new_piece_type : std_logic_vector(2 downto 0);
+
     -- Interface com a memória de vídeo do controlador
 
     signal we : std_logic;                        -- write enable ('1' p/ escrita)
@@ -116,7 +106,7 @@ architecture behavior OF game_board IS
     signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
-
+    signal START_GAME : std_logic;
     
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
@@ -125,7 +115,6 @@ architecture behavior OF game_board IS
     signal state : VGA_STATES;
 
     signal switch, rstn, clk50m, sync, blank : std_logic;
-    
     BEGIN
     rstn <= KEY(0);
     clk50M <= CLOCK_50;
@@ -167,12 +156,7 @@ architecture behavior OF game_board IS
         lights		=> lights(1) & lights(2) & lights(0),
         key_on		=> key_on,
         key_code	=> key_code);
-    
-    crt_piece : create_piece port map(
-        clock         => slow_clock,
-        sync_reset    => new_game,
-        en            => new_piece,
-        piece         => new_piece_type);
+        
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
@@ -225,8 +209,7 @@ architecture behavior OF game_board IS
         end loop; 
     end process;
     
-<<<<<<< HEAD
-    logica_mealy: process (VGA_STATES, END_DRAW, CLASH, not_so_slow_clock)
+    logica_mealy: process (VGA_STATES, CLASH, START_GAME, not_so_slow_clock)
     begin  -- process logica_mealy
         case VGA_STATES is
             when NEW_GAME  => 
@@ -251,22 +234,24 @@ architecture behavior OF game_board IS
                     NEXT_STATE => NEW_PIECE;
                 else
                     NEXT_STATE => MOVE;
+                end if;
+                    
+            when NEW_PIECE =>
+                if not_so_slow_clock = '1' then
+                    NEXT_STATE <= MOVE;
+                else
+                    NEXT_STATE <= NEW_PIECE;
+                end if;
                 
-
-      
-      
-      
-        when others         => proximo_estado <= inicio;
-        atualiza_pos_x <= '0';
-        atualiza_pos_y <= '0';
-        line_rstn      <= '1';
-        line_enable    <= '0';
-        col_rstn       <= '1';
-        col_enable     <= '0';
-        we             <= '0';
-        timer_rstn     <= '1'; 
-        timer_enable   <= '0';
-
+            when MENU =>
+                if START_GAME = '1' then
+                    NEXT_STATE <= NEW_GAME;
+                else
+                    NEXT_STATE <= MENU;
+                end if;
+                
+            when others => 
+                NEXT_STATE <= NEW_GAME;
         end case;
     end process logica_mealy;
     
@@ -279,15 +264,5 @@ architecture behavior OF game_board IS
         end if;
     end process seq_fsm;
 
-=======
-    piece_mov: process(slow_clock)
-    begin
-        if slow_clock'event and slow_clock= '1' then 
-            for i in 0 to 3 loop
-            piece(i, 1) <= piece(i, 1) + 1;
-            end loop; 
-        end if;
-    end process; 
->>>>>>> 8f1a4cef4fcb93385bcc5b4868b2dc9cf6a5520f
 END ARCHITECTURE;
   
