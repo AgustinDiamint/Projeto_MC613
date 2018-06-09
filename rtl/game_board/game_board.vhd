@@ -33,7 +33,7 @@ architecture behavior OF game_board IS
             sync, blank               : out std_logic
         );
     end component;
-    
+
     component kbdex_ctrl is
         generic(
             clkfreq : integer);
@@ -42,7 +42,7 @@ architecture behavior OF game_board IS
             ps2_clk		:	inout	std_logic;
             clk			:	in 	std_logic;
             en			:	in 	std_logic;
-            resetn		:	in 	std_logic;		
+            resetn		:	in 	std_logic;
             lights		:   in	std_logic_vector(2 downto 0); -- lights(Caps, Nun, Scroll)
             key_on		:	out	std_logic_vector(2 downto 0);
             key_code	:	out	std_logic_vector(47 downto 0)
@@ -56,8 +56,8 @@ architecture behavior OF game_board IS
             clock_half  : out std_logic
         );
     end component;
-    
-    component create_piece is 
+
+    component create_piece is
         port (
             clock         : in  std_logic;
             sync_reset    : in  std_logic;
@@ -76,11 +76,11 @@ architecture behavior OF game_board IS
     signal clear_video_address	,
     normal_video_address	,
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
-    
+
     --definicao da peca atual, matriz 4x2 que guarda a posicao de cada quadrado
     type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
-    signal piece : pieces_type; 
-    
+    signal piece : pieces_type;
+
     --definicao da matriz que contem a cor de cada "pixel"
     -- o vetor eh definido em ordem crescente como o video_adress
     TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
@@ -118,20 +118,20 @@ architecture behavior OF game_board IS
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
     signal START_GAME   : std_logic;
-    signal CLASH        : std_logic;
-    
+    signal clash        : std_logic;
+
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
-    TYPE VGA_STATES IS (MENU, NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW); 
+    TYPE VGA_STATES IS (MENU, NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW);
     signal state, NEXT_STATE : VGA_STATES;
-   
+
 
     signal switch, rstn, clk50m, sync, blank : std_logic;
     BEGIN
     rstn <= KEY(0);
     clk50M <= CLOCK_50;
-    
+
     vga_component: vgacon generic map (
         NUM_HORZ_PIXELS => HORZ_SIZE,
         NUM_VERT_PIXELS => VERT_SIZE
@@ -150,15 +150,15 @@ architecture behavior OF game_board IS
         vsync			=> VGA_VS,
         sync			=> sync,
         blank			=> blank);
-        
+
         VGA_SYNC_N <= NOT sync;
         VGA_BLANK_N <= NOT blank;
-        
+
     clock_component: clock_div port map (
         clock       => CLOCK_50,
         clock_hz    => slow_clock,
         clock_half  => not_so_slow_clock);
-        
+
     kbd_ctrl : kbdex_ctrl generic map (50000)
     port map(
 		ps2_data    => PS2_DAT,
@@ -169,20 +169,20 @@ architecture behavior OF game_board IS
         lights		=> lights(1) & lights(2) & lights(0),
         key_on		=> key_on,
         key_code	=> key_code);
-        
+
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
 
-    --precisamos dos processos de conta_coluna e conta_linha para 
-    -- mandar todas as posicoes da tela ao vgacon. 
+    --precisamos dos processos de conta_coluna e conta_linha para
+    -- mandar todas as posicoes da tela ao vgacon.
     conta_coluna: process (CLOCK_50)
     begin  -- process conta_coluna
         if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
             if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
                 col <= 0;
             else
-                col <= col + 1;  
+                col <= col + 1;
             end if;
         end if;
     end process conta_coluna;
@@ -191,20 +191,20 @@ architecture behavior OF game_board IS
     begin  -- process conta_linha
         if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
         -- o contador de linha só incrementa quando o contador de colunas
-        -- chegou ao fim 
+        -- chegou ao fim
             if col = HORZ_SIZE -1 then
                 if linha = VERT_SIZE-1 then               -- conta de 0 a 95 (96 linhas)
                     linha <= 0;
                 else
-                    linha <= linha + 1;  
-                end if;        
+                    linha <= linha + 1;
+                end if;
             end if;
         end if;
     end process conta_linha;
 
-    -- manda o endereco atual e a cor desse endereco para o vgacon. 
+    -- manda o endereco atual e a cor desse endereco para o vgacon.
     video_address  <= col + (HORZ_SIZE * linha);
-    pixel <= pos_color(col + (HORZ_SIZE * linha)); 
+    pixel <= pos_color(col + (HORZ_SIZE * linha));
 
     --desenha uma linha branca ao redor do tabuleiro
     draw_edge: process(CLOCK_50)
@@ -218,26 +218,28 @@ architecture behavior OF game_board IS
                 else
                     pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
                 end if;
-            end loop; 
-        end loop; 
+            end loop;
+        end loop;
     end process;
-    
+
     --faz a peca atual cair
     piece_mov: process(slow_clock)
     begin
-        if slow_clock'event and slow_clock= '1' then 
+        if slow_clock'event and slow_clock= '1' then
             for i in 0 to 3 loop
             piece(i, 1) <= piece(i, 1) + 1;
-            end loop; 
-        end if; 
+            end loop;
+        end if;
     end process;
-    
-    logica_mealy: process (state, CLASH, START_GAME, not_so_slow_clock)
+
+    logica_mealy: process (state, clash, START_GAME, not_so_slow_clock)
     begin  -- process logica_mealy
         case NEXT_STATE is
-            when NEW_GAME  => 
+            when NEW_GAME  =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= NEW_PIECE;
+                    new_piece_flag <= '0';
+
                 else
                     NEXT_STATE <= NEW_GAME;
                 end if;
@@ -245,38 +247,42 @@ architecture behavior OF game_board IS
             when MOVE =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= COLISION;
+                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MOVE;
                 end if;
-            
+
             when COLISION => NEXT_STATE <= DRAW;
-                
+
             when DRAW =>
-                if CLASH = '1' then
+                if clash = '1' then
                     NEXT_STATE <= NEW_PIECE;
+                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MOVE;
                 end if;
-                    
+
             when NEW_PIECE =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= MOVE;
+                    new_piece_flag <= '1';
                 else
                     NEXT_STATE <= NEW_PIECE;
                 end if;
-                
+
             when MENU =>
                 if START_GAME = '1' then
                     NEXT_STATE <= NEW_GAME;
+                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MENU;
                 end if;
-                
-            when others => 
+
+            when others =>
                 NEXT_STATE <= NEW_GAME;
         end case;
     end process logica_mealy;
-    
+
     seq_fsm: process (CLOCK_50, rstn)
     begin  -- process seq_fsm
         if rstn = '0' then                  -- asynchronous reset (active low)
@@ -287,4 +293,3 @@ architecture behavior OF game_board IS
     end process seq_fsm;
 
 END ARCHITECTURE;
-  
