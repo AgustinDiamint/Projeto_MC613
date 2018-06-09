@@ -192,7 +192,6 @@ architecture behavior OF game_board IS
         en          => '1',
         piece       => new_piece_type);
 
-
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
 
@@ -346,6 +345,7 @@ architecture behavior OF game_board IS
                     clock_count <= not clock_count;
                 end if;
             end if;
+
             --desenha o tabuleiro atual
             --for i in 0 to 3 loop
             --    pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
@@ -412,7 +412,7 @@ architecture behavior OF game_board IS
         end case;
     end process logica_mealy;
 
-    seq_fsm: process (CLOCK_50, rstn)
+    seq_fsm: process (CLOCK_50)
     begin  -- process seq_fsm
         if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
             state <= NEXT_STATE;
