@@ -143,7 +143,6 @@ architecture behavior OF game_board IS
     signal mov, rotation : std_logic;                       -- 1 quando peca esta se movendo ou rotacionando
     signal direction     : std_logic_vector(1 downto 0);    -- vetor que indica a direcao da peca
 
-
     BEGIN
     rstn <= KEY(0);
 
@@ -202,7 +201,6 @@ architecture behavior OF game_board IS
 
 
 
-
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
 
@@ -233,6 +231,9 @@ architecture behavior OF game_board IS
             end if;
         end if;
     end process conta_linha;
+
+    fim_escrita <= '1' when (linha = HORZ_SIZE - 1) and (col = VERT_SIZE - 1)
+                   else '0';
 
     -- manda o endereco atual e a cor desse endereco para o vgacon.
     video_address  <= col + (HORZ_SIZE * linha);
@@ -327,17 +328,20 @@ architecture behavior OF game_board IS
                 if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + piece(i,1) * HORZ_SIZE;;
+                        piece(i, 1) <= piece(i, 1) + HORZ_SIZE;
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
                     end loop;
                 elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                         piece(i, 0) <= piece(i, 0) - 1;
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
                     end loop;
                 elsif direction = "01" then -- direita
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                         piece(i, 0) <= piece(i, 0) + 1;
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
                     end loop;
                 end if;
             -- queda da peca natural
@@ -346,7 +350,8 @@ architecture behavior OF game_board IS
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + piece(i,1) * HORZ_SIZE;
+                        piece(i, 1) <= piece(i, 1) + HORZ_SIZE;
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
                     end loop;
                 else
                     clock_count <= not clock_count;
@@ -387,10 +392,12 @@ architecture behavior OF game_board IS
                 START_GAME <= '0';
 
             when DRAW =>
-                if clash = '1' then
-                    NEXT_STATE <= NEW_PIECE;
-                else
-                    NEXT_STATE <= MOVE;
+                if fim_escrita = '1' then
+                    if clash = '1' then
+                        NEXT_STATE <= NEW_PIECE;
+                    else
+                        NEXT_STATE <= MOVE;
+                    end if;
                 end if;
                 new_piece_flag <= '0';
                 START_GAME <= '0';
