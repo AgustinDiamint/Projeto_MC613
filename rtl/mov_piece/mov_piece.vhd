@@ -1,9 +1,9 @@
-library ieee; 
+library ieee;
 use ieee.std_logic_1164.all;
 USE ieee.numeric_std.ALL;
 
 
-entity mov_piece is 
+entity mov_piece is
 port (
 	clock		: in 	std_logic;
 	key_on 	: in 	std_logic_vector(2 downto 0);
@@ -21,7 +21,7 @@ begin
 		if (rising_edge(clock)) then
 			--LEFT
 			if key_code(15 downto 0) = x"e06b" then
-				direction <= "00";
+				direction <= "11";
 				mov <= '1';
 			--RIGHT
 			elsif key_code(15 downto 0) = x"e074" then
@@ -39,4 +39,3 @@ begin
 	mov <= '0';
 	end process;
 end architecture rtl;
-
