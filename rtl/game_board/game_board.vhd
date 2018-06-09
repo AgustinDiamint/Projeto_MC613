@@ -100,11 +100,9 @@ architecture behavior OF game_board IS
     -- Interface com o create_piece
     signal new_piece_flag : std_logic;
     signal new_piece_type, current_piece_type : std_logic_vector(2 downto 0);
-    signal new_game_flag : std_logic;
     -- Interface com a memória de vídeo do controlador
 
     signal we : std_logic;                        -- write enable ('1' p/ escrita)
-    signal addr : integer range 0 to 12287;       -- endereco mem. vga
     signal pixel : std_logic_vector(2 downto 0);  -- valor de cor do pixel
     signal pixel_bit : std_logic;                 -- um bit do vetor acima
     -- Sinais dos contadores de linhas e colunas utilizados para percorrer
@@ -133,13 +131,12 @@ architecture behavior OF game_board IS
     signal lights, key_on		: std_logic_vector(2 downto 0);  -- Vetores relacionados ao teclado
     signal key_code         : std_logic_vector(47 downto 0); -- codigo das teclas apertadas
     --acho que aqui um dos estados que pode ser definido eh o menu...
-    TYPE VGA_STATES IS (MENU, NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW);
+    TYPE VGA_STATES IS (NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW, MENU);
     signal state, NEXT_STATE : VGA_STATES;
 
-
+    signal clock_count : std_logic;
     signal switch, rstn, clk50m, sync, blank : std_logic;
     BEGIN
-    rstn <= KEY(0);
     clk50M <= CLOCK_50;
 
     vga_component: vgacon generic map (
@@ -191,9 +188,10 @@ architecture behavior OF game_board IS
 
     create_piece_prt:   create_piece port map (
         clock       => CLOCK_50,
-        sync_reset  => new_game_flag ,
+        sync_reset  => START_GAME ,
         en          => '1',
         piece       => new_piece_type);
+
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
@@ -230,202 +228,195 @@ architecture behavior OF game_board IS
     video_address  <= col + (HORZ_SIZE * linha);
     pixel <= pos_color(col + (HORZ_SIZE * linha));
 
-    --desenha uma linha branca ao redor do tabuleiro
-    draw_edge: process(CLOCK_50)
-    begin
-        if START_GAME = '1' then
-            for lin_y in 0 to 21 loop
-                for col_x in 19 to 30 loop
-                    if(lin_y = 0 or lin_y = 21) then
-                        pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
-                    elsif(col_x=19 or col_x = 30) then
-                        pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
-                    else
-                         pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
-                    end if;
-                end loop;
-            end loop;
-        end if;
-    end process;
 
 
-    --faz a peca atual cair
-    piece_fall: process (slow_clock)
+    game_logic: process(not_so_slow_clock)
     begin
-        if mov = '0' then
-            if slow_clock'event and slow_clock = '1' then
-                for i in 0 to 3 loop
-                    pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                    piece(i, 1) <= piece(i, 1) + 1 * HORZ_SIZE;
+        if not_so_slow_clock'event and not_so_slow_clock = '1' then
+            --desenha a borda e limpa a tela
+            if START_GAME = '1' then
+                for lin_y in 0 to 21 loop
+                    for col_x in 19 to 30 loop
+                        if(lin_y = 0 or lin_y = 21) then
+                            pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
+                        elsif(col_x=19 or col_x = 30) then
+                            pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
+                        else
+                             pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
+                        end if;
+                    end loop;
                 end loop;
             end if;
-        end if;
-    end process;
 
-    piece_movement: process(not_so_slow_clock)
-    begin
-        if mov = '1' then
-            if direction = "10" then -- baixo
-                if not_so_slow_clock'event and not_so_slow_clock = '1' then
+            --cria nova peca
+            if new_piece_flag = '1'then
+                current_piece_type <= new_piece_type;
+                if current_piece_type = "001" then --tipo L
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL;
+                    piece(1,1) <= Y_INITIAL+1;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+2;
+                    piece(3,0) <= X_INITIAL+1;
+                    piece(3,1) <= Y_INITIAL+2;
+                elsif current_piece_type = "010" then --tipo J
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL;
+                    piece(1,1) <= Y_INITIAL+1;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+2;
+                    piece(3,0) <= X_INITIAL-1;
+                    piece(3,1) <= Y_INITIAL+2;
+                elsif current_piece_type = "011" then --tipo T
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL;
+                    piece(1,1) <= Y_INITIAL+1;
+                    piece(2,0) <= X_INITIAL+1;
+                    piece(2,1) <= Y_INITIAL+1;
+                    piece(3,0) <= X_INITIAL-1;
+                    piece(3,1) <= Y_INITIAL+1;
+                elsif current_piece_type = "100" then --tipo quadrado
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL+1;
+                    piece(1,1) <= Y_INITIAL;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+1;
+                    piece(3,0) <= X_INITIAL+1;
+                    piece(3,1) <= Y_INITIAL+1;
+                elsif current_piece_type = "101" then --tipo reto
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL;
+                    piece(1,1) <= Y_INITIAL+1;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+2;
+                    piece(3,0) <= X_INITIAL;
+                    piece(3,1) <= Y_INITIAL+3;
+                elsif current_piece_type = "110" then --tipo cao esq
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL-1;
+                    piece(1,1) <= Y_INITIAL;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+1;
+                    piece(3,0) <= X_INITIAL+1;
+                    piece(3,1) <= Y_INITIAL+1;
+                elsif current_piece_type = "111" then --tipo cao direita
+                    piece(0,0) <= X_INITIAL;
+                    piece(0,1) <= Y_INITIAL;
+                    piece(1,0) <= X_INITIAL+1;
+                    piece(1,1) <= Y_INITIAL;
+                    piece(2,0) <= X_INITIAL;
+                    piece(2,1) <= Y_INITIAL+1;
+                    piece(3,0) <= X_INITIAL-1;
+                    piece(3,1) <= Y_INITIAL+1;
+                end if;
+            end if;
+            -- logica do movimento da peca
+            if mov = '1' then
+                if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                         piece(i, 1) <= piece(i, 1) + 1 * HORZ_SIZE;
                     end loop;
-                end if;
-            elsif direction = "11" then -- esquerda
-                if not_so_slow_clock'event and not_so_slow_clock = '1' then
+                elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                         piece(i, 0) <= piece(i, 0) - 1;
                     end loop;
-                end if;
-            elsif direction = "01" then -- direita
-                if not_so_slow_clock'event and not_so_slow_clock = '1' then
+                elsif direction = "01" then -- direita
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                         piece(i, 0) <= piece(i, 0) + 1;
                     end loop;
                 end if;
+            -- queda da peca natural
+            elsif mov = '0' then
+                if clock_count = '1' then
+                    clock_count <= not clock_count;
+                    for i in 0 to 3 loop
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                        piece(i, 1) <= piece(i, 1) + 1 * HORZ_SIZE;
+                    end loop;
+                else
+                    clock_count <= not clock_count;
+                end if;
             end if;
+            --desenha o tabuleiro atual
+            --for i in 0 to 3 loop
+            --    pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
+            --end loop;
+
         end if;
     end process;
 
-    draw_current: process(CLOCK_50)
-    begin
-        for i in 0 to 3 loop
-            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
-        end loop;
-    end process;
-
-
-    logica_mealy: process (state, clash, START_GAME, not_so_slow_clock)
+    logica_mealy: process (state, not_so_slow_clock)
     begin  -- process logica_mealy
-        case NEXT_STATE is
+        case state is
             when NEW_GAME  =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= NEW_PIECE;
-                    new_piece_flag <= '0';
-
                 else
                     NEXT_STATE <= NEW_GAME;
                 end if;
+                START_GAME <= '1';
+                new_piece_flag <= '0';
 
             when MOVE =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= COLISION;
-                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MOVE;
                 end if;
+                new_piece_flag <= '0';
+                START_GAME <= '0';
 
             when COLISION => NEXT_STATE <= DRAW;
+                new_piece_flag <= '0';
+                START_GAME <= '0';
 
             when DRAW =>
                 if clash = '1' then
                     NEXT_STATE <= NEW_PIECE;
-                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MOVE;
                 end if;
+                new_piece_flag <= '0';
+                START_GAME <= '0';
 
             when NEW_PIECE =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= COLISION;
-                    new_piece_flag <= '1';
                 else
                     NEXT_STATE <= NEW_PIECE;
                 end if;
+                new_piece_flag <= '1';
+                START_GAME <= '0';
 
             when MENU =>
                 if START_GAME = '1' then
                     NEXT_STATE <= NEW_GAME;
-                    new_piece_flag <= '0';
                 else
                     NEXT_STATE <= MENU;
                 end if;
+                new_piece_flag <= '0';
+                START_GAME <= '0';
 
             when others =>
                 NEXT_STATE <= NEW_GAME;
+                START_GAME <= '1';
         end case;
     end process logica_mealy;
 
     seq_fsm: process (CLOCK_50, rstn)
     begin  -- process seq_fsm
-        if rstn = '0' then                  -- asynchronous reset (active low)
-            state <= NEW_GAME;
-        elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+        if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
             state <= NEXT_STATE;
         end if;
     end process seq_fsm;
 
-    create_new_piece: process(slow_clock, new_piece_flag)
-    begin
-        if new_piece_flag = '1'then
-            current_piece_type <= new_piece_type;
-            if current_piece_type = "001" then --tipo L
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL;
-                piece(1,1) <= Y_INITIAL+1;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+2;
-                piece(3,0) <= X_INITIAL+1;
-                piece(3,1) <= Y_INITIAL+2;
-            elsif current_piece_type = "010" then --tipo J
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL;
-                piece(1,1) <= Y_INITIAL+1;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+2;
-                piece(3,0) <= X_INITIAL-1;
-                piece(3,1) <= Y_INITIAL+2;
-            elsif current_piece_type = "011" then --tipo T
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL;
-                piece(1,1) <= Y_INITIAL+1;
-                piece(2,0) <= X_INITIAL+1;
-                piece(2,1) <= Y_INITIAL+1;
-                piece(3,0) <= X_INITIAL-1;
-                piece(3,1) <= Y_INITIAL+1;
-            elsif current_piece_type = "100" then --tipo quadrado
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL+1;
-                piece(1,1) <= Y_INITIAL;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+1;
-                piece(3,0) <= X_INITIAL+1;
-                piece(3,1) <= Y_INITIAL+1;
-            elsif current_piece_type = "101" then --tipo reto
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL;
-                piece(1,1) <= Y_INITIAL+1;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+2;
-                piece(3,0) <= X_INITIAL;
-                piece(3,1) <= Y_INITIAL+3;
-            elsif current_piece_type = "110" then --tipo cao esq
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL-1;
-                piece(1,1) <= Y_INITIAL;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+1;
-                piece(3,0) <= X_INITIAL+1;
-                piece(3,1) <= Y_INITIAL+1;
-            elsif current_piece_type = "111" then --tipo cao direita
-                piece(0,0) <= X_INITIAL;
-                piece(0,1) <= Y_INITIAL;
-                piece(1,0) <= X_INITIAL+1;
-                piece(1,1) <= Y_INITIAL;
-                piece(2,0) <= X_INITIAL;
-                piece(2,1) <= Y_INITIAL+1;
-                piece(3,0) <= X_INITIAL-1;
-                piece(3,1) <= Y_INITIAL+1;
-            end if;
-        end if;
-    end process;
 END ARCHITECTURE;

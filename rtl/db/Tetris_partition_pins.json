@@ -100,19 +100,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "VGA_HS",
-					"strict" : false
-				},
-				{
-					"name" : "VGA_VS",
-					"strict" : false
-				},
-				{
 					"name" : "CLOCK_50",
-					"strict" : false
-				},
-				{
-					"name" : "KEY[0]",
 					"strict" : false
 				}
 			]
