@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Tetris
-Sat Jun 09 17:06:48 2018
+Sat Jun 09 18:36:53 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -67,13 +67,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Jun 09 17:06:48 2018       ;
+; Analysis & Synthesis Status     ; Successful - Sat Jun 09 18:36:52 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 369                                         ;
+; Total registers                 ; 388                                         ;
 ; Total pins                      ; 34                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 3,300                                       ;
@@ -235,16 +235,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1309           ;
+; Estimate of Logic utilization (ALMs needed) ; 1388           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 2110           ;
-;     -- 7 input functions                    ; 2              ;
-;     -- 6 input functions                    ; 502            ;
-;     -- 5 input functions                    ; 445            ;
-;     -- 4 input functions                    ; 403            ;
-;     -- <=3 input functions                  ; 758            ;
+; Combinational ALUT usage for logic          ; 2252           ;
+;     -- 7 input functions                    ; 4              ;
+;     -- 6 input functions                    ; 517            ;
+;     -- 5 input functions                    ; 446            ;
+;     -- 4 input functions                    ; 410            ;
+;     -- <=3 input functions                  ; 875            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 369            ;
+; Dedicated logic registers                   ; 388            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 34             ;
 ; Total MLAB memory bits                      ; 0              ;
@@ -256,28 +256,36 @@ refer to the applicable agreement for further details.
 ;     -- PLLs                                 ; 1              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; state.NEW_GAME ;
-; Maximum fan-out                             ; 532            ;
-; Total fan-out                               ; 8301           ;
+; Maximum fan-out                             ; 529            ;
+; Total fan-out                               ; 8805           ;
 ; Average fan-out                             ; 3.24           ;
 +---------------------------------------------+----------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                       ;
-+----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                              ; Entity Name     ; Library Name ;
-+----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |game_board                                  ; 2110 (2065)         ; 369 (333)                 ; 3300              ; 7          ; 34   ; 0            ; |game_board                                                                                                      ; game_board      ; work         ;
-;    |clock_div:clock_component|               ; 41 (41)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |game_board|clock_div:clock_component                                                                            ; clock_div       ; work         ;
-;    |create_piece:create_piece_prt|           ; 4 (4)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|create_piece:create_piece_prt                                                                        ; create_piece    ; work         ;
-;    |vgacon:vga_component|                    ; 0 (0)               ; 0 (0)                     ; 3300              ; 1          ; 0    ; 0            ; |game_board|vgacon:vga_component                                                                                 ; vgacon          ; vga_pll      ;
-;       |dual_clock_ram:vgamem|                ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem                                                           ; dual_clock_ram  ; vga_pll      ;
-;          |altsyncram:ram_block_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0                                ; altsyncram      ; work         ;
-;             |altsyncram_egl1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated ; altsyncram_egl1 ; work         ;
-;       |vga_pll:divider|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider                                                                 ; vga_pll         ; vga_pll      ;
-;          |vga_pll_0002:vga_pll_inst|         ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst                                       ; vga_pll_0002    ; vga_pll      ;
-;             |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i               ; altera_pll      ; work         ;
-+----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                           ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Entity Name         ; Library Name ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |game_board                                  ; 2252 (2034)         ; 388 (312)                 ; 3300              ; 7          ; 34   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
+;    |clock_div:clock_component|               ; 41 (41)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |game_board|clock_div:clock_component                                                                                            ; clock_div           ; work         ;
+;    |create_piece:create_piece_prt|           ; 2 (2)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|create_piece:create_piece_prt                                                                                        ; create_piece        ; work         ;
+;    |vgacon:vga_component|                    ; 175 (35)            ; 40 (40)                   ; 3300              ; 1          ; 0    ; 0            ; |game_board|vgacon:vga_component                                                                                                 ; vgacon              ; vga_pll      ;
+;       |dual_clock_ram:vgamem|                ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem                                                                           ; dual_clock_ram      ; vga_pll      ;
+;          |altsyncram:ram_block_rtl_0|        ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0                                                ; altsyncram          ; work         ;
+;             |altsyncram_egl1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 3300              ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated                 ; altsyncram_egl1     ; work         ;
+;       |lpm_divide:Div0|                      ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_ebm:auto_generated|     ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0|lpm_divide_ebm:auto_generated                                                   ; lpm_divide_ebm      ; work         ;
+;             |sign_div_unsign_klh:divider|    ; 71 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider                       ; sign_div_unsign_klh ; work         ;
+;                |alt_u_div_eve:divider|       ; 71 (71)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div0|lpm_divide_ebm:auto_generated|sign_div_unsign_klh:divider|alt_u_div_eve:divider ; alt_u_div_eve       ; work         ;
+;       |lpm_divide:Div1|                      ; 69 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;          |lpm_divide_fbm:auto_generated|     ; 69 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div1|lpm_divide_fbm:auto_generated                                                   ; lpm_divide_fbm      ; work         ;
+;             |sign_div_unsign_llh:divider|    ; 69 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div1|lpm_divide_fbm:auto_generated|sign_div_unsign_llh:divider                       ; sign_div_unsign_llh ; work         ;
+;                |alt_u_div_gve:divider|       ; 69 (69)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|lpm_divide:Div1|lpm_divide_fbm:auto_generated|sign_div_unsign_llh:divider|alt_u_div_gve:divider ; alt_u_div_gve       ; work         ;
+;       |vga_pll:divider|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider                                                                                 ; vga_pll             ; vga_pll      ;
+;          |vga_pll_0002:vga_pll_inst|         ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst                                                       ; vga_pll_0002        ; vga_pll      ;
+;             |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i                               ; altera_pll          ; work         ;
++----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -396,15 +404,14 @@ Encoding Type:  One-Hot
 ; kbdex_ctrl:kbd_ctrl|hdata[5..7]                              ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|laststate[0]                             ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|hdata[0..3]                              ; Lost fanout                                 ;
-; pos_color[1038][0]                                           ; Merged with pos_color[1038][2]              ;
-; pos_color[1051][0]                                           ; Merged with pos_color[1051][2]              ;
+; pos_color[1040][0]                                           ; Merged with pos_color[1040][2]              ;
 ; pos_color[1053][0]                                           ; Merged with pos_color[1053][2]              ;
 ; pos_color[1055][0]                                           ; Merged with pos_color[1055][2]              ;
 ; pos_color[1057][0]                                           ; Merged with pos_color[1057][2]              ;
 ; pos_color[1059][0]                                           ; Merged with pos_color[1059][2]              ;
 ; pos_color[1061][0]                                           ; Merged with pos_color[1061][2]              ;
-; pos_color[1063][0]                                           ; Merged with pos_color[1063][1]              ;
-; pos_color[1065][0]                                           ; Merged with pos_color[1065][2]              ;
+; pos_color[1063][0]                                           ; Merged with pos_color[1063][2]              ;
+; pos_color[1065][0]                                           ; Merged with pos_color[1065][1]              ;
 ; pos_color[1067][0]                                           ; Merged with pos_color[1067][2]              ;
 ; pos_color[1081][0]                                           ; Merged with pos_color[1081][2]              ;
 ; pos_color[1083][0]                                           ; Merged with pos_color[1083][2]              ;
@@ -416,6 +423,7 @@ Encoding Type:  One-Hot
 ; pos_color[1095][0]                                           ; Merged with pos_color[1095][2]              ;
 ; pos_color[1097][0]                                           ; Merged with pos_color[1097][2]              ;
 ; pos_color[1099][0]                                           ; Merged with pos_color[1099][2]              ;
+; pos_color[1039][2]                                           ; Merged with pos_color[1039][0]              ;
 ; pos_color[1037][2]                                           ; Merged with pos_color[1037][0]              ;
 ; pos_color[1036][2]                                           ; Merged with pos_color[1036][0]              ;
 ; pos_color[1035][2]                                           ; Merged with pos_color[1035][0]              ;
@@ -732,7 +740,6 @@ Encoding Type:  One-Hot
 ; pos_color[207][2]                                            ; Merged with pos_color[207][0]               ;
 ; pos_color[205][2]                                            ; Merged with pos_color[205][0]               ;
 ; pos_color[203][2]                                            ; Merged with pos_color[203][0]               ;
-; pos_color[202][2]                                            ; Merged with pos_color[202][1]               ;
 ; pos_color[201][2]                                            ; Merged with pos_color[201][0]               ;
 ; pos_color[199][2]                                            ; Merged with pos_color[199][0]               ;
 ; pos_color[197][2]                                            ; Merged with pos_color[197][0]               ;
@@ -781,6 +788,7 @@ Encoding Type:  One-Hot
 ; pos_color[87][2]                                             ; Merged with pos_color[87][0]                ;
 ; pos_color[85][2]                                             ; Merged with pos_color[85][0]                ;
 ; pos_color[83][2]                                             ; Merged with pos_color[83][0]                ;
+; pos_color[82][1]                                             ; Merged with pos_color[82][0]                ;
 ; pos_color[81][2]                                             ; Merged with pos_color[81][0]                ;
 ; pos_color[67][2]                                             ; Merged with pos_color[67][0]                ;
 ; pos_color[65][2]                                             ; Merged with pos_color[65][0]                ;
@@ -810,18 +818,17 @@ Encoding Type:  One-Hot
 ; pos_color[5][2]                                              ; Merged with pos_color[5][0]                 ;
 ; pos_color[3][2]                                              ; Merged with pos_color[3][0]                 ;
 ; pos_color[1][2]                                              ; Merged with pos_color[1][0]                 ;
-; pos_color[1050][0]                                           ; Merged with pos_color[1050][2]              ;
-; pos_color[1054][0]                                           ; Merged with pos_color[1054][2]              ;
-; pos_color[1058][0]                                           ; Merged with pos_color[1058][2]              ;
-; pos_color[1060][0]                                           ; Merged with pos_color[1060][1]              ;
-; pos_color[1062][0]                                           ; Merged with pos_color[1062][2]              ;
-; pos_color[1066][0]                                           ; Merged with pos_color[1066][2]              ;
-; pos_color[1082][0]                                           ; Merged with pos_color[1082][2]              ;
-; pos_color[1086][0]                                           ; Merged with pos_color[1086][2]              ;
-; pos_color[1090][0]                                           ; Merged with pos_color[1090][2]              ;
-; pos_color[1094][0]                                           ; Merged with pos_color[1094][2]              ;
-; pos_color[1098][0]                                           ; Merged with pos_color[1098][2]              ;
-; pos_color[1098][1]                                           ; Merged with pos_color[1098][2]              ;
+; pos_color[1052][0]                                           ; Merged with pos_color[1052][2]              ;
+; pos_color[1056][0]                                           ; Merged with pos_color[1056][2]              ;
+; pos_color[1060][0]                                           ; Merged with pos_color[1060][2]              ;
+; pos_color[1062][0]                                           ; Merged with pos_color[1062][1]              ;
+; pos_color[1064][0]                                           ; Merged with pos_color[1064][2]              ;
+; pos_color[1068][0]                                           ; Merged with pos_color[1068][2]              ;
+; pos_color[1084][0]                                           ; Merged with pos_color[1084][2]              ;
+; pos_color[1088][0]                                           ; Merged with pos_color[1088][2]              ;
+; pos_color[1092][0]                                           ; Merged with pos_color[1092][2]              ;
+; pos_color[1096][0]                                           ; Merged with pos_color[1096][2]              ;
+; pos_color[1039][1]                                           ; Merged with pos_color[1039][0]              ;
 ; pos_color[1034][2]                                           ; Merged with pos_color[1034][0]              ;
 ; pos_color[1018][2]                                           ; Merged with pos_color[1018][0]              ;
 ; pos_color[1014][2]                                           ; Merged with pos_color[1014][0]              ;
@@ -919,6 +926,7 @@ Encoding Type:  One-Hot
 ; pos_color[560][2]                                            ; Merged with pos_color[560][0]               ;
 ; pos_color[556][2]                                            ; Merged with pos_color[556][0]               ;
 ; pos_color[552][2]                                            ; Merged with pos_color[552][0]               ;
+; pos_color[548][2]                                            ; Merged with pos_color[548][0]               ;
 ; pos_color[544][2]                                            ; Merged with pos_color[544][0]               ;
 ; pos_color[540][2]                                            ; Merged with pos_color[540][0]               ;
 ; pos_color[536][2]                                            ; Merged with pos_color[536][0]               ;
@@ -984,30 +992,30 @@ Encoding Type:  One-Hot
 ; pos_color[212][2]                                            ; Merged with pos_color[212][0]               ;
 ; pos_color[208][2]                                            ; Merged with pos_color[208][0]               ;
 ; pos_color[204][2]                                            ; Merged with pos_color[204][0]               ;
-; pos_color[198][2]                                            ; Merged with pos_color[198][0]               ;
-; pos_color[194][2]                                            ; Merged with pos_color[194][0]               ;
-; pos_color[190][2]                                            ; Merged with pos_color[190][0]               ;
-; pos_color[186][2]                                            ; Merged with pos_color[186][0]               ;
-; pos_color[182][2]                                            ; Merged with pos_color[182][0]               ;
-; pos_color[166][2]                                            ; Merged with pos_color[166][0]               ;
-; pos_color[162][2]                                            ; Merged with pos_color[162][0]               ;
-; pos_color[158][2]                                            ; Merged with pos_color[158][0]               ;
-; pos_color[154][2]                                            ; Merged with pos_color[154][0]               ;
-; pos_color[150][2]                                            ; Merged with pos_color[150][0]               ;
-; pos_color[146][2]                                            ; Merged with pos_color[146][0]               ;
-; pos_color[142][2]                                            ; Merged with pos_color[142][0]               ;
-; pos_color[138][2]                                            ; Merged with pos_color[138][0]               ;
-; pos_color[134][2]                                            ; Merged with pos_color[134][0]               ;
-; pos_color[118][2]                                            ; Merged with pos_color[118][0]               ;
-; pos_color[114][2]                                            ; Merged with pos_color[114][0]               ;
-; pos_color[110][2]                                            ; Merged with pos_color[110][0]               ;
-; pos_color[106][2]                                            ; Merged with pos_color[106][0]               ;
-; pos_color[102][2]                                            ; Merged with pos_color[102][0]               ;
-; pos_color[98][2]                                             ; Merged with pos_color[98][0]                ;
-; pos_color[94][2]                                             ; Merged with pos_color[94][0]                ;
-; pos_color[90][2]                                             ; Merged with pos_color[90][0]                ;
-; pos_color[86][2]                                             ; Merged with pos_color[86][0]                ;
-; pos_color[82][2]                                             ; Merged with pos_color[82][0]                ;
+; pos_color[200][2]                                            ; Merged with pos_color[200][0]               ;
+; pos_color[196][2]                                            ; Merged with pos_color[196][0]               ;
+; pos_color[192][2]                                            ; Merged with pos_color[192][0]               ;
+; pos_color[188][2]                                            ; Merged with pos_color[188][0]               ;
+; pos_color[184][2]                                            ; Merged with pos_color[184][0]               ;
+; pos_color[168][2]                                            ; Merged with pos_color[168][0]               ;
+; pos_color[164][2]                                            ; Merged with pos_color[164][0]               ;
+; pos_color[160][2]                                            ; Merged with pos_color[160][0]               ;
+; pos_color[156][2]                                            ; Merged with pos_color[156][0]               ;
+; pos_color[152][2]                                            ; Merged with pos_color[152][0]               ;
+; pos_color[148][2]                                            ; Merged with pos_color[148][0]               ;
+; pos_color[144][2]                                            ; Merged with pos_color[144][0]               ;
+; pos_color[140][2]                                            ; Merged with pos_color[140][0]               ;
+; pos_color[136][2]                                            ; Merged with pos_color[136][0]               ;
+; pos_color[132][2]                                            ; Merged with pos_color[132][0]               ;
+; pos_color[116][2]                                            ; Merged with pos_color[116][0]               ;
+; pos_color[112][2]                                            ; Merged with pos_color[112][0]               ;
+; pos_color[108][2]                                            ; Merged with pos_color[108][0]               ;
+; pos_color[104][2]                                            ; Merged with pos_color[104][0]               ;
+; pos_color[100][2]                                            ; Merged with pos_color[100][0]               ;
+; pos_color[96][2]                                             ; Merged with pos_color[96][0]                ;
+; pos_color[92][2]                                             ; Merged with pos_color[92][0]                ;
+; pos_color[88][2]                                             ; Merged with pos_color[88][0]                ;
+; pos_color[84][2]                                             ; Merged with pos_color[84][0]                ;
 ; pos_color[66][2]                                             ; Merged with pos_color[66][0]                ;
 ; pos_color[62][2]                                             ; Merged with pos_color[62][0]                ;
 ; pos_color[58][2]                                             ; Merged with pos_color[58][0]                ;
@@ -1017,74 +1025,71 @@ Encoding Type:  One-Hot
 ; pos_color[42][2]                                             ; Merged with pos_color[42][0]                ;
 ; pos_color[38][2]                                             ; Merged with pos_color[38][0]                ;
 ; pos_color[34][2]                                             ; Merged with pos_color[34][0]                ;
-; pos_color[32][2]                                             ; Merged with pos_color[32][0]                ;
+; pos_color[32][2]                                             ; Merged with pos_color[32][1]                ;
 ; pos_color[31][1]                                             ; Merged with pos_color[31][0]                ;
 ; pos_color[18][2]                                             ; Merged with pos_color[18][0]                ;
 ; pos_color[14][2]                                             ; Merged with pos_color[14][0]                ;
 ; pos_color[10][2]                                             ; Merged with pos_color[10][0]                ;
 ; pos_color[6][2]                                              ; Merged with pos_color[6][0]                 ;
 ; pos_color[2][2]                                              ; Merged with pos_color[2][0]                 ;
-; pos_color[1040][1]                                           ; Merged with pos_color[1040][2]              ;
-; pos_color[1042][0]                                           ; Merged with pos_color[1042][1]              ;
-; pos_color[1047][0]                                           ; Merged with pos_color[1047][2]              ;
-; pos_color[1048][0]                                           ; Merged with pos_color[1048][2]              ;
-; pos_color[1052][0]                                           ; Merged with pos_color[1052][2]              ;
-; pos_color[1064][0]                                           ; Merged with pos_color[1064][2]              ;
-; pos_color[1084][0]                                           ; Merged with pos_color[1084][2]              ;
-; pos_color[1092][0]                                           ; Merged with pos_color[1092][2]              ;
-; pos_color[1032][2]                                           ; Merged with pos_color[1032][0]              ;
-; pos_color[1012][2]                                           ; Merged with pos_color[1012][0]              ;
-; pos_color[1004][2]                                           ; Merged with pos_color[1004][0]              ;
-; pos_color[996][2]                                            ; Merged with pos_color[996][0]               ;
-; pos_color[988][2]                                            ; Merged with pos_color[988][0]               ;
-; pos_color[968][2]                                            ; Merged with pos_color[968][0]               ;
-; pos_color[960][2]                                            ; Merged with pos_color[960][0]               ;
-; pos_color[952][2]                                            ; Merged with pos_color[952][0]               ;
-; pos_color[944][2]                                            ; Merged with pos_color[944][0]               ;
-; pos_color[936][2]                                            ; Merged with pos_color[936][0]               ;
-; pos_color[916][2]                                            ; Merged with pos_color[916][0]               ;
-; pos_color[908][2]                                            ; Merged with pos_color[908][0]               ;
-; pos_color[900][2]                                            ; Merged with pos_color[900][0]               ;
-; pos_color[892][2]                                            ; Merged with pos_color[892][0]               ;
-; pos_color[884][2]                                            ; Merged with pos_color[884][0]               ;
-; pos_color[864][2]                                            ; Merged with pos_color[864][0]               ;
-; pos_color[856][2]                                            ; Merged with pos_color[856][0]               ;
-; pos_color[848][2]                                            ; Merged with pos_color[848][0]               ;
-; pos_color[840][2]                                            ; Merged with pos_color[840][0]               ;
-; pos_color[836][2]                                            ; Merged with pos_color[836][0]               ;
-; pos_color[832][1]                                            ; Merged with pos_color[832][0]               ;
-; pos_color[814][2]                                            ; Merged with pos_color[814][0]               ;
-; pos_color[806][2]                                            ; Merged with pos_color[806][0]               ;
-; pos_color[798][2]                                            ; Merged with pos_color[798][0]               ;
-; pos_color[790][2]                                            ; Merged with pos_color[790][0]               ;
-; pos_color[782][2]                                            ; Merged with pos_color[782][0]               ;
-; pos_color[762][2]                                            ; Merged with pos_color[762][0]               ;
-; pos_color[754][2]                                            ; Merged with pos_color[754][0]               ;
-; pos_color[746][2]                                            ; Merged with pos_color[746][0]               ;
-; pos_color[738][2]                                            ; Merged with pos_color[738][0]               ;
-; pos_color[718][2]                                            ; Merged with pos_color[718][0]               ;
-; pos_color[710][2]                                            ; Merged with pos_color[710][0]               ;
-; pos_color[702][2]                                            ; Merged with pos_color[702][0]               ;
-; pos_color[694][2]                                            ; Merged with pos_color[694][0]               ;
-; pos_color[686][2]                                            ; Merged with pos_color[686][0]               ;
-; pos_color[666][2]                                            ; Merged with pos_color[666][0]               ;
-; pos_color[658][2]                                            ; Merged with pos_color[658][0]               ;
-; pos_color[650][2]                                            ; Merged with pos_color[650][0]               ;
-; pos_color[642][2]                                            ; Merged with pos_color[642][0]               ;
-; pos_color[634][2]                                            ; Merged with pos_color[634][0]               ;
-; pos_color[614][2]                                            ; Merged with pos_color[614][0]               ;
-; pos_color[606][2]                                            ; Merged with pos_color[606][0]               ;
-; pos_color[598][2]                                            ; Merged with pos_color[598][0]               ;
-; pos_color[590][2]                                            ; Merged with pos_color[590][0]               ;
-; pos_color[582][2]                                            ; Merged with pos_color[582][0]               ;
-; pos_color[562][2]                                            ; Merged with pos_color[562][0]               ;
-; pos_color[558][2]                                            ; Merged with pos_color[558][0]               ;
+; pos_color[1042][1]                                           ; Merged with pos_color[1042][2]              ;
+; pos_color[1044][0]                                           ; Merged with pos_color[1044][1]              ;
+; pos_color[1049][0]                                           ; Merged with pos_color[1049][2]              ;
+; pos_color[1050][0]                                           ; Merged with pos_color[1050][2]              ;
+; pos_color[1054][0]                                           ; Merged with pos_color[1054][2]              ;
+; pos_color[1066][0]                                           ; Merged with pos_color[1066][2]              ;
+; pos_color[1086][0]                                           ; Merged with pos_color[1086][2]              ;
+; pos_color[1094][0]                                           ; Merged with pos_color[1094][2]              ;
+; pos_color[1038][2]                                           ; Merged with pos_color[1038][0]              ;
+; pos_color[1016][2]                                           ; Merged with pos_color[1016][0]              ;
+; pos_color[1008][2]                                           ; Merged with pos_color[1008][0]              ;
+; pos_color[1000][2]                                           ; Merged with pos_color[1000][0]              ;
+; pos_color[992][2]                                            ; Merged with pos_color[992][0]               ;
+; pos_color[984][2]                                            ; Merged with pos_color[984][0]               ;
+; pos_color[956][2]                                            ; Merged with pos_color[956][0]               ;
+; pos_color[948][2]                                            ; Merged with pos_color[948][0]               ;
+; pos_color[940][2]                                            ; Merged with pos_color[940][0]               ;
+; pos_color[932][2]                                            ; Merged with pos_color[932][0]               ;
+; pos_color[912][2]                                            ; Merged with pos_color[912][0]               ;
+; pos_color[904][2]                                            ; Merged with pos_color[904][0]               ;
+; pos_color[896][2]                                            ; Merged with pos_color[896][0]               ;
+; pos_color[888][2]                                            ; Merged with pos_color[888][0]               ;
+; pos_color[868][2]                                            ; Merged with pos_color[868][0]               ;
+; pos_color[860][2]                                            ; Merged with pos_color[860][0]               ;
+; pos_color[852][2]                                            ; Merged with pos_color[852][0]               ;
+; pos_color[844][2]                                            ; Merged with pos_color[844][0]               ;
+; pos_color[818][2]                                            ; Merged with pos_color[818][0]               ;
+; pos_color[810][2]                                            ; Merged with pos_color[810][0]               ;
+; pos_color[802][2]                                            ; Merged with pos_color[802][0]               ;
+; pos_color[794][2]                                            ; Merged with pos_color[794][0]               ;
+; pos_color[786][2]                                            ; Merged with pos_color[786][0]               ;
+; pos_color[766][2]                                            ; Merged with pos_color[766][0]               ;
+; pos_color[758][2]                                            ; Merged with pos_color[758][0]               ;
+; pos_color[750][2]                                            ; Merged with pos_color[750][0]               ;
+; pos_color[742][2]                                            ; Merged with pos_color[742][0]               ;
+; pos_color[734][2]                                            ; Merged with pos_color[734][0]               ;
+; pos_color[714][2]                                            ; Merged with pos_color[714][0]               ;
+; pos_color[706][2]                                            ; Merged with pos_color[706][0]               ;
+; pos_color[698][2]                                            ; Merged with pos_color[698][0]               ;
+; pos_color[690][2]                                            ; Merged with pos_color[690][0]               ;
+; pos_color[682][2]                                            ; Merged with pos_color[682][0]               ;
+; pos_color[662][2]                                            ; Merged with pos_color[662][0]               ;
+; pos_color[654][2]                                            ; Merged with pos_color[654][0]               ;
+; pos_color[646][2]                                            ; Merged with pos_color[646][0]               ;
+; pos_color[638][2]                                            ; Merged with pos_color[638][0]               ;
+; pos_color[618][2]                                            ; Merged with pos_color[618][0]               ;
+; pos_color[610][2]                                            ; Merged with pos_color[610][0]               ;
+; pos_color[602][2]                                            ; Merged with pos_color[602][0]               ;
+; pos_color[594][2]                                            ; Merged with pos_color[594][0]               ;
+; pos_color[586][2]                                            ; Merged with pos_color[586][0]               ;
+; pos_color[566][2]                                            ; Merged with pos_color[566][0]               ;
+; pos_color[554][2]                                            ; Merged with pos_color[554][0]               ;
 ; pos_color[546][2]                                            ; Merged with pos_color[546][0]               ;
 ; pos_color[538][2]                                            ; Merged with pos_color[538][0]               ;
 ; pos_color[518][2]                                            ; Merged with pos_color[518][0]               ;
 ; pos_color[510][2]                                            ; Merged with pos_color[510][0]               ;
 ; pos_color[503][1]                                            ; Merged with pos_color[503][0]               ;
-; pos_color[502][2]                                            ; Merged with pos_color[502][0]               ;
+; pos_color[502][1]                                            ; Merged with pos_color[502][0]               ;
 ; pos_color[494][2]                                            ; Merged with pos_color[494][0]               ;
 ; pos_color[486][2]                                            ; Merged with pos_color[486][0]               ;
 ; pos_color[466][2]                                            ; Merged with pos_color[466][0]               ;
@@ -1113,127 +1118,139 @@ Encoding Type:  One-Hot
 ; pos_color[234][2]                                            ; Merged with pos_color[234][0]               ;
 ; pos_color[214][2]                                            ; Merged with pos_color[214][0]               ;
 ; pos_color[206][2]                                            ; Merged with pos_color[206][0]               ;
-; pos_color[196][2]                                            ; Merged with pos_color[196][0]               ;
-; pos_color[188][2]                                            ; Merged with pos_color[188][0]               ;
-; pos_color[168][2]                                            ; Merged with pos_color[168][0]               ;
-; pos_color[160][2]                                            ; Merged with pos_color[160][0]               ;
-; pos_color[152][2]                                            ; Merged with pos_color[152][0]               ;
-; pos_color[144][2]                                            ; Merged with pos_color[144][0]               ;
-; pos_color[136][2]                                            ; Merged with pos_color[136][0]               ;
-; pos_color[116][2]                                            ; Merged with pos_color[116][0]               ;
-; pos_color[108][2]                                            ; Merged with pos_color[108][0]               ;
-; pos_color[100][2]                                            ; Merged with pos_color[100][0]               ;
-; pos_color[92][2]                                             ; Merged with pos_color[92][0]                ;
-; pos_color[84][2]                                             ; Merged with pos_color[84][0]                ;
+; pos_color[198][2]                                            ; Merged with pos_color[198][0]               ;
+; pos_color[190][2]                                            ; Merged with pos_color[190][0]               ;
+; pos_color[182][2]                                            ; Merged with pos_color[182][0]               ;
+; pos_color[162][2]                                            ; Merged with pos_color[162][0]               ;
+; pos_color[154][2]                                            ; Merged with pos_color[154][0]               ;
+; pos_color[146][2]                                            ; Merged with pos_color[146][0]               ;
+; pos_color[138][2]                                            ; Merged with pos_color[138][0]               ;
+; pos_color[118][2]                                            ; Merged with pos_color[118][0]               ;
+; pos_color[110][2]                                            ; Merged with pos_color[110][0]               ;
+; pos_color[102][2]                                            ; Merged with pos_color[102][0]               ;
+; pos_color[94][2]                                             ; Merged with pos_color[94][0]                ;
+; pos_color[86][2]                                             ; Merged with pos_color[86][0]                ;
 ; pos_color[64][2]                                             ; Merged with pos_color[64][0]                ;
 ; pos_color[56][2]                                             ; Merged with pos_color[56][0]                ;
 ; pos_color[48][2]                                             ; Merged with pos_color[48][0]                ;
 ; pos_color[40][2]                                             ; Merged with pos_color[40][0]                ;
 ; pos_color[12][2]                                             ; Merged with pos_color[12][0]                ;
 ; pos_color[4][2]                                              ; Merged with pos_color[4][0]                 ;
-; pos_color[1056][0]                                           ; Merged with pos_color[1056][2]              ;
-; pos_color[1088][0]                                           ; Merged with pos_color[1088][2]              ;
-; pos_color[1016][2]                                           ; Merged with pos_color[1016][0]              ;
-; pos_color[1000][2]                                           ; Merged with pos_color[1000][0]              ;
-; pos_color[984][2]                                            ; Merged with pos_color[984][0]               ;
-; pos_color[956][2]                                            ; Merged with pos_color[956][0]               ;
-; pos_color[940][2]                                            ; Merged with pos_color[940][0]               ;
-; pos_color[912][2]                                            ; Merged with pos_color[912][0]               ;
-; pos_color[896][2]                                            ; Merged with pos_color[896][0]               ;
-; pos_color[868][2]                                            ; Merged with pos_color[868][0]               ;
-; pos_color[852][2]                                            ; Merged with pos_color[852][0]               ;
-; pos_color[818][2]                                            ; Merged with pos_color[818][0]               ;
-; pos_color[802][2]                                            ; Merged with pos_color[802][0]               ;
-; pos_color[786][2]                                            ; Merged with pos_color[786][0]               ;
-; pos_color[758][2]                                            ; Merged with pos_color[758][0]               ;
-; pos_color[742][2]                                            ; Merged with pos_color[742][0]               ;
-; pos_color[714][2]                                            ; Merged with pos_color[714][0]               ;
-; pos_color[698][2]                                            ; Merged with pos_color[698][0]               ;
-; pos_color[682][2]                                            ; Merged with pos_color[682][0]               ;
-; pos_color[654][2]                                            ; Merged with pos_color[654][0]               ;
-; pos_color[638][2]                                            ; Merged with pos_color[638][0]               ;
-; pos_color[610][2]                                            ; Merged with pos_color[610][0]               ;
-; pos_color[594][2]                                            ; Merged with pos_color[594][0]               ;
-; pos_color[566][2]                                            ; Merged with pos_color[566][0]               ;
-; pos_color[554][2]                                            ; Merged with pos_color[554][0]               ;
-; pos_color[548][2]                                            ; Merged with pos_color[548][0]               ;
-; pos_color[534][2]                                            ; Merged with pos_color[534][0]               ;
-; pos_color[506][2]                                            ; Merged with pos_color[506][0]               ;
-; pos_color[498][2]                                            ; Merged with pos_color[498][0]               ;
-; pos_color[482][2]                                            ; Merged with pos_color[482][0]               ;
-; pos_color[454][2]                                            ; Merged with pos_color[454][0]               ;
-; pos_color[438][2]                                            ; Merged with pos_color[438][0]               ;
-; pos_color[410][2]                                            ; Merged with pos_color[410][0]               ;
-; pos_color[394][2]                                            ; Merged with pos_color[394][0]               ;
-; pos_color[366][2]                                            ; Merged with pos_color[366][0]               ;
-; pos_color[350][2]                                            ; Merged with pos_color[350][0]               ;
-; pos_color[334][2]                                            ; Merged with pos_color[334][0]               ;
-; pos_color[306][2]                                            ; Merged with pos_color[306][0]               ;
-; pos_color[290][2]                                            ; Merged with pos_color[290][0]               ;
-; pos_color[262][2]                                            ; Merged with pos_color[262][0]               ;
-; pos_color[246][2]                                            ; Merged with pos_color[246][0]               ;
-; pos_color[218][2]                                            ; Merged with pos_color[218][0]               ;
-; pos_color[200][2]                                            ; Merged with pos_color[200][0]               ;
-; pos_color[184][2]                                            ; Merged with pos_color[184][0]               ;
-; pos_color[156][2]                                            ; Merged with pos_color[156][0]               ;
-; pos_color[140][2]                                            ; Merged with pos_color[140][0]               ;
-; pos_color[112][2]                                            ; Merged with pos_color[112][0]               ;
-; pos_color[96][2]                                             ; Merged with pos_color[96][0]                ;
-; pos_color[68][2]                                             ; Merged with pos_color[68][0]                ;
-; pos_color[52][2]                                             ; Merged with pos_color[52][0]                ;
-; pos_color[36][2]                                             ; Merged with pos_color[36][0]                ;
-; pos_color[16][2]                                             ; Merged with pos_color[16][0]                ;
-; pos_color[1047][1]                                           ; Merged with pos_color[1047][2]              ;
-; pos_color[1068][0]                                           ; Merged with pos_color[1068][2]              ;
-; pos_color[1008][2]                                           ; Merged with pos_color[1008][0]              ;
-; pos_color[932][2]                                            ; Merged with pos_color[932][0]               ;
-; pos_color[888][2]                                            ; Merged with pos_color[888][0]               ;
-; pos_color[844][2]                                            ; Merged with pos_color[844][0]               ;
-; pos_color[794][2]                                            ; Merged with pos_color[794][0]               ;
-; pos_color[750][2]                                            ; Merged with pos_color[750][0]               ;
-; pos_color[706][2]                                            ; Merged with pos_color[706][0]               ;
-; pos_color[662][2]                                            ; Merged with pos_color[662][0]               ;
-; pos_color[618][2]                                            ; Merged with pos_color[618][0]               ;
-; pos_color[586][2]                                            ; Merged with pos_color[586][0]               ;
-; pos_color[550][2]                                            ; Merged with pos_color[550][1]               ;
-; pos_color[542][1]                                            ; Merged with pos_color[542][0]               ;
+; pos_color[1058][0]                                           ; Merged with pos_color[1058][2]              ;
+; pos_color[1090][0]                                           ; Merged with pos_color[1090][2]              ;
+; pos_color[1032][2]                                           ; Merged with pos_color[1032][0]              ;
+; pos_color[1004][2]                                           ; Merged with pos_color[1004][0]              ;
+; pos_color[988][2]                                            ; Merged with pos_color[988][0]               ;
+; pos_color[952][2]                                            ; Merged with pos_color[952][0]               ;
+; pos_color[936][2]                                            ; Merged with pos_color[936][0]               ;
+; pos_color[908][2]                                            ; Merged with pos_color[908][0]               ;
+; pos_color[892][2]                                            ; Merged with pos_color[892][0]               ;
+; pos_color[864][2]                                            ; Merged with pos_color[864][0]               ;
+; pos_color[848][2]                                            ; Merged with pos_color[848][0]               ;
+; pos_color[814][2]                                            ; Merged with pos_color[814][0]               ;
+; pos_color[798][2]                                            ; Merged with pos_color[798][0]               ;
+; pos_color[782][2]                                            ; Merged with pos_color[782][0]               ;
+; pos_color[754][2]                                            ; Merged with pos_color[754][0]               ;
+; pos_color[738][2]                                            ; Merged with pos_color[738][0]               ;
+; pos_color[710][2]                                            ; Merged with pos_color[710][0]               ;
+; pos_color[694][2]                                            ; Merged with pos_color[694][0]               ;
+; pos_color[666][2]                                            ; Merged with pos_color[666][0]               ;
+; pos_color[650][2]                                            ; Merged with pos_color[650][0]               ;
+; pos_color[634][2]                                            ; Merged with pos_color[634][0]               ;
+; pos_color[606][2]                                            ; Merged with pos_color[606][0]               ;
+; pos_color[590][2]                                            ; Merged with pos_color[590][0]               ;
+; pos_color[562][2]                                            ; Merged with pos_color[562][0]               ;
+; pos_color[558][2]                                            ; Merged with pos_color[558][0]               ;
+; pos_color[542][2]                                            ; Merged with pos_color[542][0]               ;
 ; pos_color[514][2]                                            ; Merged with pos_color[514][0]               ;
 ; pos_color[490][2]                                            ; Merged with pos_color[490][0]               ;
+; pos_color[464][1]                                            ; Merged with pos_color[464][0]               ;
+; pos_color[463][1]                                            ; Merged with pos_color[463][0]               ;
+; pos_color[462][2]                                            ; Merged with pos_color[462][0]               ;
 ; pos_color[446][2]                                            ; Merged with pos_color[446][0]               ;
-; pos_color[402][2]                                            ; Merged with pos_color[402][0]               ;
-; pos_color[358][2]                                            ; Merged with pos_color[358][0]               ;
-; pos_color[314][2]                                            ; Merged with pos_color[314][0]               ;
-; pos_color[282][2]                                            ; Merged with pos_color[282][0]               ;
-; pos_color[238][2]                                            ; Merged with pos_color[238][0]               ;
-; pos_color[192][2]                                            ; Merged with pos_color[192][0]               ;
-; pos_color[148][2]                                            ; Merged with pos_color[148][0]               ;
-; pos_color[104][2]                                            ; Merged with pos_color[104][0]               ;
-; pos_color[60][2]                                             ; Merged with pos_color[60][0]                ;
-; pos_color[1049][0]                                           ; Merged with pos_color[1049][2]              ;
-; pos_color[1099][1]                                           ; Merged with pos_color[1099][2]              ;
-; pos_color[992][2]                                            ; Merged with pos_color[992][0]               ;
-; pos_color[948][2]                                            ; Merged with pos_color[948][0]               ;
-; pos_color[860][2]                                            ; Merged with pos_color[860][0]               ;
-; pos_color[766][2]                                            ; Merged with pos_color[766][0]               ;
-; pos_color[690][2]                                            ; Merged with pos_color[690][0]               ;
-; pos_color[602][2]                                            ; Merged with pos_color[602][0]               ;
 ; pos_color[418][2]                                            ; Merged with pos_color[418][0]               ;
-; pos_color[342][2]                                            ; Merged with pos_color[342][0]               ;
-; pos_color[254][2]                                            ; Merged with pos_color[254][0]               ;
-; pos_color[164][2]                                            ; Merged with pos_color[164][0]               ;
-; pos_color[88][2]                                             ; Merged with pos_color[88][0]                ;
-; pos_color[1096][0]                                           ; Merged with pos_color[1096][2]              ;
-; pos_color[810][2]                                            ; Merged with pos_color[810][0]               ;
-; pos_color[646][2]                                            ; Merged with pos_color[646][0]               ;
+; pos_color[402][2]                                            ; Merged with pos_color[402][0]               ;
 ; pos_color[386][2]                                            ; Merged with pos_color[386][0]               ;
+; pos_color[358][2]                                            ; Merged with pos_color[358][0]               ;
+; pos_color[342][2]                                            ; Merged with pos_color[342][0]               ;
+; pos_color[314][2]                                            ; Merged with pos_color[314][0]               ;
+; pos_color[298][2]                                            ; Merged with pos_color[298][0]               ;
+; pos_color[282][2]                                            ; Merged with pos_color[282][0]               ;
+; pos_color[254][2]                                            ; Merged with pos_color[254][0]               ;
+; pos_color[238][2]                                            ; Merged with pos_color[238][0]               ;
 ; pos_color[210][2]                                            ; Merged with pos_color[210][0]               ;
+; pos_color[194][2]                                            ; Merged with pos_color[194][0]               ;
+; pos_color[166][2]                                            ; Merged with pos_color[166][0]               ;
+; pos_color[150][2]                                            ; Merged with pos_color[150][0]               ;
+; pos_color[134][2]                                            ; Merged with pos_color[134][0]               ;
+; pos_color[106][2]                                            ; Merged with pos_color[106][0]               ;
+; pos_color[90][2]                                             ; Merged with pos_color[90][0]                ;
+; pos_color[60][2]                                             ; Merged with pos_color[60][0]                ;
 ; pos_color[44][2]                                             ; Merged with pos_color[44][0]                ;
 ; pos_color[8][2]                                              ; Merged with pos_color[8][0]                 ;
-; pos_color[904][2]                                            ; Merged with pos_color[904][0]               ;
-; pos_color[462][2]                                            ; Merged with pos_color[462][0]               ;
-; pos_color[132][2]                                            ; Merged with pos_color[132][0]               ;
-; pos_color[734][2]                                            ; Merged with pos_color[734][0]               ;
-; pos_color[298][2]                                            ; Merged with pos_color[298][0]               ;
+; pos_color[1049][1]                                           ; Merged with pos_color[1049][2]              ;
+; pos_color[1082][0]                                           ; Merged with pos_color[1082][2]              ;
+; pos_color[1012][2]                                           ; Merged with pos_color[1012][0]              ;
+; pos_color[968][2]                                            ; Merged with pos_color[968][0]               ;
+; pos_color[960][2]                                            ; Merged with pos_color[960][0]               ;
+; pos_color[916][2]                                            ; Merged with pos_color[916][0]               ;
+; pos_color[884][2]                                            ; Merged with pos_color[884][0]               ;
+; pos_color[840][2]                                            ; Merged with pos_color[840][0]               ;
+; pos_color[836][2]                                            ; Merged with pos_color[836][0]               ;
+; pos_color[790][2]                                            ; Merged with pos_color[790][0]               ;
+; pos_color[746][2]                                            ; Merged with pos_color[746][0]               ;
+; pos_color[702][2]                                            ; Merged with pos_color[702][0]               ;
+; pos_color[658][2]                                            ; Merged with pos_color[658][0]               ;
+; pos_color[614][2]                                            ; Merged with pos_color[614][0]               ;
+; pos_color[582][2]                                            ; Merged with pos_color[582][0]               ;
+; pos_color[550][2]                                            ; Merged with pos_color[550][0]               ;
+; pos_color[506][2]                                            ; Merged with pos_color[506][0]               ;
+; pos_color[498][2]                                            ; Merged with pos_color[498][0]               ;
+; pos_color[454][2]                                            ; Merged with pos_color[454][0]               ;
+; pos_color[410][2]                                            ; Merged with pos_color[410][0]               ;
+; pos_color[366][2]                                            ; Merged with pos_color[366][0]               ;
+; pos_color[334][2]                                            ; Merged with pos_color[334][0]               ;
+; pos_color[290][2]                                            ; Merged with pos_color[290][0]               ;
+; pos_color[246][2]                                            ; Merged with pos_color[246][0]               ;
+; pos_color[202][2]                                            ; Merged with pos_color[202][0]               ;
+; pos_color[158][2]                                            ; Merged with pos_color[158][0]               ;
+; pos_color[114][2]                                            ; Merged with pos_color[114][0]               ;
+; pos_color[68][2]                                             ; Merged with pos_color[68][0]                ;
+; pos_color[36][2]                                             ; Merged with pos_color[36][0]                ;
+; pos_color[16][2]                                             ; Merged with pos_color[16][0]                ;
+; pos_color[1051][0]                                           ; Merged with pos_color[1051][2]              ;
+; pos_color[996][2]                                            ; Merged with pos_color[996][0]               ;
+; pos_color[944][2]                                            ; Merged with pos_color[944][0]               ;
+; pos_color[856][2]                                            ; Merged with pos_color[856][0]               ;
+; pos_color[806][2]                                            ; Merged with pos_color[806][0]               ;
+; pos_color[718][2]                                            ; Merged with pos_color[718][0]               ;
+; pos_color[642][2]                                            ; Merged with pos_color[642][0]               ;
+; pos_color[440][1]                                            ; Merged with pos_color[440][0]               ;
+; pos_color[439][1]                                            ; Merged with pos_color[439][0]               ;
+; pos_color[438][2]                                            ; Merged with pos_color[438][0]               ;
+; pos_color[350][2]                                            ; Merged with pos_color[350][0]               ;
+; pos_color[262][2]                                            ; Merged with pos_color[262][0]               ;
+; pos_color[186][2]                                            ; Merged with pos_color[186][0]               ;
+; pos_color[98][2]                                             ; Merged with pos_color[98][0]                ;
+; pos_color[1098][0]                                           ; Merged with pos_color[1098][2]              ;
+; pos_color[962][1]                                            ; Merged with pos_color[962][0]               ;
+; pos_color[900][2]                                            ; Merged with pos_color[900][0]               ;
+; pos_color[762][2]                                            ; Merged with pos_color[762][0]               ;
+; pos_color[598][2]                                            ; Merged with pos_color[598][0]               ;
+; pos_color[534][2]                                            ; Merged with pos_color[534][0]               ;
+; pos_color[482][2]                                            ; Merged with pos_color[482][0]               ;
+; pos_color[306][2]                                            ; Merged with pos_color[306][0]               ;
+; pos_color[142][2]                                            ; Merged with pos_color[142][0]               ;
+; pos_color[832][1]                                            ; Merged with pos_color[832][0]               ;
+; pos_color[432][1]                                            ; Merged with pos_color[432][0]               ;
+; pos_color[431][1]                                            ; Merged with pos_color[431][0]               ;
+; pos_color[394][2]                                            ; Merged with pos_color[394][0]               ;
+; pos_color[52][2]                                             ; Merged with pos_color[52][0]                ;
+; pos_color[686][2]                                            ; Merged with pos_color[686][0]               ;
+; pos_color[551][1]                                            ; Merged with pos_color[551][0]               ;
+; pos_color[418][1]                                            ; Merged with pos_color[418][0]               ;
+; pos_color[417][1]                                            ; Merged with pos_color[417][0]               ;
+; pos_color[218][2]                                            ; Merged with pos_color[218][0]               ;
 ; pos_color[0][1]                                              ; Merged with pos_color[0][0]                 ;
 ; pos_color[0][2]                                              ; Merged with pos_color[0][0]                 ;
 ; pos_color[1][1]                                              ; Merged with pos_color[1][0]                 ;
@@ -1340,7 +1357,7 @@ Encoding Type:  One-Hot
 ; pos_color[80][1]                                             ; Merged with pos_color[80][0]                ;
 ; pos_color[80][2]                                             ; Merged with pos_color[80][0]                ;
 ; pos_color[81][1]                                             ; Merged with pos_color[81][0]                ;
-; pos_color[82][1]                                             ; Merged with pos_color[82][0]                ;
+; pos_color[82][2]                                             ; Merged with pos_color[82][0]                ;
 ; pos_color[83][1]                                             ; Merged with pos_color[83][0]                ;
 ; pos_color[84][1]                                             ; Merged with pos_color[84][0]                ;
 ; pos_color[85][1]                                             ; Merged with pos_color[85][0]                ;
@@ -1747,8 +1764,6 @@ Encoding Type:  One-Hot
 ; pos_color[414][1]                                            ; Merged with pos_color[414][0]               ;
 ; pos_color[415][1]                                            ; Merged with pos_color[415][0]               ;
 ; pos_color[416][1]                                            ; Merged with pos_color[416][0]               ;
-; pos_color[417][1]                                            ; Merged with pos_color[417][0]               ;
-; pos_color[418][1]                                            ; Merged with pos_color[418][0]               ;
 ; pos_color[419][1]                                            ; Merged with pos_color[419][0]               ;
 ; pos_color[419][2]                                            ; Merged with pos_color[419][0]               ;
 ; pos_color[420][1]                                            ; Merged with pos_color[420][0]               ;
@@ -1773,16 +1788,12 @@ Encoding Type:  One-Hot
 ; pos_color[429][2]                                            ; Merged with pos_color[429][0]               ;
 ; pos_color[430][1]                                            ; Merged with pos_color[430][0]               ;
 ; pos_color[430][2]                                            ; Merged with pos_color[430][0]               ;
-; pos_color[431][1]                                            ; Merged with pos_color[431][0]               ;
-; pos_color[432][1]                                            ; Merged with pos_color[432][0]               ;
 ; pos_color[433][1]                                            ; Merged with pos_color[433][0]               ;
 ; pos_color[434][1]                                            ; Merged with pos_color[434][0]               ;
 ; pos_color[435][1]                                            ; Merged with pos_color[435][0]               ;
 ; pos_color[436][1]                                            ; Merged with pos_color[436][0]               ;
 ; pos_color[437][1]                                            ; Merged with pos_color[437][0]               ;
 ; pos_color[438][1]                                            ; Merged with pos_color[438][0]               ;
-; pos_color[439][1]                                            ; Merged with pos_color[439][0]               ;
-; pos_color[440][1]                                            ; Merged with pos_color[440][0]               ;
 ; pos_color[441][1]                                            ; Merged with pos_color[441][0]               ;
 ; pos_color[442][1]                                            ; Merged with pos_color[442][0]               ;
 ; pos_color[443][1]                                            ; Merged with pos_color[443][0]               ;
@@ -1805,8 +1816,6 @@ Encoding Type:  One-Hot
 ; pos_color[460][1]                                            ; Merged with pos_color[460][0]               ;
 ; pos_color[461][1]                                            ; Merged with pos_color[461][0]               ;
 ; pos_color[462][1]                                            ; Merged with pos_color[462][0]               ;
-; pos_color[463][1]                                            ; Merged with pos_color[463][0]               ;
-; pos_color[464][1]                                            ; Merged with pos_color[464][0]               ;
 ; pos_color[465][1]                                            ; Merged with pos_color[465][0]               ;
 ; pos_color[466][1]                                            ; Merged with pos_color[466][0]               ;
 ; pos_color[467][1]                                            ; Merged with pos_color[467][0]               ;
@@ -1856,7 +1865,7 @@ Encoding Type:  One-Hot
 ; pos_color[499][1]                                            ; Merged with pos_color[499][0]               ;
 ; pos_color[500][1]                                            ; Merged with pos_color[500][0]               ;
 ; pos_color[501][1]                                            ; Merged with pos_color[501][0]               ;
-; pos_color[502][1]                                            ; Merged with pos_color[502][0]               ;
+; pos_color[502][2]                                            ; Merged with pos_color[502][0]               ;
 ; pos_color[504][1]                                            ; Merged with pos_color[504][0]               ;
 ; pos_color[505][1]                                            ; Merged with pos_color[505][0]               ;
 ; pos_color[506][1]                                            ; Merged with pos_color[506][0]               ;
@@ -1907,7 +1916,7 @@ Encoding Type:  One-Hot
 ; pos_color[539][1]                                            ; Merged with pos_color[539][0]               ;
 ; pos_color[540][1]                                            ; Merged with pos_color[540][0]               ;
 ; pos_color[541][1]                                            ; Merged with pos_color[541][0]               ;
-; pos_color[542][2]                                            ; Merged with pos_color[542][0]               ;
+; pos_color[542][1]                                            ; Merged with pos_color[542][0]               ;
 ; pos_color[543][1]                                            ; Merged with pos_color[543][0]               ;
 ; pos_color[544][1]                                            ; Merged with pos_color[544][0]               ;
 ; pos_color[545][1]                                            ; Merged with pos_color[545][0]               ;
@@ -1916,7 +1925,6 @@ Encoding Type:  One-Hot
 ; pos_color[548][1]                                            ; Merged with pos_color[548][0]               ;
 ; pos_color[549][1]                                            ; Merged with pos_color[549][0]               ;
 ; pos_color[550][1]                                            ; Merged with pos_color[550][0]               ;
-; pos_color[551][1]                                            ; Merged with pos_color[551][0]               ;
 ; pos_color[552][1]                                            ; Merged with pos_color[552][0]               ;
 ; pos_color[553][1]                                            ; Merged with pos_color[553][0]               ;
 ; pos_color[554][1]                                            ; Merged with pos_color[554][0]               ;
@@ -2419,7 +2427,6 @@ Encoding Type:  One-Hot
 ; pos_color[958][1]                                            ; Merged with pos_color[958][0]               ;
 ; pos_color[959][1]                                            ; Merged with pos_color[959][0]               ;
 ; pos_color[960][1]                                            ; Merged with pos_color[960][0]               ;
-; pos_color[962][1]                                            ; Merged with pos_color[962][0]               ;
 ; pos_color[963][1]                                            ; Merged with pos_color[963][0]               ;
 ; pos_color[964][1]                                            ; Merged with pos_color[964][0]               ;
 ; pos_color[965][1]                                            ; Merged with pos_color[965][0]               ;
@@ -2519,23 +2526,22 @@ Encoding Type:  One-Hot
 ; pos_color[1035][1]                                           ; Merged with pos_color[1035][0]              ;
 ; pos_color[1036][1]                                           ; Merged with pos_color[1036][0]              ;
 ; pos_color[1037][1]                                           ; Merged with pos_color[1037][0]              ;
-; pos_color[1038][2]                                           ; Merged with pos_color[1038][1]              ;
-; pos_color[1039][1]                                           ; Merged with pos_color[1039][0]              ;
-; pos_color[1039][2]                                           ; Merged with pos_color[1039][0]              ;
-; pos_color[1040][2]                                           ; Merged with pos_color[1040][0]              ;
+; pos_color[1038][1]                                           ; Merged with pos_color[1038][0]              ;
+; pos_color[1040][2]                                           ; Merged with pos_color[1040][1]              ;
 ; pos_color[1041][1]                                           ; Merged with pos_color[1041][0]              ;
 ; pos_color[1041][2]                                           ; Merged with pos_color[1041][0]              ;
-; pos_color[1042][2]                                           ; Merged with pos_color[1042][1]              ;
+; pos_color[1042][2]                                           ; Merged with pos_color[1042][0]              ;
 ; pos_color[1043][1]                                           ; Merged with pos_color[1043][0]              ;
 ; pos_color[1043][2]                                           ; Merged with pos_color[1043][0]              ;
-; pos_color[1044][1]                                           ; Merged with pos_color[1044][0]              ;
-; pos_color[1044][2]                                           ; Merged with pos_color[1044][0]              ;
+; pos_color[1044][2]                                           ; Merged with pos_color[1044][1]              ;
 ; pos_color[1045][1]                                           ; Merged with pos_color[1045][0]              ;
 ; pos_color[1045][2]                                           ; Merged with pos_color[1045][0]              ;
 ; pos_color[1046][1]                                           ; Merged with pos_color[1046][0]              ;
 ; pos_color[1046][2]                                           ; Merged with pos_color[1046][0]              ;
-; pos_color[1048][2]                                           ; Merged with pos_color[1048][1]              ;
-; pos_color[1049][2]                                           ; Merged with pos_color[1049][1]              ;
+; pos_color[1047][1]                                           ; Merged with pos_color[1047][0]              ;
+; pos_color[1047][2]                                           ; Merged with pos_color[1047][0]              ;
+; pos_color[1048][1]                                           ; Merged with pos_color[1048][0]              ;
+; pos_color[1048][2]                                           ; Merged with pos_color[1048][0]              ;
 ; pos_color[1050][2]                                           ; Merged with pos_color[1050][1]              ;
 ; pos_color[1051][2]                                           ; Merged with pos_color[1051][1]              ;
 ; pos_color[1052][2]                                           ; Merged with pos_color[1052][1]              ;
@@ -2596,6 +2602,18 @@ Encoding Type:  One-Hot
 ; pos_color[1095][2]                                           ; Merged with pos_color[1095][1]              ;
 ; pos_color[1096][2]                                           ; Merged with pos_color[1096][1]              ;
 ; pos_color[1097][2]                                           ; Merged with pos_color[1097][1]              ;
+; pos_color[1098][2]                                           ; Merged with pos_color[1098][1]              ;
+; pos_color[1099][2]                                           ; Merged with pos_color[1099][1]              ;
+; piece[1][1][1]                                               ; Merged with piece[0][1][1]                  ;
+; piece[1][1][2]                                               ; Merged with piece[0][1][2]                  ;
+; piece[1][1][3]                                               ; Merged with piece[0][1][3]                  ;
+; piece[1][1][4]                                               ; Merged with piece[0][1][4]                  ;
+; piece[1][1][5]                                               ; Merged with piece[0][1][5]                  ;
+; piece[1][1][6]                                               ; Merged with piece[0][1][6]                  ;
+; piece[1][1][7]                                               ; Merged with piece[0][1][7]                  ;
+; piece[1][1][8]                                               ; Merged with piece[0][1][8]                  ;
+; piece[1][1][9]                                               ; Merged with piece[0][1][9]                  ;
+; piece[1][1][10]                                              ; Merged with piece[0][1][10]                 ;
 ; piece[0][0][10]                                              ; Merged with piece[0][0][0]                  ;
 ; piece[0][0][1]                                               ; Merged with piece[0][0][0]                  ;
 ; piece[0][0][2]                                               ; Merged with piece[0][0][0]                  ;
@@ -2630,19 +2648,27 @@ Encoding Type:  One-Hot
 ; piece[2][0][4]                                               ; Merged with piece[0][0][3]                  ;
 ; piece[3][0][4]                                               ; Merged with piece[0][0][3]                  ;
 ; piece[1][0][2]                                               ; Merged with piece[1][0][1]                  ;
+; piece[3][1][1]                                               ; Merged with piece[2][1][1]                  ;
+; piece[3][1][2]                                               ; Merged with piece[2][1][2]                  ;
+; piece[3][1][3]                                               ; Merged with piece[2][1][3]                  ;
+; piece[3][1][4]                                               ; Merged with piece[2][1][4]                  ;
+; piece[3][1][5]                                               ; Merged with piece[2][1][5]                  ;
+; piece[3][1][6]                                               ; Merged with piece[2][1][6]                  ;
+; piece[3][1][7]                                               ; Merged with piece[2][1][7]                  ;
+; piece[3][1][8]                                               ; Merged with piece[2][1][8]                  ;
+; piece[3][1][9]                                               ; Merged with piece[2][1][9]                  ;
+; piece[3][1][10]                                              ; Merged with piece[2][1][10]                 ;
 ; piece[3][0][2]                                               ; Merged with piece[3][0][1]                  ;
-; pos_color[1038][1]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1039][0]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1040][0]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1040][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1041][0]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1042][1]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1042][0]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1043][0]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1044][0]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1044][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1045][0]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1046][0]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1047][2]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1048][1]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1049][1]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1047][0]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1048][0]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1049][2]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1050][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1051][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1052][1]                                           ; Stuck at GND due to stuck port data_in      ;
@@ -2679,9 +2705,12 @@ Encoding Type:  One-Hot
 ; pos_color[1095][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1096][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1097][1]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1098][2]                                           ; Stuck at GND due to stuck port data_in      ;
-; pos_color[1099][2]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1098][1]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1099][1]                                           ; Stuck at GND due to stuck port data_in      ;
 ; piece[0][0][0]                                               ; Stuck at GND due to stuck port data_in      ;
+; piece[0][1][0]                                               ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1039][0]                                           ; Stuck at GND due to stuck port data_in      ;
+; pos_color[1038][0]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1037][0]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1036][0]                                           ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1035][0]                                           ; Stuck at GND due to stuck port data_in      ;
@@ -3468,14 +3497,6 @@ Encoding Type:  One-Hot
 ; pos_color[2][0]                                              ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[1][0]                                              ; Stuck at GND due to stuck port data_in      ;
 ; pos_color[0][0]                                              ; Stuck at GND due to stuck port data_in      ;
-; vgacon:vga_component|h_count_d[7..9]                         ; Stuck at GND due to stuck port clear        ;
-; vgacon:vga_component|v_count_d[5..9]                         ; Stuck at GND due to stuck port clear        ;
-; vgacon:vga_component|h_count_d[0..6]                         ; Stuck at GND due to stuck port clear        ;
-; vgacon:vga_component|v_count_d[0..4]                         ; Stuck at GND due to stuck port clear        ;
-; vgacon:vga_component|h_count[7..9]                           ; Stuck at GND due to stuck port aclear       ;
-; vgacon:vga_component|v_count[5..9]                           ; Stuck at GND due to stuck port aclear       ;
-; vgacon:vga_component|h_count[0..6]                           ; Stuck at GND due to stuck port aclear       ;
-; vgacon:vga_component|v_count[0..4]                           ; Stuck at GND due to stuck port aclear       ;
 ; kbdex_ctrl:kbd_ctrl|state.IDLE                               ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|state.RELEASE                            ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|state.EXT0                               ; Lost fanout                                 ;
@@ -3495,7 +3516,7 @@ Encoding Type:  One-Hot
 ; state.COLISION                                               ; Lost fanout                                 ;
 ; state.DRAW                                                   ; Lost fanout                                 ;
 ; state.MENU                                                   ; Lost fanout                                 ;
-; Total Number of Removed Registers = 3290                     ;                                             ;
+; Total Number of Removed Registers = 3271                     ;                                             ;
 +--------------------------------------------------------------+---------------------------------------------+
 
 
@@ -3581,11 +3602,6 @@ Encoding Type:  One-Hot
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[14], kbdex_ctrl:kbd_ctrl|key2code[15],              ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[7], kbdex_ctrl:kbd_ctrl|key2code[6],                ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[5]                                                  ;
-; vgacon:vga_component|h_count[9]                    ; Stuck at GND              ; vgacon:vga_component|v_count[9], vgacon:vga_component|v_count[8],                ;
-;                                                    ; due to stuck port aclear  ; vgacon:vga_component|v_count[7], vgacon:vga_component|v_count[6],                ;
-;                                                    ;                           ; vgacon:vga_component|v_count[5], vgacon:vga_component|v_count[4],                ;
-;                                                    ;                           ; vgacon:vga_component|v_count[3], vgacon:vga_component|v_count[2],                ;
-;                                                    ;                           ; vgacon:vga_component|v_count[0], vgacon:vga_component|v_count[1]                 ;
 ; kbdex_ctrl:kbd_ctrl|newdata                        ; Stuck at GND              ; kbdex_ctrl:kbd_ctrl|fetchdata[0], kbdex_ctrl:kbd_ctrl|fetchdata[1],              ;
 ;                                                    ; due to stuck port clear   ; kbdex_ctrl:kbd_ctrl|fetchdata[2], kbdex_ctrl:kbd_ctrl|fetchdata[3],              ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|fetchdata[4], kbdex_ctrl:kbd_ctrl|fetchdata[5],              ;
@@ -3606,12 +3622,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 369   ;
-; Number of registers using Synchronous Clear  ; 23    ;
-; Number of registers using Synchronous Load   ; 309   ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 388   ;
+; Number of registers using Synchronous Clear  ; 38    ;
+; Number of registers using Synchronous Load   ; 284   ;
+; Number of registers using Asynchronous Clear ; 42    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 57    ;
+; Number of registers using Clock Enable       ; 48    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -3641,11 +3657,11 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
-; 3:1                ; 36 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |game_board|piece[0][1][6]                ;
+; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |game_board|piece[2][1][4]                ;
 ; 8:1                ; 10 bits   ; 50 LEs        ; 40 LEs               ; 10 LEs                 ; Yes        ; |game_board|piece[2][1][0]                ;
-; 10:1               ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; Yes        ; |game_board|piece[1][1][1]                ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |game_board|piece[2][1][1]                ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |game_board|kbdex_ctrl:kbd_ctrl|Selector9 ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |game_board|Mux0                          ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |game_board|Mux1                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 
 
@@ -4075,11 +4091,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-----------------------------------------------------------+
 ; Port Connectivity Checks: "create_piece:create_piece_prt" ;
-+------+-------+----------+---------------------------------+
-; Port ; Type  ; Severity ; Details                         ;
-+------+-------+----------+---------------------------------+
-; en   ; Input ; Info     ; Stuck at VCC                    ;
-+------+-------+----------+---------------------------------+
++------------+-------+----------+---------------------------+
+; Port       ; Type  ; Severity ; Details                   ;
++------------+-------+----------+---------------------------+
+; sync_reset ; Input ; Info     ; Stuck at GND              ;
+; en         ; Input ; Info     ; Stuck at VCC              ;
++------------+-------+----------+---------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -4124,34 +4141,44 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 369                         ;
-;     ENA               ; 9                           ;
-;     ENA SCLR          ; 5                           ;
-;     ENA SLD           ; 43                          ;
+; arriav_ff             ; 388                         ;
+;     CLR               ; 20                          ;
+;     CLR SCLR          ; 10                          ;
+;     ENA               ; 17                          ;
+;     ENA CLR           ; 2                           ;
+;     ENA CLR SCLR      ; 10                          ;
+;     ENA SLD           ; 19                          ;
 ;     SCLR              ; 18                          ;
-;     SLD               ; 266                         ;
-;     plain             ; 28                          ;
+;     SLD               ; 265                         ;
+;     plain             ; 27                          ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 2111                        ;
-;     arith             ; 72                          ;
-;         1 data inputs ; 72                          ;
-;     extend            ; 2                           ;
-;         7 data inputs ; 2                           ;
-;     normal            ; 2037                        ;
+; arriav_lcell_comb     ; 2253                        ;
+;     arith             ; 155                         ;
+;         0 data inputs ; 18                          ;
+;         1 data inputs ; 96                          ;
+;         2 data inputs ; 4                           ;
+;         3 data inputs ; 24                          ;
+;         4 data inputs ; 13                          ;
+;     extend            ; 4                           ;
+;         7 data inputs ; 4                           ;
+;     normal            ; 2089                        ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 8                           ;
-;         2 data inputs ; 436                         ;
-;         3 data inputs ; 241                         ;
-;         4 data inputs ; 403                         ;
-;         5 data inputs ; 445                         ;
-;         6 data inputs ; 502                         ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 459                         ;
+;         3 data inputs ; 259                         ;
+;         4 data inputs ; 397                         ;
+;         5 data inputs ; 446                         ;
+;         6 data inputs ; 517                         ;
+;     shared            ; 5                           ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 4                           ;
 ; arriav_mac            ; 7                           ;
 ; boundary_port         ; 34                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 3                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.00                        ;
-; Average LUT depth     ; 3.39                        ;
+; Max LUT depth         ; 13.40                       ;
+; Average LUT depth     ; 3.91                        ;
 +-----------------------+-----------------------------+
 
 
@@ -4170,7 +4197,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Sat Jun 09 17:06:27 2018
+    Info: Processing started: Sat Jun 09 18:36:29 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -4193,8 +4220,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file mov_pie
     Info (12022): Found design unit 1: mov_piece-rtl File: D:/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 16
     Info (12023): Found entity 1: mov_piece File: D:/MC613/Projeto_MC613/rtl/mov_piece/mov_piece.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file game_board/game_board.vhd
-    Info (12022): Found design unit 1: game_board-behavior File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 18
-    Info (12023): Found entity 1: game_board File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 4
+    Info (12022): Found design unit 1: game_board-behavior File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 19
+    Info (12023): Found entity 1: game_board File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file game_board/vga_pll.vhd
     Info (12022): Found design unit 1: vga_pll-rtl File: D:/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 19
     Info (12023): Found entity 1: vga_pll File: D:/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 11
@@ -4206,15 +4233,14 @@ Info (12021): Found 4 design units, including 2 entities, in source file game_bo
     Info (12023): Found entity 1: vgacon File: D:/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 75
     Info (12023): Found entity 2: dual_clock_ram File: D:/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 256
 Info (12127): Elaborating entity "game_board" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(84): object "slow_clock" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 84
-Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(122): object "rotation" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 122
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(129): used implicit default value for signal "clash" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 129
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(131): used implicit default value for signal "lights" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 131
-Warning (10541): VHDL Signal Declaration warning at game_board.vhd(138): used implicit default value for signal "rstn" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 138
-Warning (10492): VHDL Process Statement warning at game_board.vhd(383): signal "clash" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 383
-Warning (10492): VHDL Process Statement warning at game_board.vhd(401): signal "START_GAME" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 401
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(85): object "slow_clock" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 85
+Warning (10541): VHDL Signal Declaration warning at game_board.vhd(133): used implicit default value for signal "CLASH" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 133
+Warning (10541): VHDL Signal Declaration warning at game_board.vhd(135): used implicit default value for signal "lights" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 135
+Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(143): object "rotation" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 143
+Warning (10492): VHDL Process Statement warning at game_board.vhd(390): signal "CLASH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 390
+Warning (10492): VHDL Process Statement warning at game_board.vhd(408): signal "START_GAME" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 408
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "piece" into its bus
-Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 142
+Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 150
 Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: D:/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
 Info (12128): Elaborating entity "vga_pll_0002" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst" File: D:/MC613/Projeto_MC613/rtl/game_board/vga_pll.vhd Line: 31
 Info (12128): Elaborating entity "altera_pll" for hierarchy "vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i" File: D:/MC613/Projeto_MC613/rtl/game_board/vga_pll/vga_pll_0002.v Line: 85
@@ -4282,8 +4308,8 @@ Info (12133): Instantiated megafunction "vgacon:vga_component|vga_pll:divider|vg
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "dual_clock_ram" for hierarchy "vgacon:vga_component|dual_clock_ram:vgamem" File: D:/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 124
-Info (12128): Elaborating entity "clock_div" for hierarchy "clock_div:clock_component" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 164
-Info (12128): Elaborating entity "kbdex_ctrl" for hierarchy "kbdex_ctrl:kbd_ctrl" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 169
+Info (12128): Elaborating entity "clock_div" for hierarchy "clock_div:clock_component" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 172
+Info (12128): Elaborating entity "kbdex_ctrl" for hierarchy "kbdex_ctrl:kbd_ctrl" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 177
 Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(125): signal "en" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 125
 Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(148): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 148
 Warning (10492): VHDL Process Statement warning at kbdex_ctrl.vhd(150): signal "fetchdata" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 150
@@ -4322,8 +4348,8 @@ Info (10041): Inferred latch for "relbt" at kbdex_ctrl.vhd(266) File: D:/MC613/P
 Info (10041): Inferred latch for "selE0" at kbdex_ctrl.vhd(212) File: D:/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 212
 Info (12128): Elaborating entity "ps2_iobase" for hierarchy "kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl" File: D:/MC613/Projeto_MC613/rtl/keyboard/kbdex_ctrl.vhd Line: 114
 Warning (10492): VHDL Process Statement warning at ps2_iobase.vhd(161): signal "sigsending" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/keyboard/ps2_iobase.vhd Line: 161
-Info (12128): Elaborating entity "mov_piece" for hierarchy "mov_piece:movement" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 180
-Info (12128): Elaborating entity "create_piece" for hierarchy "create_piece:create_piece_prt" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 189
+Info (12128): Elaborating entity "mov_piece" for hierarchy "mov_piece:movement" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 188
+Info (12128): Elaborating entity "create_piece" for hierarchy "create_piece:create_piece_prt" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 197
 Info (10041): Inferred latch for "piece[0]" at create_piece.vhd(32) File: D:/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
 Info (10041): Inferred latch for "piece[1]" at create_piece.vhd(32) File: D:/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
 Info (10041): Inferred latch for "piece[2]" at create_piece.vhd(32) File: D:/MC613/Projeto_MC613/rtl/create_piece/create_piece.vhd Line: 32
@@ -4394,31 +4420,26 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eve.tdf
     Info (12023): Found entity 1: alt_u_div_eve File: D:/MC613/Projeto_MC613/rtl/db/alt_u_div_eve.tdf Line: 22
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_HS" is stuck at VCC File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 10
-    Warning (13410): Pin "VGA_VS" is stuck at VCC File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 10
-    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 11
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 11
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 12
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 27 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning: RST port on the PLL is not properly connected on instance vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: d:/quartusprime/quartus/libraries/megafunctions/altera_pll.v Line: 748
-    Info: Must be connected
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 6
-    Warning (15610): No output dependent on input pin "KEY[0]" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 8
-Info (21057): Implemented 2167 device resources after synthesis - the final resource count might be different
+    Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 7
+Info (21057): Implemented 2326 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 29 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 2122 logic cells
+    Info (21061): Implemented 2281 logic cells
     Info (21064): Implemented 3 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 7 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 54 warnings
-    Info: Peak virtual memory: 4937 megabytes
-    Info: Processing ended: Sat Jun 09 17:06:48 2018
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:35
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 49 warnings
+    Info: Peak virtual memory: 4993 megabytes
+    Info: Processing ended: Sat Jun 09 18:36:53 2018
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:38
 
 

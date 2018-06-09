@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Tetris
-Wed Jun  6 15:07:55 2018
+Sat Jun 09 17:26:41 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -36,9 +36,9 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Jun  6 15:07:55 2018 ;
+; EDA Netlist Writer Status ; Successful - Sat Jun 09 17:26:41 2018 ;
 ; Revision Name             ; Tetris                                ;
-; Top-level Entity Name     ; create_piece                          ;
+; Top-level Entity Name     ; clock_div                             ;
 ; Family                    ; Cyclone V                             ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -65,13 +65,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+---------------------------------------------------------------------------+
-; Simulation Generated Files                                                ;
-+---------------------------------------------------------------------------+
-; Generated Files                                                           ;
-+---------------------------------------------------------------------------+
-; /home/ec2014/ra157637/MC613/Projeto_MC613/rtl/simulation/qsim//Tetris.vho ;
-+---------------------------------------------------------------------------+
++--------------------------------------------------------+
+; Simulation Generated Files                             ;
++--------------------------------------------------------+
+; Generated Files                                        ;
++--------------------------------------------------------+
+; D:/MC613/Projeto_MC613/rtl/simulation/qsim//Tetris.vho ;
++--------------------------------------------------------+
 
 
 +-----------------------------+
@@ -93,14 +93,16 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Wed Jun  6 15:07:54 2018
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/ec2014/ra157637/MC613/Projeto_MC613/rtl/simulation/qsim/ Tetris -c Tetris
+    Info: Processing started: Sat Jun 09 17:26:40 2018
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=D:/MC613/Projeto_MC613/rtl/simulation/qsim/ Tetris -c Tetris
+Warning (20013): Ignored 13 assignments for entity "vga_pll" -- entity does not exist in design
+Warning (20013): Ignored 317 assignments for entity "vga_pll_0002" -- entity does not exist in design
 Info (119006): Selected device 5CSEMA5F31C6 for design "Tetris"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Tetris.vho in folder "/home/ec2014/ra157637/MC613/Projeto_MC613/rtl/simulation/qsim//" for EDA simulation tool
-Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 1242 megabytes
-    Info: Processing ended: Wed Jun  6 15:07:55 2018
+Info (204019): Generated file Tetris.vho in folder "D:/MC613/Projeto_MC613/rtl/simulation/qsim//" for EDA simulation tool
+Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4733 megabytes
+    Info: Processing ended: Sat Jun 09 17:26:41 2018
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

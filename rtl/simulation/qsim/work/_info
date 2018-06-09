@@ -8,8 +8,8 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/home/ec2014/ra157637/MC613/Projeto_MC613/rtl/simulation/qsim
-Ecreate_piece
-Z1 w1528308475
+Eclock_div
+Z1 w1528576001
 Z2 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 YZlobdkPHzE;N99jHfcMc3
 Z3 DPx8 cyclonev 19 cyclonev_components 0 22 WF17oJHHbo`b[5Bl5P6_h0
 Z4 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 dfin^_@l97Ngz6cK0kjS62
@@ -19,23 +19,115 @@ Z7 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z9 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
 Z10 DPx6 altera 28 altera_primitives_components 0 22 c]VUMXSEi8Z`KM1bem<:B3
+Z11 dD:/MC613/Projeto_MC613/rtl/simulation/qsim
+Z12 8Tetris.vho
+Z13 FTetris.vho
+l0
+L38
+VnUDhol1Z=B7_N:dGSCMPW2
+!s100 UIl?kbm><VJ9mB2hcY3z20
+Z14 OV;C;10.5b;63
+32
+Z15 !s110 1528576006
+!i10b 1
+Z16 !s108 1528576006.000000
+Z17 !s90 -work|work|Tetris.vho|
+Z18 !s107 Tetris.vho|
+!i113 1
+Z19 o-work work
+Z20 tExplicit 1 CvgOpt 0
+Astructure
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
+DEx4 work 9 clock_div 0 22 nUDhol1Z=B7_N:dGSCMPW2
+l231
+L46
+VDmG=FJ73U>^YGV?_I5TR@1
+!s100 6h7>9Tn?<`6aXO:<A]PXc0
+R14
+32
+R15
+!i10b 1
+R16
+R17
+R18
+!i113 1
+R19
+R20
+Eclock_div_vhd_vec_tst
+Z21 w1528575999
+R8
+R9
+R11
+Z22 8output_files/Waveform.vwf.vht
+Z23 Foutput_files/Waveform.vwf.vht
+l0
+L31
+VVR691:`geEj2o]Fj1W`9:3
+!s100 @5V7_=6ZVmbQ:iS?ITP]R1
+R14
+32
+R15
+!i10b 1
+R16
+Z24 !s90 -work|work|output_files/Waveform.vwf.vht|
+Z25 !s107 output_files/Waveform.vwf.vht|
+!i113 1
+R19
+R20
+Aclock_div_arch
+R8
+R9
+DEx4 work 21 clock_div_vhd_vec_tst 0 22 VR691:`geEj2o]Fj1W`9:3
+l46
+L33
+VjJCDRgSjg7FBf<k7:?[X>0
+!s100 4]F9hoEGjf;@]inSVJ5[P2
+R14
+32
+R15
+!i10b 1
+R16
+R24
+R25
+!i113 1
+R19
+R20
+Ecreate_piece
+Z26 w1528308475
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R10
 R0
-Z11 8Tetris.vho
-Z12 FTetris.vho
+R12
+R13
 l0
 L38
 V7ANedkCn:bbO42oe;5]I72
 !s100 5VkUM_3Q3HH@Rla>ffQO`3
-Z13 OV;C;10.5b;63
+R14
 32
-Z14 !s110 1528308475
+Z27 !s110 1528308475
 !i10b 1
-Z15 !s108 1528308475.000000
-Z16 !s90 -work|work|Tetris.vho|
-Z17 !s107 Tetris.vho|
+Z28 !s108 1528308475.000000
+R17
+R18
 !i113 1
-Z18 o-work work
-Z19 tExplicit 1 CvgOpt 0
+R19
+R20
 Astructure
 R2
 R3
@@ -51,52 +143,52 @@ l76
 L47
 VF7e>i^DFAN9m_cfkXGU`f0
 !s100 jc<2CDkXf`ZPi>JAOMmzo2
-R13
-32
 R14
+32
+R27
 !i10b 1
-R15
-R16
+R28
 R17
-!i113 1
 R18
+!i113 1
 R19
+R20
 Ecreate_piece_vhd_vec_tst
-Z20 w1528308473
+Z29 w1528308473
 R8
 R9
 R0
-Z21 8Waveform.vwf.vht
-Z22 FWaveform.vwf.vht
+Z30 8Waveform.vwf.vht
+Z31 FWaveform.vwf.vht
 l0
 L31
 VmR`1eO[RV8TZ@?eIO3>Z90
 !s100 n=Q]hW<QZ2n1nIJQHUJ`a0
-R13
-32
 R14
+32
+R27
 !i10b 1
-R15
-Z23 !s90 -work|work|Waveform.vwf.vht|
-Z24 !s107 Waveform.vwf.vht|
+R28
+Z32 !s90 -work|work|Waveform.vwf.vht|
+Z33 !s107 Waveform.vwf.vht|
 !i113 1
-R18
 R19
+R20
 Acreate_piece_arch
 R8
 R9
-Z25 DEx4 work 24 create_piece_vhd_vec_tst 0 22 mR`1eO[RV8TZ@?eIO3>Z90
+DEx4 work 24 create_piece_vhd_vec_tst 0 22 mR`1eO[RV8TZ@?eIO3>Z90
 l48
 L33
 VgRce7WV@cfQUfXzDEa=dH3
 !s100 ;hRXY1Wn::F@d0MI69zoQ2
-R13
-32
 R14
+32
+R27
 !i10b 1
-R15
-R23
-R24
+R28
+R32
+R33
 !i113 1
-R18
 R19
+R20

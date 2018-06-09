@@ -1,7 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity game_board is
+
+entity game_board IS
     port(
         SW                      : in std_logic_vector(0 downto 0);
         CLOCK_50                : in std_logic;
@@ -48,6 +49,14 @@ architecture behavior OF game_board IS
         );
     end component;
 
+    component clock_div is
+        port (
+            clock       : in std_logic;
+            clock_hz    : out std_logic;
+            clock_half  : out std_logic
+        );
+    end component;
+
     component mov_piece is
     port (
         clock		: in 	std_logic;
@@ -56,15 +65,6 @@ architecture behavior OF game_board IS
         direction	: out 	std_logic_vector(1 downto 0);
         mov 		: out 	std_logic;
         rotation	: out 	std_logic);
-    end component;
-
-
-    component clock_div is
-        port (
-            clock       : in std_logic;
-            clock_hz    : out std_logic;
-            clock_half  : out std_logic
-        );
     end component;
 
     component create_piece is
@@ -76,11 +76,12 @@ architecture behavior OF game_board IS
     end component;
 
 
+
     constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
     constant VERT_SIZE : integer := 22;
-    constant Y_INITIAL : integer := 1;
     constant X_INITIAL : integer := 24;
+    constant Y_INITIAL : integer := 2;
     signal slow_clock : std_logic;
     signal not_so_slow_clock : std_logic;
     signal video_word : std_logic_vector( 2 downto 0);
@@ -103,8 +104,10 @@ architecture behavior OF game_board IS
     -- Interface com a memória de vídeo do controlador
 
     signal we : std_logic;                        -- write enable ('1' p/ escrita)
+    signal addr : integer range 0 to 12287;       -- endereco mem. vga
     signal pixel : std_logic_vector(2 downto 0);  -- valor de cor do pixel
     signal pixel_bit : std_logic;                 -- um bit do vetor acima
+
     -- Sinais dos contadores de linhas e colunas utilizados para percorrer
     -- as posições da memória de vídeo (pixels) no momento de construir um quadro.
 
@@ -118,34 +121,39 @@ architecture behavior OF game_board IS
     signal line_enable : std_logic;        -- enable do contador de linhas
 
     signal fim_escrita : std_logic;       -- '1' quando um quadro terminou de ser
-                                            -- escrito na memória de vídeo
-    signal mov, rotation : std_logic;                       -- 1 quando peca esta se movendo ou rotacionando
-    signal direction     : std_logic_vector(1 downto 0);    -- vetor que indica a direcao da peca
+                                        -- escrito na memória de vídeo
+    --
+    signal piece_x : integer range 0 to HORZ_SIZE-1;  -- coluna atual da peca
+    signal piece_y : integer range 0 to VERT_SIZE-1;   -- linha atual da peca
 
     signal atualiza_piece_x : std_logic;    -- se '1' = peca muda sua pos. no eixo x
     signal atualiza_piece_y : std_logic;    -- se '1' = peca muda sua pos. no eixo y
 
-    signal START_GAME   : std_logic;        -- 1 quando inicia jogo
-    signal clash        : std_logic;        -- 1 quando acontece colisao
+    signal START_GAME   : std_logic;
+    signal CLASH        : std_logic;
 
-    signal lights, key_on		: std_logic_vector(2 downto 0);  -- Vetores relacionados ao teclado
-    signal key_code         : std_logic_vector(47 downto 0); -- codigo das teclas apertadas
+    signal lights, key_on		: std_logic_vector(2 downto 0);
+    signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
     TYPE VGA_STATES IS (NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW, MENU);
     signal state, NEXT_STATE : VGA_STATES;
 
+    signal switch, rstn , sync, blank : std_logic;
     signal clock_count : std_logic;
-    signal switch, rstn, clk50m, sync, blank : std_logic;
+    signal mov, rotation : std_logic;                       -- 1 quando peca esta se movendo ou rotacionando
+    signal direction     : std_logic_vector(1 downto 0);    -- vetor que indica a direcao da peca
+
+
     BEGIN
-    clk50M <= CLOCK_50;
+    rstn <= KEY(0);
 
     vga_component: vgacon generic map (
         NUM_HORZ_PIXELS => HORZ_SIZE,
         NUM_VERT_PIXELS => VERT_SIZE
     ) port map (
-        clk50M          => clk50M,
+        clk50M          => CLOCK_50,
         rstn            => rstn,
-        write_clk		=> clk50M,
+        write_clk		=> CLOCK_50,
         write_enable	=> '1',
         write_addr      => video_address,
         vga_clk         => VGA_CLK,
@@ -178,19 +186,22 @@ architecture behavior OF game_board IS
         key_code	=> key_code);
 
     movement: mov_piece port map (
-    	clock		=> CLOCK_50,
-    	key_on 		=> key_on,
-       	key_code 	=> key_code,
-    	direction	=> direction,
-    	mov 		=> mov,
-    	rotation    => rotation);
+        clock		=> CLOCK_50,
+        key_on 		=> key_on,
+        key_code 	=> key_code,
+        direction	=> direction,
+        mov 		=> mov,
+        rotation    => rotation);
 
 
     create_piece_prt:   create_piece port map (
         clock       => CLOCK_50,
-        sync_reset  => START_GAME ,
+        sync_reset  => '0',
         en          => '1',
         piece       => new_piece_type);
+
+
+
 
     -- precisamos de funcoes para atualizar cada um dos dois signals
     -- video_address <= normal_video_address when state = NORMAL else clear_video_address;
@@ -227,8 +238,6 @@ architecture behavior OF game_board IS
     video_address  <= col + (HORZ_SIZE * linha);
     pixel <= pos_color(col + (HORZ_SIZE * linha));
 
-
-
     game_logic: process(not_so_slow_clock)
     begin
         if not_so_slow_clock'event and not_so_slow_clock = '1' then
@@ -245,10 +254,8 @@ architecture behavior OF game_board IS
                         end if;
                     end loop;
                 end loop;
-            end if;
-
             --cria nova peca
-            if new_piece_flag = '1'then
+            elsif new_piece_flag = '1'then
                 current_piece_type <= new_piece_type;
                 if current_piece_type = "001" then --tipo L
                     piece(0,0) <= X_INITIAL;
@@ -320,7 +327,7 @@ architecture behavior OF game_board IS
                 if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + 1 * HORZ_SIZE;
+                        piece(i, 1) <= piece(i, 1) + piece(i,1) * HORZ_SIZE;;
                     end loop;
                 elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
@@ -339,7 +346,7 @@ architecture behavior OF game_board IS
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + 1 * HORZ_SIZE;
+                        piece(i, 1) <= piece(i, 1) + piece(i,1) * HORZ_SIZE;
                     end loop;
                 else
                     clock_count <= not clock_count;
@@ -412,9 +419,11 @@ architecture behavior OF game_board IS
         end case;
     end process logica_mealy;
 
-    seq_fsm: process (CLOCK_50)
+    seq_fsm: process (CLOCK_50, rstn)
     begin  -- process seq_fsm
-        if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+        if rstn = '0' then                  -- asynchronous reset (active low)
+            state <= NEW_GAME;
+        elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
             state <= NEXT_STATE;
         end if;
     end process seq_fsm;
