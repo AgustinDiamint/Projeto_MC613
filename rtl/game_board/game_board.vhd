@@ -1,12 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
-
+USE ieee.std_logic_unsigned.all;
 
 entity game_board IS
     port(
         SW                      : in std_logic_vector(0 downto 0);
         CLOCK_50                : in std_logic;
         KEY				        : in std_logic_vector(0 downto 0);
+        LEDR                    : out std_logic_vector (9 downto 0);
         VGA_R, VGA_G, VGA_B	    : out std_logic_vector(7 DOWNTO 0);
         VGA_HS, VGA_VS		    : out std_logic;
         VGA_BLANK_N, VGA_SYNC_N : out std_logic;
@@ -81,7 +82,7 @@ architecture behavior OF game_board IS
     constant HORZ_SIZE : integer := 50;
     constant VERT_SIZE : integer := 22;
     constant X_INITIAL : integer := 24;
-    constant Y_INITIAL : integer := 2;
+    constant Y_INITIAL : integer := 1;
     signal slow_clock : std_logic;
     signal not_so_slow_clock : std_logic;
     signal video_word : std_logic_vector( 2 downto 0);
@@ -90,12 +91,12 @@ architecture behavior OF game_board IS
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
 
     --definicao da peca atual, matriz 4x2 que guarda a posicao de cada quadrado
-    type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
+    type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE;
     signal piece : pieces_type;
 
     --definicao da matriz que contem a cor de cada "pixel"
     -- o vetor eh definido em ordem crescente como o video_adress
-    TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE- 1) of std_logic_vector(2 downto 0);
+    TYPE color_matrix is array (0 to HORZ_SIZE * VERT_SIZE - 1) of std_logic_vector(2 downto 0);
     signal pos_color: color_matrix;
 
     -- Interface com o create_piece
@@ -137,14 +138,19 @@ architecture behavior OF game_board IS
     --acho que aqui um dos estados que pode ser definido eh o menu...
     TYPE VGA_STATES IS (NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW, MENU);
     signal state, NEXT_STATE : VGA_STATES;
+    signal fall : std_logic;
+
 
     signal switch, rstn , sync, blank : std_logic;
     signal clock_count : std_logic;
     signal mov, rotation : std_logic;                       -- 1 quando peca esta se movendo ou rotacionando
     signal direction     : std_logic_vector(1 downto 0);    -- vetor que indica a direcao da peca
-
+    signal current_color: std_logic_vector(2 downto 0);     -- cor atual da peca
     BEGIN
     rstn <= KEY(0);
+    clash <= SW(0);
+    --evita a cor branca
+    current_color <= "010" when current_piece_type = "111" else current_piece_type;
 
     vga_component: vgacon generic map (
         NUM_HORZ_PIXELS => HORZ_SIZE,
@@ -195,7 +201,7 @@ architecture behavior OF game_board IS
 
     create_piece_prt:   create_piece port map (
         clock       => CLOCK_50,
-        sync_reset  => '0',
+        sync_reset  => START_GAME,
         en          => '1',
         piece       => new_piece_type);
 
@@ -206,33 +212,41 @@ architecture behavior OF game_board IS
 
     --precisamos dos processos de conta_coluna e conta_linha para
     -- mandar todas as posicoes da tela ao vgacon.
-    conta_coluna: process (CLOCK_50)
+    conta_coluna: process (CLOCK_50, col_rstn)
     begin  -- process conta_coluna
-        if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
-            if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
-                col <= 0;
-            else
-                col <= col + 1;
+        if col_rstn = '0' then                  -- asynchronous reset (active low)
+            col <= 0;
+        elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+            if col_enable = '1' then
+                if col = HORZ_SIZE-1 then               -- conta de 0 ate HORZ_SIZE-1
+                    col <= 0;
+                else
+                    col <= col + 1;
+                end if;
             end if;
         end if;
-    end process conta_coluna;
+    end process;
 
-    conta_linha: process (CLOCK_50)
+    conta_linha: process (CLOCK_50, line_rstn)
     begin  -- process conta_linha
-        if CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
+        if line_rstn = '0' then                  -- asynchronous reset (active low)
+            linha <= 0;
+        elsif CLOCK_50'event and CLOCK_50 = '1' then  -- rising clock edge
         -- o contador de linha só incrementa quando o contador de colunas
         -- chegou ao fim
-            if col = HORZ_SIZE -1 then
-                if linha = VERT_SIZE-1 then               -- conta de 0 a 95 (96 linhas)
-                    linha <= 0;
-                else
-                    linha <= linha + 1;
+            if line_enable = '1' and col = HORZ_SIZE - 1 then
+                if col = HORZ_SIZE -1 then
+                    if linha = VERT_SIZE - 1 then               -- conta de 0 a 95 (96 linhas)
+                        linha <= 0;
+                    else
+                        linha <= linha + 1;
+                    end if;
                 end if;
             end if;
         end if;
     end process conta_linha;
 
-    fim_escrita <= '1' when (linha = HORZ_SIZE - 1) and (col = VERT_SIZE - 1)
+    fim_escrita <= '1' when (linha = VERT_SIZE - 1) and (col = HORZ_SIZE - 1)
                    else '0';
 
     -- manda o endereco atual e a cor desse endereco para o vgacon.
@@ -251,12 +265,12 @@ architecture behavior OF game_board IS
                         elsif(col_x=19 or col_x = 30) then
                             pos_color(col_x+(lin_y*HORZ_SIZE)) <= "111";
                         else
-                             pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
+                            pos_color(col_x+(lin_y*HORZ_SIZE)) <= "000";
                         end if;
                     end loop;
                 end loop;
             --cria nova peca
-            elsif new_piece_flag = '1'then
+            elsif new_piece_flag = '1' then
                 current_piece_type <= new_piece_type;
                 if current_piece_type = "001" then --tipo L
                     piece(0,0) <= X_INITIAL;
@@ -322,36 +336,53 @@ architecture behavior OF game_board IS
                     piece(3,0) <= X_INITIAL-1;
                     piece(3,1) <= Y_INITIAL+1;
                 end if;
-            end if;
             -- logica do movimento da peca
-            if mov = '1' then
+            --apaga a posicao atual e escreve na prox
+            elsif mov = '1' then
                 if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + HORZ_SIZE;
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
+                    end loop;
+                    for i in 0 to 3 loop
+                        piece(i, 1) <= piece(i, 1) + 1;
+                    end loop;
+                    for i in 0 to 3 loop
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                    end loop;
+                    for i in 0 to 3 loop
                         piece(i, 0) <= piece(i, 0) - 1;
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
+                    end loop;
+                    for i in 0 to 3 loop
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+
                     end loop;
                 elsif direction = "01" then -- direita
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                    end loop;
+                    for i in 0 to 3 loop
                         piece(i, 0) <= piece(i, 0) + 1;
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
+                    end loop;
+                    for i in 0 to 3 loop
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 end if;
             -- queda da peca natural
-            elsif mov = '0' then
+            elsif fall = '1' then
                 if clock_count = '1' then
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                        piece(i, 1) <= piece(i, 1) + HORZ_SIZE;
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
+                    end loop;
+                    for i in 0 to 3 loop
+                        piece(i, 1) <= piece(i, 1) + 1; --adicionamos um na coordenada y
+                    end loop;
+                    for i in 0 to 3 loop
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 else
                     clock_count <= not clock_count;
@@ -368,6 +399,7 @@ architecture behavior OF game_board IS
 
     logica_mealy: process (state, not_so_slow_clock)
     begin  -- process logica_mealy
+
         case state is
             when NEW_GAME  =>
                 if not_so_slow_clock = '1' then
@@ -377,6 +409,11 @@ architecture behavior OF game_board IS
                 end if;
                 START_GAME <= '1';
                 new_piece_flag <= '0';
+                line_rstn      <= '0';  -- reset é active low!
+                line_enable    <= '0';
+                col_rstn       <= '0';  -- reset é active low!
+                col_enable     <= '0';
+                LEDR <= "1000000000";
 
             when MOVE =>
                 if not_so_slow_clock = '1' then
@@ -385,11 +422,28 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= MOVE;
                 end if;
                 new_piece_flag <= '0';
-                START_GAME <= '0';
+                START_GAME     <= '0';
+                fall           <= '1';
+                line_rstn      <= '1';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0100000000";
 
-            when COLISION => NEXT_STATE <= DRAW;
+            when COLISION =>
+                if not_so_slow_clock = '1' then
+                    NEXT_STATE <= DRAW;
+                else
+                    NEXT_STATE <= COLISION;
+                end if;
                 new_piece_flag <= '0';
-                START_GAME <= '0';
+                START_GAME     <= '0';
+                line_rstn      <= '0';
+                line_enable    <= '0';
+                col_rstn       <= '0';
+                fall           <= '0';
+                col_enable     <= '0';
+                LEDR <= "0010000000";
 
             when DRAW =>
                 if fim_escrita = '1' then
@@ -398,9 +452,17 @@ architecture behavior OF game_board IS
                     else
                         NEXT_STATE <= MOVE;
                     end if;
+                else
+                    NEXT_STATE <= DRAW;
                 end if;
+                line_rstn      <= '1';
+                line_enable    <= '1';
+                col_rstn       <= '1';
+                col_enable     <= '1';
+                fall           <= '0';
                 new_piece_flag <= '0';
-                START_GAME <= '0';
+                START_GAME     <= '0';
+                LEDR <= "0001000000";
 
             when NEW_PIECE =>
                 if not_so_slow_clock = '1' then
@@ -409,7 +471,13 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= NEW_PIECE;
                 end if;
                 new_piece_flag <= '1';
-                START_GAME <= '0';
+                fall           <= '0';
+                START_GAME     <= '0';
+                line_rstn      <= '1';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0000100000";
 
             when MENU =>
                 if START_GAME = '1' then
@@ -418,11 +486,23 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= MENU;
                 end if;
                 new_piece_flag <= '0';
-                START_GAME <= '0';
+                START_GAME     <= '0';
+                line_rstn      <= '1';
+                fall           <= '0';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0000010000";
 
             when others =>
-                NEXT_STATE <= NEW_GAME;
-                START_GAME <= '1';
+                NEXT_STATE     <= NEW_GAME;
+                START_GAME     <= '1';
+                line_rstn      <= '1';
+                fall           <= '0';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0000000000";
         end case;
     end process logica_mealy;
 

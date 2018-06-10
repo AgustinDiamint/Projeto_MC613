@@ -1,5 +1,6 @@
 |game_board
-SW[0] => ~NO_FANOUT~
+SW[0] => NEXT_STATE.DATAB
+SW[0] => NEXT_STATE.DATAB
 CLOCK_50 => vgacon:vga_component.clk50M
 CLOCK_50 => linha[0].CLK
 CLOCK_50 => linha[1].CLK
@@ -20,6 +21,16 @@ CLOCK_50 => create_piece:create_piece_prt.clock
 CLOCK_50 => state~1.DATAIN
 KEY[0] => vgacon:vga_component.rstn
 KEY[0] => state~3.DATAIN
+LEDR[0] <= <GND>
+LEDR[1] <= <GND>
+LEDR[2] <= <GND>
+LEDR[3] <= <GND>
+LEDR[4] <= LEDR[4].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[5] <= LEDR[5].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[6] <= LEDR[6].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[7] <= LEDR[7].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[8] <= LEDR[8].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[9] <= LEDR[9].DB_MAX_OUTPUT_PORT_TYPE
 VGA_R[0] <= vgacon:vga_component.red[0]
 VGA_R[1] <= vgacon:vga_component.red[1]
 VGA_R[2] <= vgacon:vga_component.red[2]

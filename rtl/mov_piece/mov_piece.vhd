@@ -18,6 +18,7 @@ architecture rtl of mov_piece is
 begin
 	process (key_on(0), clock)
 	begin
+        mov <= '0';
 		if (rising_edge(clock)) then
 			--LEFT
 			if key_code(15 downto 0) = x"e06b" then
@@ -36,6 +37,5 @@ begin
 				rotation <= '1';
 			end if;
 		end if;
-	mov <= '0';
 	end process;
 end architecture rtl;

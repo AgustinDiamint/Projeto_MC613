@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Sat Jun 09 19:06:58 2018
+Analysis & Synthesis Status : Successful - Sun Jun 10 18:08:27 2018
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : Tetris
 Top-level Entity Name : game_board
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 3427
-Total pins : 34
+Total registers : 3428
+Total pins : 44
 Total virtual pins : 0
 Total block memory bits : 3,300
 Total DSP Blocks : 7
