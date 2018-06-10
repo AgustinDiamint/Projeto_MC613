@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Tetris
-Sun Jun 10 18:08:27 2018
+Sun Jun 10 19:50:56 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -18,31 +18,30 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
  10. State Machine - |game_board|kbdex_ctrl:kbd_ctrl|state
  11. State Machine - |game_board|kbdex_ctrl:kbd_ctrl|cmdstate
  12. State Machine - |game_board|state
- 13. User-Specified and Inferred Latches
- 14. Registers Removed During Synthesis
- 15. Removed Registers Triggering Further Register Optimizations
- 16. General Register Statistics
- 17. Inverted Register Statistics
- 18. Registers Packed Into Inferred Megafunctions
- 19. Multiplexer Restructuring Statistics (Restructuring Performed)
- 20. Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated
- 21. Parameter Settings for User Entity Instance: vgacon:vga_component
- 22. Parameter Settings for User Entity Instance: vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i
- 23. Parameter Settings for User Entity Instance: vgacon:vga_component|dual_clock_ram:vgamem
- 24. Parameter Settings for User Entity Instance: kbdex_ctrl:kbd_ctrl
- 25. Parameter Settings for User Entity Instance: kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl
- 26. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0
- 27. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div1
- 28. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div0
- 29. altsyncram Parameter Settings by Entity Instance
- 30. Port Connectivity Checks: "create_piece:create_piece_prt"
- 31. Port Connectivity Checks: "mov_piece:movement"
- 32. Port Connectivity Checks: "kbdex_ctrl:kbd_ctrl"
- 33. Port Connectivity Checks: "clock_div:clock_component"
- 34. Port Connectivity Checks: "vgacon:vga_component"
- 35. Post-Synthesis Netlist Statistics for Top Partition
- 36. Elapsed Time Per Partition
- 37. Analysis & Synthesis Messages
+ 13. Registers Removed During Synthesis
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Inverted Register Statistics
+ 17. Registers Packed Into Inferred Megafunctions
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Source assignments for vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0|altsyncram_egl1:auto_generated
+ 20. Parameter Settings for User Entity Instance: vgacon:vga_component
+ 21. Parameter Settings for User Entity Instance: vgacon:vga_component|vga_pll:divider|vga_pll_0002:vga_pll_inst|altera_pll:altera_pll_i
+ 22. Parameter Settings for User Entity Instance: vgacon:vga_component|dual_clock_ram:vgamem
+ 23. Parameter Settings for User Entity Instance: kbdex_ctrl:kbd_ctrl
+ 24. Parameter Settings for User Entity Instance: kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl
+ 25. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|dual_clock_ram:vgamem|altsyncram:ram_block_rtl_0
+ 26. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div1
+ 27. Parameter Settings for Inferred Entity Instance: vgacon:vga_component|lpm_divide:Div0
+ 28. altsyncram Parameter Settings by Entity Instance
+ 29. Port Connectivity Checks: "create_piece:create_piece_prt"
+ 30. Port Connectivity Checks: "mov_piece:movement"
+ 31. Port Connectivity Checks: "kbdex_ctrl:kbd_ctrl"
+ 32. Port Connectivity Checks: "clock_div:clock_component"
+ 33. Port Connectivity Checks: "vgacon:vga_component"
+ 34. Post-Synthesis Netlist Statistics for Top Partition
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
 
 
 
@@ -68,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Jun 10 18:08:27 2018       ;
+; Analysis & Synthesis Status     ; Successful - Sun Jun 10 19:50:55 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
@@ -183,14 +182,14 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 2.10        ;
+; Average used               ; 2.11        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  36.7%      ;
-;     Processor 3            ;  36.7%      ;
-;     Processor 4            ;  36.7%      ;
+;     Processor 2            ;  37.0%      ;
+;     Processor 3            ;  37.0%      ;
+;     Processor 4            ;  37.0%      ;
 +----------------------------+-------------+
 
 
@@ -236,14 +235,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+---------------------------------+
 ; Resource                                    ; Usage                           ;
 +---------------------------------------------+---------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 4748                            ;
+; Estimate of Logic utilization (ALMs needed) ; 4747                            ;
 ;                                             ;                                 ;
-; Combinational ALUT usage for logic          ; 7709                            ;
+; Combinational ALUT usage for logic          ; 7708                            ;
 ;     -- 7 input functions                    ; 2                               ;
 ;     -- 6 input functions                    ; 1780                            ;
 ;     -- 5 input functions                    ; 984                             ;
-;     -- 4 input functions                    ; 3394                            ;
-;     -- <=3 input functions                  ; 1549                            ;
+;     -- 4 input functions                    ; 3392                            ;
+;     -- <=3 input functions                  ; 1550                            ;
 ;                                             ;                                 ;
 ; Dedicated logic registers                   ; 3428                            ;
 ;                                             ;                                 ;
@@ -258,8 +257,8 @@ refer to the applicable agreement for further details.
 ;                                             ;                                 ;
 ; Maximum fan-out node                        ; clock_div:clock_component|temp2 ;
 ; Maximum fan-out                             ; 3341                            ;
-; Total fan-out                               ; 38830                           ;
-; Average fan-out                             ; 3.46                            ;
+; Total fan-out                               ; 38624                           ;
+; Average fan-out                             ; 3.44                            ;
 +---------------------------------------------+---------------------------------+
 
 
@@ -268,7 +267,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                              ; Entity Name         ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |game_board                                  ; 7709 (7489)         ; 3428 (3352)               ; 3300              ; 7          ; 44   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
+; |game_board                                  ; 7708 (7488)         ; 3428 (3352)               ; 3300              ; 7          ; 44   ; 0            ; |game_board                                                                                                                      ; game_board          ; work         ;
 ;    |clock_div:clock_component|               ; 41 (41)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |game_board|clock_div:clock_component                                                                                            ; clock_div           ; work         ;
 ;    |create_piece:create_piece_prt|           ; 4 (4)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |game_board|create_piece:create_piece_prt                                                                                        ; create_piece        ; work         ;
 ;    |vgacon:vga_component|                    ; 175 (35)            ; 40 (40)                   ; 3300              ; 1          ; 0    ; 0            ; |game_board|vgacon:vga_component                                                                                                 ; vgacon              ; vga_pll      ;
@@ -359,17 +358,6 @@ Encoding Type:  One-Hot
 +-----------------+------------+------------+-----------------+----------------+------------+----------------+
 
 
-+---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; fall                                               ; START_GAME          ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
 +------------------------------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                                         ;
 +--------------------------------------------------------------+---------------------------------------------+
@@ -411,6 +399,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|\FROMPS2:count[0]    ; Stuck at GND due to stuck port clear        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|rcount[0]            ; Stuck at GND due to stuck port clear        ;
 ; kbdex_ctrl:kbd_ctrl|key2code[5..7]                           ; Stuck at GND due to stuck port clear        ;
+; mov_piece:movement|mov                                       ; Stuck at GND due to stuck port data_in      ;
 ; mov_piece:movement|direction[0,1]                            ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|laststate[1,2]                           ; Lost fanout                                 ;
 ; kbdex_ctrl:kbd_ctrl|hdata[5..7]                              ; Lost fanout                                 ;
@@ -448,7 +437,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; kbdex_ctrl:kbd_ctrl|cmdstate.WAITACK1                        ; Stuck at GND due to stuck port clear        ;
 ; kbdex_ctrl:kbd_ctrl|cmdstate.CLEAR                           ; Stuck at GND due to stuck port clear        ;
 ; state.MENU                                                   ; Stuck at GND due to stuck port data_in      ;
-; Total Number of Removed Registers = 191                      ;                                             ;
+; Total Number of Removed Registers = 192                      ;                                             ;
 +--------------------------------------------------------------+---------------------------------------------+
 
 
@@ -533,7 +522,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[0], kbdex_ctrl:kbd_ctrl|key2code[13],               ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[14], kbdex_ctrl:kbd_ctrl|key2code[15],              ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[7], kbdex_ctrl:kbd_ctrl|key2code[6],                ;
-;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[5]                                                  ;
+;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|key2code[5], mov_piece:movement|mov,                         ;
+;                                                    ;                           ; mov_piece:movement|direction[1], mov_piece:movement|direction[0], piece[0][0][0] ;
 ; kbdex_ctrl:kbd_ctrl|newdata                        ; Stuck at GND              ; kbdex_ctrl:kbd_ctrl|fetchdata[0], kbdex_ctrl:kbd_ctrl|fetchdata[1],              ;
 ;                                                    ; due to stuck port clear   ; kbdex_ctrl:kbd_ctrl|fetchdata[2], kbdex_ctrl:kbd_ctrl|fetchdata[3],              ;
 ;                                                    ;                           ; kbdex_ctrl:kbd_ctrl|fetchdata[4], kbdex_ctrl:kbd_ctrl|fetchdata[5],              ;
@@ -2183,7 +2173,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     SCLR              ; 18                          ;
 ;     plain             ; 2529                        ;
 ; arriav_io_obuf        ; 2                           ;
-; arriav_lcell_comb     ; 7712                        ;
+; arriav_lcell_comb     ; 7711                        ;
 ;     arith             ; 159                         ;
 ;         0 data inputs ; 18                          ;
 ;         1 data inputs ; 96                          ;
@@ -2192,12 +2182,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         4 data inputs ; 13                          ;
 ;     extend            ; 2                           ;
 ;         7 data inputs ; 2                           ;
-;     normal            ; 7546                        ;
+;     normal            ; 7545                        ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 8                           ;
-;         2 data inputs ; 573                         ;
-;         3 data inputs ; 818                         ;
-;         4 data inputs ; 3381                        ;
+;         2 data inputs ; 774                         ;
+;         3 data inputs ; 618                         ;
+;         4 data inputs ; 3379                        ;
 ;         5 data inputs ; 984                         ;
 ;         6 data inputs ; 1780                        ;
 ;     shared            ; 5                           ;
@@ -2218,7 +2208,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:29     ;
+; Top            ; 00:00:25     ;
 +----------------+--------------+
 
 
@@ -2228,7 +2218,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Jun 10 18:07:38 2018
+    Info: Processing started: Sun Jun 10 19:50:13 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Tetris -c Tetris
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -2267,11 +2257,9 @@ Info (12127): Elaborating entity "game_board" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(86): object "slow_clock" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 86
 Warning (10541): VHDL Signal Declaration warning at game_board.vhd(136): used implicit default value for signal "lights" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 136
 Warning (10036): Verilog HDL or VHDL warning at game_board.vhd(146): object "rotation" assigned a value but never read File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 146
-Warning (10492): VHDL Process Statement warning at game_board.vhd(449): signal "fim_escrita" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 449
-Warning (10492): VHDL Process Statement warning at game_board.vhd(450): signal "CLASH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 450
-Warning (10492): VHDL Process Statement warning at game_board.vhd(482): signal "START_GAME" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 482
-Warning (10631): VHDL Process Statement warning at game_board.vhd(400): inferring latch(es) for signal or variable "fall", which holds its previous value in one or more paths through the process File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 400
-Info (10041): Inferred latch for "fall" at game_board.vhd(400) File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 400
+Warning (10492): VHDL Process Statement warning at game_board.vhd(450): signal "fim_escrita" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 450
+Warning (10492): VHDL Process Statement warning at game_board.vhd(451): signal "CLASH" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 451
+Warning (10492): VHDL Process Statement warning at game_board.vhd(484): signal "START_GAME" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 484
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "piece" into its bus
 Info (12128): Elaborating entity "vgacon" for hierarchy "vgacon:vga_component" File: D:/MC613/Projeto_MC613/rtl/game_board/game_board.vhd Line: 155
 Info (12128): Elaborating entity "vga_pll" for hierarchy "vgacon:vga_component|vga_pll:divider" File: D:/MC613/Projeto_MC613/rtl/game_board/vgacon.vhd Line: 118
@@ -2464,18 +2452,18 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 23 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 7 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 7791 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 7790 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
     Info (21059): Implemented 39 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 7736 logic cells
+    Info (21061): Implemented 7735 logic cells
     Info (21064): Implemented 3 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 7 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 53 warnings
-    Info: Peak virtual memory: 5106 megabytes
-    Info: Processing ended: Sun Jun 10 18:08:27 2018
-    Info: Elapsed time: 00:00:49
-    Info: Total CPU time (on all processors): 00:01:17
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 52 warnings
+    Info: Peak virtual memory: 5101 megabytes
+    Info: Processing ended: Sun Jun 10 19:50:56 2018
+    Info: Elapsed time: 00:00:43
+    Info: Total CPU time (on all processors): 00:01:06
 
 

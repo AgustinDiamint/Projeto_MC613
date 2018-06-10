@@ -1,5 +1,5 @@
 Flow report for Tetris
-Sun Jun 10 18:26:47 2018
+Sun Jun 10 19:57:18 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Sun Jun 10 18:26:24 2018       ;
+; Flow Status                     ; Successful - Sun Jun 10 19:56:54 2018       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Tetris                                      ;
 ; Top-level Entity Name           ; game_board                                  ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 4,616 / 32,070 ( 14 % )                     ;
-; Total registers                 ; 3449                                        ;
+; Logic utilization (in ALMs)     ; 4,611 / 32,070 ( 14 % )                     ;
+; Total registers                 ; 3443                                        ;
 ; Total pins                      ; 44 / 457 ( 10 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 3,300 / 4,065,280 ( < 1 % )                 ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/10/2018 18:07:39 ;
+; Start date & time ; 06/10/2018 19:50:13 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Tetris              ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 88623642564912.152866485826260         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 88623642564912.152867101357040         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; game_board/vga_pll.cmp                 ; --            ; --          ; --         ;
@@ -98,11 +98,11 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:48     ; 2.1                     ; 5106 MB             ; 00:01:16                           ;
-; Fitter                    ; 00:17:40     ; 1.0                     ; 6718 MB             ; 00:23:52                           ;
-; Assembler                 ; 00:00:11     ; 1.0                     ; 4915 MB             ; 00:00:11                           ;
-; TimeQuest Timing Analyzer ; 00:00:21     ; 2.5                     ; 5331 MB             ; 00:00:45                           ;
-; Total                     ; 00:19:00     ; --                      ; --                  ; 00:26:04                           ;
+; Analysis & Synthesis      ; 00:00:41     ; 2.1                     ; 5101 MB             ; 00:01:04                           ;
+; Fitter                    ; 00:05:44     ; 1.1                     ; 6740 MB             ; 00:10:21                           ;
+; Assembler                 ; 00:00:10     ; 1.0                     ; 4910 MB             ; 00:00:10                           ;
+; TimeQuest Timing Analyzer ; 00:00:22     ; 2.3                     ; 5323 MB             ; 00:00:44                           ;
+; Total                     ; 00:06:57     ; --                      ; --                  ; 00:12:19                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

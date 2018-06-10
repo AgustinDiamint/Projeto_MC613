@@ -90,7 +90,7 @@ architecture behavior OF game_board IS
     normal_video_address	,
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
 
-    --definicao da peca atual, matriz 4x2 que guarda a posicao de cada quadrado
+    --definicao da peca atual, matriz 4x2 que guarda as coordenadas de cada quadrado
     type pieces_type is array (0 to 3, 0 to 1) of integer range 0 to HORZ_SIZE;
     signal piece : pieces_type;
 
@@ -136,10 +136,10 @@ architecture behavior OF game_board IS
     signal lights, key_on		: std_logic_vector(2 downto 0);
     signal key_code             : std_logic_vector(47 downto 0);
     --acho que aqui um dos estados que pode ser definido eh o menu...
-    TYPE VGA_STATES IS (NEW_GAME, MOVE, COLISION, NEW_PIECE, DRAW, MENU);
+    TYPE VGA_STATES IS (NEW_GAME, INICIO, MOVE, COLLISION, NEW_PIECE, DRAW, MENU, OVER);
     signal state, NEXT_STATE : VGA_STATES;
     signal fall : std_logic;
-
+    signal np_previous : std_logic;
 
     signal switch, rstn , sync, blank : std_logic;
     signal clock_count : std_logic;
@@ -159,7 +159,7 @@ architecture behavior OF game_board IS
         clk50M          => CLOCK_50,
         rstn            => rstn,
         write_clk		=> CLOCK_50,
-        write_enable	=> '1',
+        write_enable	=> we,
         write_addr      => video_address,
         vga_clk         => VGA_CLK,
         data_in         => pixel,
@@ -245,6 +245,7 @@ architecture behavior OF game_board IS
             end if;
         end if;
     end process conta_linha;
+
 
     fim_escrita <= '1' when (linha = VERT_SIZE - 1) and (col = HORZ_SIZE - 1)
                    else '0';
@@ -358,7 +359,6 @@ architecture behavior OF game_board IS
                     end loop;
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
-
                     end loop;
                 elsif direction = "01" then -- direita
                     for i in 0 to 3 loop
@@ -382,17 +382,12 @@ architecture behavior OF game_board IS
                         piece(i, 1) <= piece(i, 1) + 1; --adicionamos um na coordenada y
                     end loop;
                     for i in 0 to 3 loop
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color; --LINHA DO MAL! CUIDADO
                     end loop;
                 else
                     clock_count <= not clock_count;
                 end if;
             end if;
-
-            --desenha o tabuleiro atual
-            --for i in 0 to 3 loop
-            --    pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_piece_type;
-            --end loop;
 
         end if;
     end process;
@@ -408,77 +403,110 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= NEW_GAME;
                 end if;
                 START_GAME     <= '1';
+                np_previous    <= '0';
                 new_piece_flag <= '0';
                 fall           <= '0';
+                we             <= '0';
                 line_rstn      <= '0';  -- reset é active low!
                 line_enable    <= '0';
                 col_rstn       <= '0';  -- reset é active low!
                 col_enable     <= '0';
                 LEDR <= "1000000000";
 
-            when MOVE =>
+            when NEW_PIECE =>
                 if not_so_slow_clock = '1' then
-                    NEXT_STATE <= COLISION;
+                    NEXT_STATE <= COLLISION;
                 else
-                    NEXT_STATE <= MOVE;
+                    NEXT_STATE <= NEW_PIECE;
                 end if;
                 START_GAME     <= '0';
-                new_piece_flag <= '0';
-                fall           <= '1';
+                np_previous    <= '1';
+                new_piece_flag <= '1';
+                fall           <= '0';
+                we             <= '0';
                 line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
                 LEDR <= "0100000000";
 
-            when COLISION =>
+            when COLLISION =>
                 if not_so_slow_clock = '1' then
                     NEXT_STATE <= DRAW;
                 else
-                    NEXT_STATE <= COLISION;
+                    NEXT_STATE <= COLLISION;
                 end if;
-                new_piece_flag <= '0';
+
                 START_GAME     <= '0';
+                new_piece_flag <= '0';
                 fall           <= '0';
+                we             <= '0';
+                line_rstn      <= '1';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0010000000";
+
+            when INICIO =>
+                if clash = '1' then
+                    if np_previous = '1' then
+                        NEXT_STATE <= OVER
+                    else
+                        NEXT_STATE <= NEW_PIECE
+                    end if;
+                else
+                    if not_so_slow_clock = '1' then
+                        NEXT_STATE <= DRAW;
+                    else
+                        NEXT_STATE <= INICIO;
+                    end if;
+                end if;
+                START_GAME     <= '0';
+                np_previous    <= '0';
+                new_piece_flag <= '0';
+                fall           <= '0';
+                we             <= '0';
                 line_rstn      <= '0';
                 line_enable    <= '0';
                 col_rstn       <= '0';
                 col_enable     <= '0';
-                LEDR <= "0010000000";
+                LEDR <= "0001000000";
+
 
             when DRAW =>
                 if fim_escrita = '1' then
-                    if clash = '1' then
-                        NEXT_STATE <= NEW_PIECE;
-                    else
-                        NEXT_STATE <= MOVE;
-                    end if;
+                    NEXT_STATE <= MOVE
                 else
                     NEXT_STATE <= DRAW;
                 end if;
                 START_GAME     <= '0';
+                np_previous    <= '0';
                 new_piece_flag <= '0';
                 fall           <= '0';
+                we             <= '1';
                 line_rstn      <= '1';
                 line_enable    <= '1';
                 col_rstn       <= '1';
                 col_enable     <= '1';
-                LEDR <= "0001000000";
+                LEDR <= "0000100000";
 
-            when NEW_PIECE =>
+
+            when MOVE =>
                 if not_so_slow_clock = '1' then
-                    NEXT_STATE <= COLISION;
+                    NEXT_STATE <= COLLISON;
                 else
-                    NEXT_STATE <= NEW_PIECE;
+                    NEXT_STATE <= MOVE;
                 end if;
-                new_piece_flag <= '1';
-                fall           <= '0';
                 START_GAME     <= '0';
+                new_piece_flag <= '0';
+                fall           <= '1';
+                we             <= '0';
                 line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000100000";
+                LEDR <= "0000010000";
+
 
             when MENU =>
                 if START_GAME = '1' then
@@ -488,18 +516,31 @@ architecture behavior OF game_board IS
                 end if;
                 new_piece_flag <= '0';
                 START_GAME     <= '0';
-                line_rstn      <= '1';
                 fall           <= '0';
+                we             <= '0';
+                line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000010000";
+                LEDR <= "0000001000";
+
+            when OVER => NEXT_STATE <= NEW_GAME;
+                new_piece_flag <= '0';
+                START_GAME     <= '0';
+                fall           <= '0';
+                we             <= '0';
+                line_rstn      <= '1';
+                line_enable    <= '0';
+                col_rstn       <= '1';
+                col_enable     <= '0';
+                LEDR <= "0000000100";
 
             when others =>
                 NEXT_STATE     <= NEW_GAME;
                 START_GAME     <= '1';
-                line_rstn      <= '1';
                 fall           <= '0';
+                we             <= '0';
+                line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
