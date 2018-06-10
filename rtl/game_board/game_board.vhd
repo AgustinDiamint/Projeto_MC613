@@ -407,8 +407,9 @@ architecture behavior OF game_board IS
                 else
                     NEXT_STATE <= NEW_GAME;
                 end if;
-                START_GAME <= '1';
+                START_GAME     <= '1';
                 new_piece_flag <= '0';
+                fall           <= '0';
                 line_rstn      <= '0';  -- reset é active low!
                 line_enable    <= '0';
                 col_rstn       <= '0';  -- reset é active low!
@@ -421,8 +422,8 @@ architecture behavior OF game_board IS
                 else
                     NEXT_STATE <= MOVE;
                 end if;
-                new_piece_flag <= '0';
                 START_GAME     <= '0';
+                new_piece_flag <= '0';
                 fall           <= '1';
                 line_rstn      <= '1';
                 line_enable    <= '0';
@@ -438,10 +439,10 @@ architecture behavior OF game_board IS
                 end if;
                 new_piece_flag <= '0';
                 START_GAME     <= '0';
+                fall           <= '0';
                 line_rstn      <= '0';
                 line_enable    <= '0';
                 col_rstn       <= '0';
-                fall           <= '0';
                 col_enable     <= '0';
                 LEDR <= "0010000000";
 
@@ -455,13 +456,13 @@ architecture behavior OF game_board IS
                 else
                     NEXT_STATE <= DRAW;
                 end if;
+                START_GAME     <= '0';
+                new_piece_flag <= '0';
+                fall           <= '0';
                 line_rstn      <= '1';
                 line_enable    <= '1';
                 col_rstn       <= '1';
                 col_enable     <= '1';
-                fall           <= '0';
-                new_piece_flag <= '0';
-                START_GAME     <= '0';
                 LEDR <= "0001000000";
 
             when NEW_PIECE =>
