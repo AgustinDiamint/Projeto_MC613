@@ -6,11 +6,11 @@ USE ieee.numeric_std.ALL;
 entity mov_piece is
 port (
 	clock		: in 	std_logic;
-	key_on 	: in 	std_logic_vector(2 downto 0);
-   key_code : in 	std_logic_vector(47 downto 0);
-	direction: out std_logic_vector(1 downto 0);
-	mov 		: out std_logic;
-	rotation	: out std_logic);
+	key_on 	    : in 	std_logic_vector(2 downto 0);
+    key_code    : in 	std_logic_vector(47 downto 0);
+	direction   : out   std_logic_vector(1 downto 0);
+	mov 		: out   std_logic;
+	rotation	: out   std_logic);
 end mov_piece;
 
 architecture rtl of mov_piece is
@@ -18,9 +18,10 @@ architecture rtl of mov_piece is
 begin
 	process (key_on(0), clock)
 	begin
-        
+
 		if (rising_edge(clock)) then
 			mov <= '0';
+            direction <= "00"
 			--LEFT
 			if key_code(15 downto 0) = x"e06b" then
 				direction <= "11";
