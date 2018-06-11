@@ -21,7 +21,7 @@ begin
 
 		if (rising_edge(clock)) then
 			mov <= '0';
-            direction <= "00"
+            direction <= "00";
 			--LEFT
 			if key_code(15 downto 0) = x"e06b" then
 				direction <= "11";

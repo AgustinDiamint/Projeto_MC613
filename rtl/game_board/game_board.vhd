@@ -140,6 +140,7 @@ architecture behavior OF game_board IS
     TYPE VGA_STATES IS (NEW_GAME, INICIO, MOVE, COLLISION, NEW_PIECE, DRAW, MENU, OVER);
     signal state, NEXT_STATE : VGA_STATES;
     signal fall : std_logic;
+    signal clash_new : std_logic;
 
     signal switch, rstn , sync, blank : std_logic;
     signal clock_count : std_logic;
@@ -274,8 +275,10 @@ architecture behavior OF game_board IS
                 end loop;
 
             --cria nova peca
-            elsif new_piece_flag = '1' then
+        elsif new_piece_flag = '1' then
                 current_piece_type <= new_piece_type;
+                clash <= '0';
+                clash_new <= '0';
                 if current_piece_type = "001" then --tipo L
                     piece(0,0) <= X_INITIAL;
                     piece(0,1) <= Y_INITIAL;
@@ -340,9 +343,21 @@ architecture behavior OF game_board IS
                     piece(3,0) <= X_INITIAL-1;
                     piece(3,1) <= Y_INITIAL+1;
                 end if;
-            -- logica do movimento da peca
+                --testa se a nova peca vai colidir
+                for i in 0 to 3 loop
+                    if pos_color(piece(i, 0) + piece(i, 1) * HORZ_SIZE ) /= "000" then
+                        clash_new <= '1';
+                        clash <= '1';
+                    end if;
+                end loop;
+
+
+           -- logica do movimento da peca
             --apaga a posicao atual e escreve na prox
             elsif mov = '1' then
+                clash <= '0';
+                clash_l <= '0';
+                clash_new <= '0';
                 if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
@@ -359,16 +374,16 @@ architecture behavior OF game_board IS
                     else
                         for i in 0 to 3 loop
                             piece(i, 1) <= piece(i, 1) + 1;
-                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                            pos_color(piece(i, 0) + ((piece(i, 1)+1) * HORZ_SIZE )) <= current_color;
                         end loop;
                     end if;
                 elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000"; --apaga peca atual
                     end loop;
                     for i in 0 to 3 loop
-                        if pos_color(piece(i, 0) - 1 + piece(i, 1) * HORZ_SIZE /= "000" then
-                            clash_l <= '1';
+                        if pos_color(piece(i, 0) - 1 + piece(i, 1) * HORZ_SIZE) /= "000" then --ve se a posicao a esq eh dif de preto
+                            clash_l <= '1'; -- clash lateral
                         end if;
                     end loop;
                     if clash_l = '1' then
@@ -378,7 +393,7 @@ architecture behavior OF game_board IS
                     else
                         for i in 0 to 3 loop
                             piece(i, 0) <= piece(i, 0) - 1;
-                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                            pos_color(piece(i, 0) - 1 + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                         end loop;
                     end if;
                 elsif direction = "01" then -- direita
@@ -386,7 +401,7 @@ architecture behavior OF game_board IS
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
                     end loop;
                     for i in 0 to 3 loop
-                        if pos_color(piece(i, 0) + 1 + piece(i, 1) * HORZ_SIZE /= "000" then
+                        if pos_color(piece(i, 0) + 1 + piece(i, 1) * HORZ_SIZE) /= "000" then
                             clash_l <= '1';
                         end if;
                     end loop;
@@ -397,30 +412,33 @@ architecture behavior OF game_board IS
                     else
                         for i in 0 to 3 loop
                             piece(i, 0) <= piece(i, 0) + 1;
-                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                            pos_color(piece(i, 0) + 1 + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                         end loop;
                     end if;
                 end if;
             -- queda da peca natural
             elsif fall = '1' then
+                clash <= '0';
+                clash_l <= '0';
+                clash_new <= '0';
                 if clock_count = '1' then --Faz queda acontecer a cada 1s
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000"; --supostamente apaga a peca
                     end loop;
                     for i in 0 to 3 loop
-                        if pos_color(piece(i, 0) + ((piece(i, 1) + 1) * HORZ_SIZE )) /= "000" then
+                        if pos_color(piece(i, 0) + ((piece(i, 1) + 1) * HORZ_SIZE )) /= "000" then --ve se a nova posicao da peca esta ocupada
                             clash <= '1';
                         end if;
                     end loop;
                     if clash = '1' then
                         for i in 0 to 3 loop
-                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color; -- se estiver deixa no mesmo lugar
                         end loop;
                     else
                         for i in 0 to 3 loop
                             piece(i, 1) <= piece(i, 1) + 1;
-                            pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
+                            pos_color(piece(i, 0) + ((piece(i, 1)+1) * HORZ_SIZE )) <= current_color; -- se nao estiver desce uma linha
                         end loop;
                     end if;
                 else
@@ -466,12 +484,10 @@ architecture behavior OF game_board IS
                 col_enable     <= '0';
                 aux_led <= "010000000"; -- Usado pra debug
 
-            -- Nao implementado // teste de colisao
-
             -- Prepara a tela pra ser escrita, resetando linha e coluna
             when INICIO =>
                 if clash = '1' then
-                    if np_previous = '1' then
+                    if clash_new = '1' then
                         NEXT_STATE <= OVER;
                     else
                         NEXT_STATE <= NEW_PIECE;
