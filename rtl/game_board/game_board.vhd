@@ -149,6 +149,7 @@ architecture behavior OF game_board IS
     BEGIN
     rstn <= KEY(0);
     clash <= SW(0);
+
     --evita a cor branca
     current_color <= "010" when current_piece_type = "111" else current_piece_type;
 
@@ -185,7 +186,7 @@ architecture behavior OF game_board IS
         ps2_clk		=> PS2_CLK,
         clk			=> CLOCK_50,
         en			=> '1',
-        resetn		=> '0',
+        resetn		=> '1',
         lights		=> lights(1) & lights(2) & lights(0),
         key_on		=> key_on,
         key_code	=> key_code);
@@ -196,7 +197,7 @@ architecture behavior OF game_board IS
         key_code 	=> key_code,
         direction	=> direction,
         mov 		=> mov,
-        rotation    => rotation);
+        rotation    => rotation); 
 
 
     create_piece_prt:   create_piece port map (
@@ -247,12 +248,12 @@ architecture behavior OF game_board IS
     end process conta_linha;
 
 
-    fim_escrita <= '1' when (linha = VERT_SIZE - 1) and (col = HORZ_SIZE - 1)
-                   else '0';
-
     -- manda o endereco atual e a cor desse endereco para o vgacon.
     video_address  <= col + (HORZ_SIZE * linha);
     pixel <= pos_color(col + (HORZ_SIZE * linha));
+
+    fim_escrita <= '1' when (linha = VERT_SIZE - 1) and (col = HORZ_SIZE - 1)
+                   else '0';
 
     game_logic: process(not_so_slow_clock)
     begin
@@ -270,6 +271,7 @@ architecture behavior OF game_board IS
                         end if;
                     end loop;
                 end loop;
+
             --cria nova peca
             elsif new_piece_flag = '1' then
                 current_piece_type <= new_piece_type;
@@ -337,37 +339,26 @@ architecture behavior OF game_board IS
                     piece(3,0) <= X_INITIAL-1;
                     piece(3,1) <= Y_INITIAL+1;
                 end if;
+
             -- logica do movimento da peca
             --apaga a posicao atual e escreve na prox
             elsif mov = '1' then
                 if direction = "10" then -- baixo
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                    end loop;
-                    for i in 0 to 3 loop
                         piece(i, 1) <= piece(i, 1) + 1;
-                    end loop;
-                    for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 elsif direction = "11" then -- esquerda
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                    end loop;
-                    for i in 0 to 3 loop
                         piece(i, 0) <= piece(i, 0) - 1;
-                    end loop;
-                    for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 elsif direction = "01" then -- direita
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                    end loop;
-                    for i in 0 to 3 loop
                         piece(i, 0) <= piece(i, 0) + 1;
-                    end loop;
-                    for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color;
                     end loop;
                 end if;
@@ -377,11 +368,7 @@ architecture behavior OF game_board IS
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
-                    end loop;
-                    for i in 0 to 3 loop
                         piece(i, 1) <= piece(i, 1) + 1; --adicionamos um na coordenada y
-                    end loop;
-                    for i in 0 to 3 loop
                         pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color; --LINHA DO MAL! CUIDADO
                     end loop;
                 else
@@ -407,9 +394,9 @@ architecture behavior OF game_board IS
                 new_piece_flag <= '0';
                 fall           <= '0';
                 we             <= '0';
-                line_rstn      <= '0';  -- reset é active low!
+                line_rstn      <= '1';  -- reset é active low!
                 line_enable    <= '0';
-                col_rstn       <= '0';  -- reset é active low!
+                col_rstn       <= '1';  -- reset é active low!
                 col_enable     <= '0';
                 LEDR <= "1000000000";
 
