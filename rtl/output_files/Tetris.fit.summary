@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sun Jun 10 19:56:41 2018
+Fitter Status : Successful - Mon Jun 11 18:17:34 2018
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : Tetris
 Top-level Entity Name : game_board
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 4,611 / 32,070 ( 14 % )
-Total registers : 3443
+Logic utilization (in ALMs) : 5,335 / 32,070 ( 17 % )
+Total registers : 3622
 Total pins : 44 / 457 ( 10 % )
 Total virtual pins : 0
 Total block memory bits : 3,300 / 4,065,280 ( < 1 % )

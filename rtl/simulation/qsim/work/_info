@@ -101,7 +101,7 @@ R25
 R19
 R20
 Ecreate_piece
-Z26 w1528308475
+Z26 w1528747599
 R2
 R3
 R4
@@ -111,7 +111,7 @@ R7
 R8
 R9
 R10
-R0
+Z27 d/run/media/ra157637/WILL/Trabalhos MC613/Projeto_MC613/rtl/simulation/qsim
 R12
 R13
 l0
@@ -120,9 +120,9 @@ V7ANedkCn:bbO42oe;5]I72
 !s100 5VkUM_3Q3HH@Rla>ffQO`3
 R14
 32
-Z27 !s110 1528308475
+Z28 !s110 1528747601
 !i10b 1
-Z28 !s108 1528308475.000000
+Z29 !s108 1528747601.000000
 R17
 R18
 !i113 1
@@ -139,56 +139,56 @@ R8
 R9
 R10
 DEx4 work 12 create_piece 0 22 7ANedkCn:bbO42oe;5]I72
-l76
+l84
 L47
-VF7e>i^DFAN9m_cfkXGU`f0
-!s100 jc<2CDkXf`ZPi>JAOMmzo2
+VWbSOXb;;LCln@WFkEW2380
+!s100 4gd`J[gzJm4GL3Di?02Wz0
 R14
 32
-R27
-!i10b 1
 R28
+!i10b 1
+R29
 R17
 R18
 !i113 1
 R19
 R20
 Ecreate_piece_vhd_vec_tst
-Z29 w1528308473
+Z30 w1528747598
 R8
 R9
-R0
-Z30 8Waveform.vwf.vht
-Z31 FWaveform.vwf.vht
+R27
+Z31 8output_files/Waveform1_crtpc.vwf.vht
+Z32 Foutput_files/Waveform1_crtpc.vwf.vht
 l0
 L31
 VmR`1eO[RV8TZ@?eIO3>Z90
 !s100 n=Q]hW<QZ2n1nIJQHUJ`a0
 R14
 32
-R27
+Z33 !s110 1528747602
 !i10b 1
-R28
-Z32 !s90 -work|work|Waveform.vwf.vht|
-Z33 !s107 Waveform.vwf.vht|
+Z34 !s108 1528747602.000000
+Z35 !s90 -work|work|output_files/Waveform1_crtpc.vwf.vht|
+Z36 !s107 output_files/Waveform1_crtpc.vwf.vht|
 !i113 1
 R19
 R20
 Acreate_piece_arch
 R8
 R9
-DEx4 work 24 create_piece_vhd_vec_tst 0 22 mR`1eO[RV8TZ@?eIO3>Z90
+Z37 DEx4 work 24 create_piece_vhd_vec_tst 0 22 mR`1eO[RV8TZ@?eIO3>Z90
 l48
 L33
-VgRce7WV@cfQUfXzDEa=dH3
-!s100 ;hRXY1Wn::F@d0MI69zoQ2
+VHX[=5[c:flF3QVa:P;?Rh1
+!s100 o>jT`XlQdi5aG>oPK3G[X1
 R14
 32
-R27
-!i10b 1
-R28
-R32
 R33
+!i10b 1
+R34
+R35
+R36
 !i113 1
 R19
 R20

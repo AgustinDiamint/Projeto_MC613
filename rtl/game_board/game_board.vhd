@@ -1,3 +1,6 @@
+--Ciro, nossos problemas estão na seção da linha 374. A gente cria uma peça do tetris, e ela cai, mas nao conseguimos
+--apagar o rastro dela, alem disso aparecem pixels em lugares que não teriam que estar aparecendo.
+
 library ieee;
 use ieee.std_logic_1164.all;
 USE ieee.std_logic_unsigned.all;
@@ -78,14 +81,12 @@ architecture behavior OF game_board IS
 
 
 
-    constant cons_clock_div : integer := 1000000;
     constant HORZ_SIZE : integer := 50;
     constant VERT_SIZE : integer := 22;
     constant X_INITIAL : integer := 24;
     constant Y_INITIAL : integer := 1;
     signal slow_clock : std_logic;
     signal not_so_slow_clock : std_logic;
-    signal video_word : std_logic_vector( 2 downto 0);
     signal clear_video_address	,
     normal_video_address	,
     video_address			: integer range 0 to HORZ_SIZE * VERT_SIZE- 1;
@@ -146,7 +147,10 @@ architecture behavior OF game_board IS
     signal mov, rotation : std_logic;                       -- 1 quando peca esta se movendo ou rotacionando
     signal direction     : std_logic_vector(1 downto 0);    -- vetor que indica a direcao da peca
     signal current_color: std_logic_vector(2 downto 0);     -- cor atual da peca
+    signal aux_led :std_logic_vector (9 downto 1);
     BEGIN
+
+    --variaveis para testes
     rstn <= KEY(0);
     clash <= SW(0);
 
@@ -185,9 +189,9 @@ architecture behavior OF game_board IS
 		ps2_data    => PS2_DAT,
         ps2_clk		=> PS2_CLK,
         clk			=> CLOCK_50,
-        en			=> '1',
-        resetn		=> '1',
-        lights		=> lights(1) & lights(2) & lights(0),
+        en			=> '1', -- ativo alto
+        resetn		=> '1', --ativo baixo
+        lights		=> "000",
         key_on		=> key_on,
         key_code	=> key_code);
 
@@ -197,8 +201,7 @@ architecture behavior OF game_board IS
         key_code 	=> key_code,
         direction	=> direction,
         mov 		=> mov,
-        rotation    => rotation); 
-
+        rotation    => rotation);
 
     create_piece_prt:   create_piece port map (
         clock       => CLOCK_50,
@@ -250,7 +253,7 @@ architecture behavior OF game_board IS
 
     -- manda o endereco atual e a cor desse endereco para o vgacon.
     video_address  <= col + (HORZ_SIZE * linha);
-    pixel <= pos_color(col + (HORZ_SIZE * linha));
+    pixel          <= pos_color(col + (HORZ_SIZE * linha));
 
     fim_escrita <= '1' when (linha = VERT_SIZE - 1) and (col = HORZ_SIZE - 1)
                    else '0';
@@ -271,7 +274,7 @@ architecture behavior OF game_board IS
                         end if;
                     end loop;
                 end loop;
-
+                
             --cria nova peca
             elsif new_piece_flag = '1' then
                 current_piece_type <= new_piece_type;
@@ -364,12 +367,14 @@ architecture behavior OF game_board IS
                 end if;
             -- queda da peca natural
             elsif fall = '1' then
-                if clock_count = '1' then
+                if clock_count = '1' then --Faz queda acontecer a cada 1s
                     clock_count <= not clock_count;
                     for i in 0 to 3 loop
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000";
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= "000"; -- não esta apagando!
                         piece(i, 1) <= piece(i, 1) + 1; --adicionamos um na coordenada y
-                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color; --LINHA DO MAL! CUIDADO
+                        pos_color(piece(i, 0) + (piece(i, 1) * HORZ_SIZE )) <= current_color; -- essa linha desenha a peca atual
+                                                                            -- porem ao mudar a cor dela pra branco, pintou a tela inteira
+                                                                            --que nao faz muito sentido. 1
                     end loop;
                 else
                     clock_count <= not clock_count;
@@ -389,7 +394,7 @@ architecture behavior OF game_board IS
                 else
                     NEXT_STATE <= NEW_GAME;
                 end if;
-                START_GAME     <= '1';
+                START_GAME     <= '1'; -- Desenha e limpa o tabuleiro
                 np_previous    <= '0';
                 new_piece_flag <= '0';
                 fall           <= '0';
@@ -398,7 +403,7 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '1';  -- reset é active low!
                 col_enable     <= '0';
-                LEDR <= "1000000000";
+                aux_led <= "100000000"; -- Usado pra debug
 
             when NEW_PIECE =>
                 if not_so_slow_clock = '1' then
@@ -407,19 +412,20 @@ architecture behavior OF game_board IS
                     NEXT_STATE <= NEW_PIECE;
                 end if;
                 START_GAME     <= '0';
-                np_previous    <= '1';
-                new_piece_flag <= '1';
-                fall           <= '0';
+                np_previous    <= '1';  -- Verifica se o estado anterior foi new_piece / usado no teste de colisao
+                new_piece_flag <= '1';  -- Permite a criacao da peca
+                fall           <= '0';  -- 1 para peca cair a 1 celula por s
                 we             <= '0';
                 line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0100000000";
+                aux_led <= "010000000"; -- Usado pra debug
 
+            -- Nao implementado // teste de colisao
             when COLLISION =>
                 if not_so_slow_clock = '1' then
-                    NEXT_STATE <= DRAW;
+                    NEXT_STATE <= INICIO;
                 else
                     NEXT_STATE <= COLLISION;
                 end if;
@@ -432,8 +438,10 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0010000000";
+                aux_led <= "001000000"; -- Usado pra debug
 
+
+            -- Prepara a tela pra ser escrita, resetando linha e coluna
             when INICIO =>
                 if clash = '1' then
                     if np_previous = '1' then
@@ -457,9 +465,9 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '0';
                 col_enable     <= '0';
-                LEDR <= "0001000000";
+                aux_led <= "000100000"; -- Usado pra debug
 
-
+            -- Passa matriz de cores para a tela - unico estado com we
             when DRAW =>
                 if fim_escrita = '1' then
                     NEXT_STATE <= MOVE;
@@ -475,8 +483,7 @@ architecture behavior OF game_board IS
                 line_enable    <= '1';
                 col_rstn       <= '1';
                 col_enable     <= '1';
-                LEDR <= "0000100000";
-
+                aux_led <= "000010000"; -- Usado pra debug
 
             when MOVE =>
                 if not_so_slow_clock = '1' then
@@ -492,9 +499,9 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000010000";
+                aux_led <= "000001000"; -- Usado pra debug
 
-
+            -- nao implementado
             when MENU =>
                 if START_GAME = '1' then
                     NEXT_STATE <= NEW_GAME;
@@ -509,8 +516,9 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000001000";
+                aux_led <= "000000100"; -- Usado pra debug
 
+            -- nao implementado
             when OVER => NEXT_STATE <= NEW_GAME;
                 new_piece_flag <= '0';
                 START_GAME     <= '0';
@@ -520,19 +528,20 @@ architecture behavior OF game_board IS
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000000100";
+                aux_led <= "000000010"; -- Usado pra debug
 
             when others =>
                 NEXT_STATE     <= NEW_GAME;
-                START_GAME     <= '1';
+                START_GAME     <= '0';
                 fall           <= '0';
                 we             <= '0';
                 line_rstn      <= '1';
                 line_enable    <= '0';
                 col_rstn       <= '1';
                 col_enable     <= '0';
-                LEDR <= "0000000000";
+                aux_led <= "000000000"; -- Usado pra debug
         end case;
+        LEDR <= aux_led & mov;
     end process logica_mealy;
 
     seq_fsm: process (CLOCK_50, rstn)

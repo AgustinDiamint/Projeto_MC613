@@ -27,8 +27,8 @@ signal aux : std_logic_vector(2 downto 0);
             end if;
         end if;
     end process;
-
-   aux <= "001" when  r_lfsr = "000" else r_lfsr;
+    --precisamos so de 7 opçoes
+   aux <= "010" when  r_lfsr = "000" else r_lfsr;
    piece <= aux when en = '1';
 
 end architecture rtl;
