@@ -437,9 +437,9 @@ architecture behavior OF game_board IS
             when INICIO =>
                 if clash = '1' then
                     if np_previous = '1' then
-                        NEXT_STATE <= OVER
+                        NEXT_STATE <= OVER;
                     else
-                        NEXT_STATE <= NEW_PIECE
+                        NEXT_STATE <= NEW_PIECE;
                     end if;
                 else
                     if not_so_slow_clock = '1' then
@@ -462,7 +462,7 @@ architecture behavior OF game_board IS
 
             when DRAW =>
                 if fim_escrita = '1' then
-                    NEXT_STATE <= MOVE
+                    NEXT_STATE <= MOVE;
                 else
                     NEXT_STATE <= DRAW;
                 end if;
@@ -480,7 +480,7 @@ architecture behavior OF game_board IS
 
             when MOVE =>
                 if not_so_slow_clock = '1' then
-                    NEXT_STATE <= COLLISON;
+                    NEXT_STATE <= COLLISION;
                 else
                     NEXT_STATE <= MOVE;
                 end if;

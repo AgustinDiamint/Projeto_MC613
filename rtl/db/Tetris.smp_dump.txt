@@ -1,4 +1,15 @@
 
+State Machine - |game_board|state
+Name state.OVER state.MENU state.DRAW state.NEW_PIECE state.COLLISION state.MOVE state.INICIO state.NEW_GAME 
+state.NEW_GAME 0 0 0 0 0 0 0 0 
+state.INICIO 0 0 0 0 0 0 1 1 
+state.MOVE 0 0 0 0 0 1 0 1 
+state.COLLISION 0 0 0 0 1 0 0 1 
+state.NEW_PIECE 0 0 0 1 0 0 0 1 
+state.DRAW 0 0 1 0 0 0 0 1 
+state.MENU 0 1 0 0 0 0 0 1 
+state.OVER 1 0 0 0 0 0 0 1 
+
 State Machine - |game_board|kbdex_ctrl:kbd_ctrl|state
 Name state.CLRDP state.EXT1 state.EXT0 state.RELEASE state.CODE state.DECODE state.FETCH state.IDLE 
 state.IDLE 0 0 0 0 0 0 0 0 
@@ -19,12 +30,3 @@ cmdstate.SETLIGHTS 0 0 0 1 0 0 1
 cmdstate.SENDVAL 0 0 1 0 0 0 1 
 cmdstate.WAITACK1 0 1 0 0 0 0 1 
 cmdstate.CLEAR 1 0 0 0 0 0 1 
-
-State Machine - |game_board|state
-Name state.MENU state.DRAW state.NEW_PIECE state.COLISION state.MOVE state.NEW_GAME 
-state.NEW_GAME 0 0 0 0 0 0 
-state.MOVE 0 0 0 0 1 1 
-state.COLISION 0 0 0 1 0 1 
-state.NEW_PIECE 0 0 1 0 0 1 
-state.DRAW 0 1 0 0 0 1 
-state.MENU 1 0 0 0 0 1 
