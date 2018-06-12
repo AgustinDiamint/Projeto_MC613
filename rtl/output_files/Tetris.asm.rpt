@@ -1,5 +1,5 @@
 Assembler report for Tetris
-Tue Jun 12 05:24:14 2018
+Tue Jun 12 20:23:49 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -10,7 +10,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: F:/Trabalhos MC613/Projeto_MC613/rtl/output_files/Tetris.sof
+  5. Assembler Device Options: Tetris.sof
   6. Assembler Messages
 
 
@@ -37,7 +37,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Jun 12 05:24:14 2018 ;
+; Assembler Status      ; Successful - Tue Jun 12 20:23:49 2018 ;
 ; Revision Name         ; Tetris                                ;
 ; Top-level Entity Name ; game_board                            ;
 ; Family                ; Cyclone V                             ;
@@ -52,23 +52,23 @@ refer to the applicable agreement for further details.
 +--------+---------+---------------+
 
 
-+--------------------------------------------------------------+
-; Assembler Generated Files                                    ;
-+--------------------------------------------------------------+
-; File Name                                                    ;
-+--------------------------------------------------------------+
-; F:/Trabalhos MC613/Projeto_MC613/rtl/output_files/Tetris.sof ;
-+--------------------------------------------------------------+
++------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                          ;
++------------------------------------------------------------------------------------+
+; File Name                                                                          ;
++------------------------------------------------------------------------------------+
+; /run/media/ra157637/WILL/Trabalhos MC613/Projeto_MC613/rtl/output_files/Tetris.sof ;
++------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Assembler Device Options: F:/Trabalhos MC613/Projeto_MC613/rtl/output_files/Tetris.sof ;
-+----------------+-----------------------------------------------------------------------+
-; Option         ; Setting                                                               ;
-+----------------+-----------------------------------------------------------------------+
-; JTAG usercode  ; 0x0537C0A7                                                            ;
-; Checksum       ; 0x0537C0A7                                                            ;
-+----------------+-----------------------------------------------------------------------+
++--------------------------------------+
+; Assembler Device Options: Tetris.sof ;
++----------------+---------------------+
+; Option         ; Setting             ;
++----------------+---------------------+
+; JTAG usercode  ; 0x01031189          ;
+; Checksum       ; 0x01031189          ;
++----------------+---------------------+
 
 
 +--------------------+
@@ -77,13 +77,13 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Jun 12 05:23:42 2018
+    Info: Processing started: Tue Jun 12 20:23:42 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Tetris -c Tetris
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 5171 megabytes
-    Info: Processing ended: Tue Jun 12 05:24:16 2018
-    Info: Elapsed time: 00:00:34
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Peak virtual memory: 1118 megabytes
+    Info: Processing ended: Tue Jun 12 20:23:49 2018
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
 
 

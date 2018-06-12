@@ -11,31 +11,21 @@ entity clock_div is
 end clock_div;
 
 architecture behavioral of clock_div is
-	SIGNAL count    : integer;
-   SIGNAL count2   : integer;
-	SIGNAL temp     : std_logic;
-	SIGNAL temp2    : std_logic;
+	SIGNAL Count : STD_LOGIC_VECTOR (27 DOWNTO 0) ;
+	SIGNAL temp : STD_LOGIC;
 begin
 	Process (clock)
 	begin
-		IF (clock'EVENT and clock = '1') THEN
-		    IF count = 0 THEN
+		IF (clock'EVENT and clock = '1') THEN 
+			IF count = x"0000000" THEN
 				temp <= '1';
-				count <= 25000000;
+				count <= x"2FAF080"; --"25000000"
 			ELSE
 				temp <= '0';
 				count <= count - 1;
 			END IF;
-			
-			IF count2 = 0 THEN
-				temp2 <= '1';
-				count2 <= 12500000;
-			ELSE
-				temp2 <= '0';
-				count2 <= count2 - 1;
-			END IF;
 		END IF;
 	END Process;
 	clock_hz <= temp;
-	clock_half <= temp2;
+    clock_half <= temp;
 end behavioral;
