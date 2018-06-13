@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("/run/media/ra157637/WILL/Trabalhos MC613/Projeto_MC613/rtl/output_files/") File("Tetris.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("/home/ec2014/ra155449/Projeto_MC613/rtl/output_files/") File("Tetris.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

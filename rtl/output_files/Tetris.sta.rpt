@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Tetris
-Tue Jun 12 05:25:49 2018
+Wed Jun 13 01:15:09 2018
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -98,17 +98,17 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
+; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 2.75        ;
+; Average used               ; 2.50        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  58.7%      ;
-;     Processor 3            ;  58.4%      ;
-;     Processor 4            ;  57.8%      ;
+;     Processor 2            ;  50.4%      ;
+;     Processor 3            ;  50.0%      ;
+;     Processor 4            ;  49.7%      ;
 +----------------------------+-------------+
 
 
@@ -118,7 +118,6 @@ refer to the applicable agreement for further details.
 ; Clock Name                                                                                ; Type      ; Period ; Frequency   ; Rise  ; Fall   ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master                                                                                  ; Source                                                                                       ; Targets                                                                                       ;
 +-------------------------------------------------------------------------------------------+-----------+--------+-------------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+-----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
 ; CLOCK_50                                                                                  ; Base      ; 20.000 ; 50.0 MHz    ; 0.000 ; 10.000 ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                                         ;                                                                                              ; { CLOCK_50 }                                                                                  ;
-; clock_div:clock_component|temp2                                                           ; Base      ; 1.000  ; 1000.0 MHz  ; 0.000 ; 0.500  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                                         ;                                                                                              ; { clock_div:clock_component|temp2 }                                                           ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; Base      ; 1.000  ; 1000.0 MHz  ; 0.000 ; 0.500  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                                         ;                                                                                              ; { kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked }                                        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; Base      ; 1.000  ; 1000.0 MHz  ; 0.000 ; 0.500  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                                         ;                                                                                              ; { kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger }                                        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; Base      ; 1.000  ; 1000.0 MHz  ; 0.000 ; 0.500  ;            ;           ;             ;       ;        ;           ;            ;          ;                                                                                         ;                                                                                              ; { kbdex_ctrl:kbd_ctrl|sigsend }                                                               ;
@@ -132,10 +131,9 @@ refer to the applicable agreement for further details.
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                ; Note ;
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
-; 34.74 MHz  ; 34.74 MHz       ; clock_div:clock_component|temp2                                                           ;      ;
-; 45.04 MHz  ; 45.04 MHz       ; CLOCK_50                                                                                  ;      ;
-; 45.66 MHz  ; 45.66 MHz       ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 289.35 MHz ; 289.35 MHz      ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ;      ;
+; 52.33 MHz  ; 52.33 MHz       ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 71.93 MHz  ; 71.93 MHz       ; CLOCK_50                                                                                  ;      ;
+; 282.49 MHz ; 282.49 MHz      ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ;      ;
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -146,30 +144,28 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 HTML report is unavailable in plain text report export.
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Setup Summary                                                                                 ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; Clock                                                                                     ; Slack   ; End Point TNS ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; clock_div:clock_component|temp2                                                           ; -27.782 ; -59670.926    ;
-; CLOCK_50                                                                                  ; -16.320 ; -246.871      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.676  ; -55.059       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.183  ; -6.359        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.817  ; 0.000         ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-
-
 +--------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Hold Summary                                                                                 ;
+; Slow 1100mV 85C Model Setup Summary                                                                                ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                                                  ; -2.382 ; -28.942       ;
-; clock_div:clock_component|temp2                                                           ; -1.551 ; -287.349      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.386  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.437  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2.523  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.225 ; -51.744       ;
+; CLOCK_50                                                                                  ; -3.671 ; -83.971       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.405 ; -6.670        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 20.609 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                                                                ;
++-------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                     ; Slack ; End Point TNS ;
++-------------------------------------------------------------------------------------------+-------+---------------+
+; CLOCK_50                                                                                  ; 0.127 ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.466 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.522 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2.629 ; 0.000         ;
++-------------------------------------------------------------------------------------------+-------+---------------+
 
 
 +-----------------------------------------------------------------------------+
@@ -177,23 +173,23 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; -4.679 ; -14.033       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -3.944 ; -44.881       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -3.720 ; -3.720        ;
-; CLOCK_50                                           ; -2.061 ; -60.793       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; -4.947 ; -14.836       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -3.853 ; -41.945       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -3.412 ; -3.412        ;
+; CLOCK_50                                           ; -2.433 ; -89.967       ;
 +----------------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Removal Summary                                       ;
-+----------------------------------------------------+--------+---------------+
-; Clock                                              ; Slack  ; End Point TNS ;
-+----------------------------------------------------+--------+---------------+
-; CLOCK_50                                           ; -0.642 ; -8.318        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.672  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2.746  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; 3.197  ; 0.000         ;
-+----------------------------------------------------+--------+---------------+
++----------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Removal Summary                                      ;
++----------------------------------------------------+-------+---------------+
+; Clock                                              ; Slack ; End Point TNS ;
++----------------------------------------------------+-------+---------------+
+; CLOCK_50                                           ; 0.207 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.596 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2.348 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; 3.321 ; 0.000         ;
++----------------------------------------------------+-------+---------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -201,13 +197,12 @@ HTML report is unavailable in plain text report export.
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; clock_div:clock_component|temp2                                                           ; -0.394 ; -1781.673     ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -0.394 ; -12.324       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -0.394 ; -1.570        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; -0.394 ; -0.529        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -0.394 ; -11.506       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -0.394 ; -1.563        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; -0.394 ; -0.551        ;
 ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.325  ; 0.000         ;
-; CLOCK_50                                                                                  ; 8.878  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.644 ; 0.000         ;
+; CLOCK_50                                                                                  ; 8.883  ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.645 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -222,25 +217,23 @@ No synchronizer chains to report.
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                ; Note ;
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
-; 35.81 MHz  ; 35.81 MHz       ; clock_div:clock_component|temp2                                                           ;      ;
-; 44.98 MHz  ; 44.98 MHz       ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 46.71 MHz  ; 46.71 MHz       ; CLOCK_50                                                                                  ;      ;
-; 285.96 MHz ; 285.96 MHz      ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ;      ;
+; 51.1 MHz   ; 51.1 MHz        ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 73.15 MHz  ; 73.15 MHz       ; CLOCK_50                                                                                  ;      ;
+; 282.65 MHz ; 282.65 MHz      ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ;      ;
 +------------+-----------------+-------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Setup Summary                                                                                  ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; Clock                                                                                     ; Slack   ; End Point TNS ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; clock_div:clock_component|temp2                                                           ; -26.929 ; -58184.607    ;
-; CLOCK_50                                                                                  ; -15.350 ; -224.865      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.640  ; -55.562       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.327  ; -6.653        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.486  ; 0.000         ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Setup Summary                                                                                 ;
++-------------------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                                     ; Slack  ; End Point TNS ;
++-------------------------------------------------------------------------------------------+--------+---------------+
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.364 ; -52.053       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.531 ; -6.942        ;
+; CLOCK_50                                                                                  ; -3.491 ; -70.711       ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 20.152 ; 0.000         ;
++-------------------------------------------------------------------------------------------+--------+---------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -248,11 +241,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                                                  ; -2.584 ; -35.180       ;
-; clock_div:clock_component|temp2                                                           ; -1.321 ; -194.545      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.433  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.437  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2.676  ; 0.000         ;
+; CLOCK_50                                                                                  ; -0.234 ; -0.957        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.436  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.461  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2.779  ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -261,10 +253,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; -4.436 ; -13.306       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -3.965 ; -43.692       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -3.835 ; -3.835        ;
-; CLOCK_50                                           ; -1.667 ; -46.419       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; -4.714 ; -14.137       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -3.906 ; -40.858       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -3.520 ; -3.520        ;
+; CLOCK_50                                           ; -2.005 ; -74.332       ;
 +----------------------------------------------------+--------+---------------+
 
 
@@ -273,10 +265,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; CLOCK_50                                           ; -0.956 ; -15.327       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.605  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2.870  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; 2.914  ; 0.000         ;
+; CLOCK_50                                           ; -0.235 ; -0.235        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.542  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2.498  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; 3.095  ; 0.000         ;
 +----------------------------------------------------+--------+---------------+
 
 
@@ -285,13 +277,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; clock_div:clock_component|temp2                                                           ; -0.394 ; -1833.345     ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -0.394 ; -12.389       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -0.394 ; -1.548        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; -0.394 ; -0.521        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -0.394 ; -11.323       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -0.394 ; -1.545        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; -0.394 ; -0.541        ;
 ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.325  ; 0.000         ;
-; CLOCK_50                                                                                  ; 8.833  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.624 ; 0.000         ;
+; CLOCK_50                                                                                  ; 8.835  ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.628 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -301,30 +292,28 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 No synchronizer chains to report.
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Setup Summary                                                                                 ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; Clock                                                                                     ; Slack   ; End Point TNS ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; clock_div:clock_component|temp2                                                           ; -18.254 ; -36815.656    ;
-; CLOCK_50                                                                                  ; -10.454 ; -158.500      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -2.421  ; -24.756       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -1.500  ; -3.000        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 27.640  ; 0.000         ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-
-
 +--------------------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Hold Summary                                                                                 ;
+; Fast 1100mV 85C Model Setup Summary                                                                                ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                                                  ; -1.388 ; -16.495       ;
-; clock_div:clock_component|temp2                                                           ; -0.876 ; -138.633      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.040  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.272  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 1.261  ; 0.000         ;
+; CLOCK_50                                                                                  ; -2.948 ; -60.813       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -2.057 ; -23.425       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -1.670 ; -3.241        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 29.453 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Hold Summary                                                                                ;
++-------------------------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                                     ; Slack ; End Point TNS ;
++-------------------------------------------------------------------------------------------+-------+---------------+
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.123 ; 0.000         ;
+; CLOCK_50                                                                                  ; 0.129 ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.269 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 1.319 ; 0.000         ;
++-------------------------------------------------------------------------------------------+-------+---------------+
 
 
 +-----------------------------------------------------------------------------+
@@ -332,23 +321,23 @@ No synchronizer chains to report.
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; -3.026 ; -9.076        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -1.935 ; -19.663       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -1.738 ; -1.738        ;
-; CLOCK_50                                           ; -1.515 ; -46.160       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; -3.282 ; -9.844        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -1.936 ; -18.749       ;
+; CLOCK_50                                           ; -1.765 ; -66.318       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -1.553 ; -1.553        ;
 +----------------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------------+
-; Fast 1100mV 85C Model Removal Summary                                       ;
-+----------------------------------------------------+--------+---------------+
-; Clock                                              ; Slack  ; End Point TNS ;
-+----------------------------------------------------+--------+---------------+
-; CLOCK_50                                           ; -0.381 ; -4.946        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.141  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 1.346  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; 1.793  ; 0.000         ;
-+----------------------------------------------------+--------+---------------+
++----------------------------------------------------------------------------+
+; Fast 1100mV 85C Model Removal Summary                                      ;
++----------------------------------------------------+-------+---------------+
+; Clock                                              ; Slack ; End Point TNS ;
++----------------------------------------------------+-------+---------------+
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.124 ; 0.000         ;
+; CLOCK_50                                           ; 0.182 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 1.090 ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; 1.953 ; 0.000         ;
++----------------------------------------------------+-------+---------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -356,13 +345,12 @@ No synchronizer chains to report.
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; 0.109  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.125  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 0.126  ; 0.000         ;
-; clock_div:clock_component|temp2                                                           ; 0.151  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; 0.091  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.110  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 0.139  ; 0.000         ;
 ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.325  ; 0.000         ;
-; CLOCK_50                                                                                  ; 8.812  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.750 ; 0.000         ;
+; CLOCK_50                                                                                  ; 8.811  ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.757 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -372,17 +360,16 @@ No synchronizer chains to report.
 No synchronizer chains to report.
 
 
-+---------------------------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Setup Summary                                                                                  ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; Clock                                                                                     ; Slack   ; End Point TNS ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
-; clock_div:clock_component|temp2                                                           ; -15.986 ; -32587.925    ;
-; CLOCK_50                                                                                  ; -9.065  ; -130.250      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -2.254  ; -22.733       ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -1.487  ; -2.974        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 28.480  ; 0.000         ;
-+-------------------------------------------------------------------------------------------+---------+---------------+
++--------------------------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Setup Summary                                                                                 ;
++-------------------------------------------------------------------------------------------+--------+---------------+
+; Clock                                                                                     ; Slack  ; End Point TNS ;
++-------------------------------------------------------------------------------------------+--------+---------------+
+; CLOCK_50                                                                                  ; -2.440 ; -44.854       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -1.999 ; -21.600       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -1.638 ; -3.192        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 30.030 ; 0.000         ;
++-------------------------------------------------------------------------------------------+--------+---------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -390,11 +377,10 @@ No synchronizer chains to report.
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; CLOCK_50                                                                                  ; -1.488 ; -21.628       ;
-; clock_div:clock_component|temp2                                                           ; -0.824 ; -167.828      ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.023  ; 0.000         ;
+; CLOCK_50                                                                                  ; -0.030 ; -0.091        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.062  ; 0.000         ;
 ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.242  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 1.258  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 1.315  ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -403,10 +389,10 @@ No synchronizer chains to report.
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; -2.569 ; -7.705        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -1.855 ; -17.498       ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -1.706 ; -1.706        ;
-; CLOCK_50                                           ; -1.046 ; -29.809       ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; -2.806 ; -8.416        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; -1.853 ; -16.862       ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; -1.531 ; -1.531        ;
+; CLOCK_50                                           ; -1.276 ; -47.503       ;
 +----------------------------------------------------+--------+---------------+
 
 
@@ -415,10 +401,10 @@ No synchronizer chains to report.
 +----------------------------------------------------+--------+---------------+
 ; Clock                                              ; Slack  ; End Point TNS ;
 +----------------------------------------------------+--------+---------------+
-; CLOCK_50                                           ; -0.581 ; -9.436        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.073  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 1.328  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; 1.498  ; 0.000         ;
+; CLOCK_50                                           ; -0.115 ; -0.119        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 0.053  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 1.116  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; 1.672  ; 0.000         ;
 +----------------------------------------------------+--------+---------------+
 
 
@@ -427,13 +413,12 @@ No synchronizer chains to report.
 +-------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                     ; Slack  ; End Point TNS ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; 0.122  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.132  ; 0.000         ;
-; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 0.133  ; 0.000         ;
-; clock_div:clock_component|temp2                                                           ; 0.149  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; 0.098  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 0.124  ; 0.000         ;
+; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 0.141  ; 0.000         ;
 ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 0.325  ; 0.000         ;
-; CLOCK_50                                                                                  ; 8.804  ; 0.000         ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.750 ; 0.000         ;
+; CLOCK_50                                                                                  ; 8.802  ; 0.000         ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 18.753 ; 0.000         ;
 +-------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -443,28 +428,26 @@ No synchronizer chains to report.
 No synchronizer chains to report.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                                                                           ;
-+--------------------------------------------------------------------------------------------+------------+----------+----------+---------+---------------------+
-; Clock                                                                                      ; Setup      ; Hold     ; Recovery ; Removal ; Minimum Pulse Width ;
-+--------------------------------------------------------------------------------------------+------------+----------+----------+---------+---------------------+
-; Worst-case Slack                                                                           ; -27.782    ; -2.584   ; -4.679   ; -0.956  ; -0.394              ;
-;  CLOCK_50                                                                                  ; -16.320    ; -2.584   ; -2.061   ; -0.956  ; 8.804               ;
-;  clock_div:clock_component|temp2                                                           ; -27.782    ; -1.551   ; N/A      ; N/A     ; -0.394              ;
-;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; N/A        ; N/A      ; -3.835   ; 1.328   ; -0.394              ;
-;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.676     ; 0.023    ; -3.965   ; 0.073   ; -0.394              ;
-;  kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.327     ; 1.258    ; -4.679   ; 1.498   ; -0.394              ;
-;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A        ; N/A      ; N/A      ; N/A     ; 0.325               ;
-;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 17.486     ; 0.242    ; N/A      ; N/A     ; 18.624              ;
-; Design-wide TNS                                                                            ; -59979.215 ; -316.291 ; -123.427 ; -15.327 ; -1847.803           ;
-;  CLOCK_50                                                                                  ; -246.871   ; -35.180  ; -60.793  ; -15.327 ; 0.000               ;
-;  clock_div:clock_component|temp2                                                           ; -59670.926 ; -287.349 ; N/A      ; N/A     ; -1833.345           ;
-;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; N/A        ; N/A      ; -3.835   ; 0.000   ; -0.529              ;
-;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -55.562    ; 0.000    ; -44.881  ; 0.000   ; -12.389             ;
-;  kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -6.653     ; 0.000    ; -14.033  ; 0.000   ; -1.570              ;
-;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A        ; N/A      ; N/A      ; N/A     ; 0.000               ;
-;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000      ; 0.000    ; N/A      ; N/A     ; 0.000               ;
-+--------------------------------------------------------------------------------------------+------------+----------+----------+---------+---------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                                                       ;
++--------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Clock                                                                                      ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
++--------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
+; Worst-case Slack                                                                           ; -4.364   ; -0.234 ; -4.947   ; -0.235  ; -0.394              ;
+;  CLOCK_50                                                                                  ; -3.671   ; -0.234 ; -2.433   ; -0.235  ; 8.802               ;
+;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; N/A      ; N/A    ; -3.520   ; 1.090   ; -0.394              ;
+;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -4.364   ; 0.062  ; -3.906   ; 0.053   ; -0.394              ;
+;  kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -3.531   ; 1.315  ; -4.947   ; 1.672   ; -0.394              ;
+;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.325               ;
+;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 20.152   ; 0.242  ; N/A      ; N/A     ; 18.628              ;
+; Design-wide TNS                                                                            ; -142.385 ; -0.957 ; -150.16  ; -0.235  ; -13.62              ;
+;  CLOCK_50                                                                                  ; -83.971  ; -0.957 ; -89.967  ; -0.235  ; 0.000               ;
+;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; N/A      ; N/A    ; -3.520   ; 0.000   ; -0.551              ;
+;  kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; -52.053  ; 0.000  ; -41.945  ; 0.000   ; -11.506             ;
+;  kbdex_ctrl:kbd_ctrl|sigsend                                                               ; -6.942   ; 0.000  ; -14.836  ; 0.000   ; -1.563              ;
+;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
+;  vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.000    ; 0.000  ; N/A      ; N/A     ; 0.000               ;
++--------------------------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -473,11 +456,13 @@ No synchronizer chains to report.
 ; Pin         ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
 +-------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
 ; LEDR[0]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[1]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[2]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[3]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[4]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[5]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[6]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
+; LEDR[7]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[8]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; LEDR[9]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; VGA_R[0]    ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -507,8 +492,6 @@ No synchronizer chains to report.
 ; VGA_HS      ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; VGA_VS      ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; VGA_CLK     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[1]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[7]     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; VGA_BLANK_N ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; VGA_SYNC_N  ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; PS2_DAT     ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -535,11 +518,13 @@ No synchronizer chains to report.
 ; Pin         ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +-------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; LEDR[0]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
+; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[2]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[3]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[4]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[5]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[6]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
+; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[8]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[9]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; VGA_R[0]    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
@@ -569,8 +554,6 @@ No synchronizer chains to report.
 ; VGA_HS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; VGA_VS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; VGA_CLK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
-; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
-; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
 ; VGA_BLANK_N ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; VGA_SYNC_N  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; PS2_DAT     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
@@ -584,11 +567,13 @@ No synchronizer chains to report.
 ; Pin         ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +-------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; LEDR[0]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
+; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; LEDR[2]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[3]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[4]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; LEDR[5]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; LEDR[6]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
+; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[8]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[9]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; VGA_R[0]    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
@@ -618,8 +603,6 @@ No synchronizer chains to report.
 ; VGA_HS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; VGA_VS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; VGA_CLK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
-; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
-; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
 ; VGA_BLANK_N ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; VGA_SYNC_N  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; PS2_DAT     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
@@ -633,11 +616,13 @@ No synchronizer chains to report.
 ; Pin         ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +-------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; LEDR[0]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; LEDR[2]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; LEDR[3]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; LEDR[4]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; LEDR[5]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; LEDR[6]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
+; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; LEDR[8]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; LEDR[9]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; VGA_R[0]    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
@@ -667,8 +652,6 @@ No synchronizer chains to report.
 ; VGA_HS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; VGA_VS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; VGA_CLK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
-; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
 ; VGA_BLANK_N ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; VGA_SYNC_N  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; PS2_DAT     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
@@ -682,11 +665,13 @@ No synchronizer chains to report.
 ; Pin         ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +-------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; LEDR[0]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[2]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; LEDR[3]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; LEDR[4]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[5]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; LEDR[6]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
+; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; LEDR[8]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; LEDR[9]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; VGA_R[0]    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
@@ -716,8 +701,6 @@ No synchronizer chains to report.
 ; VGA_HS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; VGA_VS      ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; VGA_CLK     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
-; LEDR[1]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; LEDR[7]     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
 ; VGA_BLANK_N ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; VGA_SYNC_N  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; PS2_DAT     ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
@@ -730,19 +713,16 @@ No synchronizer chains to report.
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                ; To Clock                                                                                  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                                                  ; CLOCK_50                                                                                  ; 102687   ; 0        ; 0        ; 0        ;
-; clock_div:clock_component|temp2                                                           ; CLOCK_50                                                                                  ; 13211    ; 5        ; 0        ; 0        ;
+; CLOCK_50                                                                                  ; CLOCK_50                                                                                  ; 6407472  ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; CLOCK_50                                                                                  ; 7        ; 5        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; CLOCK_50                                                                                  ; 33       ; 1        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; CLOCK_50                                                                                  ; 16       ; 0        ; 0        ; 0        ;
-; CLOCK_50                                                                                  ; clock_div:clock_component|temp2                                                           ; 49081    ; 0        ; 0        ; 0        ;
-; clock_div:clock_component|temp2                                                           ; clock_div:clock_component|temp2                                                           ; 44220122 ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                                                  ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 7        ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 1        ; 1        ; 0        ; 0        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 123      ; 0        ; 0        ; 0        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 116      ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 9        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                                                  ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2        ; 0        ; 0        ; 0        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6500627  ; 0        ; 0        ; 0        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6500507  ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -752,19 +732,16 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                ; To Clock                                                                                  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                                                                  ; CLOCK_50                                                                                  ; 102687   ; 0        ; 0        ; 0        ;
-; clock_div:clock_component|temp2                                                           ; CLOCK_50                                                                                  ; 13211    ; 5        ; 0        ; 0        ;
+; CLOCK_50                                                                                  ; CLOCK_50                                                                                  ; 6407472  ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; CLOCK_50                                                                                  ; 7        ; 5        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; CLOCK_50                                                                                  ; 33       ; 1        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; CLOCK_50                                                                                  ; 16       ; 0        ; 0        ; 0        ;
-; CLOCK_50                                                                                  ; clock_div:clock_component|temp2                                                           ; 49081    ; 0        ; 0        ; 0        ;
-; clock_div:clock_component|temp2                                                           ; clock_div:clock_component|temp2                                                           ; 44220122 ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                                                  ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 7        ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 1        ; 1        ; 0        ; 0        ;
-; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 123      ; 0        ; 0        ; 0        ;
+; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 116      ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; 9        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                                                                  ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; 2        ; 0        ; 0        ; 0        ;
-; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6500627  ; 0        ; 0        ; 0        ;
+; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 6500507  ; 0        ; 0        ; 0        ;
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -774,12 +751,12 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                         ; To Clock                                           ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                           ; CLOCK_50                                           ; 2559     ; 0        ; 0        ; 0        ;
+; CLOCK_50                                           ; CLOCK_50                                           ; 2669     ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; CLOCK_50                                           ; 16       ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                        ; CLOCK_50                                           ; 22       ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                           ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                           ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 7        ; 0        ; 0        ; 0        ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 23       ; 0        ; 0        ; 0        ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 21       ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; kbdex_ctrl:kbd_ctrl|sigsend                        ; 3        ; 0        ; 0        ; 0        ;
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -790,12 +767,12 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                         ; To Clock                                           ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
-; CLOCK_50                                           ; CLOCK_50                                           ; 2559     ; 0        ; 0        ; 0        ;
+; CLOCK_50                                           ; CLOCK_50                                           ; 2669     ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; CLOCK_50                                           ; 16       ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                        ; CLOCK_50                                           ; 22       ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                           ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked ; 2        ; 0        ; 0        ; 0        ;
 ; CLOCK_50                                           ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 7        ; 0        ; 0        ; 0        ;
-; kbdex_ctrl:kbd_ctrl|sigsend                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 23       ; 0        ; 0        ; 0        ;
+; kbdex_ctrl:kbd_ctrl|sigsend                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; 21       ; 0        ; 0        ; 0        ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger ; kbdex_ctrl:kbd_ctrl|sigsend                        ; 3        ; 0        ; 0        ; 0        ;
 +----------------------------------------------------+----------------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
@@ -821,9 +798,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 3     ; 3    ;
-; Unconstrained Input Port Paths  ; 82    ; 82   ;
-; Unconstrained Output Ports      ; 36    ; 36   ;
-; Unconstrained Output Port Paths ; 250   ; 250  ;
+; Unconstrained Input Port Paths  ; 159   ; 159  ;
+; Unconstrained Output Ports      ; 39    ; 39   ;
+; Unconstrained Output Port Paths ; 253   ; 253  ;
 +---------------------------------+-------+------+
 
 
@@ -833,7 +810,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Target                                                                                    ; Clock                                                                                     ; Type      ; Status      ;
 +-------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------+-----------+-------------+
 ; CLOCK_50                                                                                  ; CLOCK_50                                                                                  ; Base      ; Constrained ;
-; clock_div:clock_component|temp2                                                           ; clock_div:clock_component|temp2                                                           ; Base      ; Constrained ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked                                        ; Base      ; Constrained ;
 ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger                                        ; Base      ; Constrained ;
 ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; kbdex_ctrl:kbd_ctrl|sigsend                                                               ; Base      ; Constrained ;
@@ -859,10 +835,13 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
 ; LEDR[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[8]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[9]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; PS2_CLK     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -914,10 +893,13 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Output Port ; Comment                                                                               ;
 +-------------+---------------------------------------------------------------------------------------+
 ; LEDR[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; LEDR[7]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[8]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; LEDR[9]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; PS2_CLK     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -958,7 +940,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime TimeQuest Timing Analyzer
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Tue Jun 12 05:24:18 2018
+    Info: Processing started: Wed Jun 13 01:14:55 2018
 Info: Command: quartus_sta Tetris -c Tetris
 Info: qsta_default_script.tcl version: #3
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -973,7 +955,6 @@ Info (332110): Deriving PLL clocks
     Info (332110): create_generated_clock -source {vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|vco0ph[0]} -divide_by 61 -duty_cycle 50.00 -name {vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk} {vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
-    Info (332105): create_clock -period 1.000 -name clock_div:clock_component|temp2 clock_div:clock_component|temp2
     Info (332105): create_clock -period 1.000 -name kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger
     Info (332105): create_clock -period 1.000 -name kbdex_ctrl:kbd_ctrl|sigsend kbdex_ctrl:kbd_ctrl|sigsend
     Info (332105): create_clock -period 1.000 -name kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked
@@ -987,46 +968,43 @@ Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
-Info (332146): Worst-case setup slack is -27.782
+Info (332146): Worst-case setup slack is -4.225
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -27.782          -59670.926 clock_div:clock_component|temp2 
-    Info (332119):   -16.320            -246.871 CLOCK_50 
-    Info (332119):    -4.676             -55.059 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -3.183              -6.359 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    17.817               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -2.382
+    Info (332119):    -4.225             -51.744 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -3.671             -83.971 CLOCK_50 
+    Info (332119):    -3.405              -6.670 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    20.609               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.127
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.382             -28.942 CLOCK_50 
-    Info (332119):    -1.551            -287.349 clock_div:clock_component|temp2 
-    Info (332119):     0.386               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     0.437               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     2.523               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case recovery slack is -4.679
+    Info (332119):     0.127               0.000 CLOCK_50 
+    Info (332119):     0.466               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.522               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     2.629               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case recovery slack is -4.947
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.679             -14.033 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -3.944             -44.881 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -3.720              -3.720 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):    -2.061             -60.793 CLOCK_50 
-Info (332146): Worst-case removal slack is -0.642
+    Info (332119):    -4.947             -14.836 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -3.853             -41.945 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -3.412              -3.412 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):    -2.433             -89.967 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.207
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.642              -8.318 CLOCK_50 
-    Info (332119):     0.672               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     2.746               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     3.197               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):     0.207               0.000 CLOCK_50 
+    Info (332119):     0.596               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     2.348               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     3.321               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
 Info (332146): Worst-case minimum pulse width slack is -0.394
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.394           -1781.673 clock_div:clock_component|temp2 
-    Info (332119):    -0.394             -12.324 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -0.394              -1.570 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -0.394              -0.529 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):    -0.394             -11.506 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -0.394              -1.563 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -0.394              -0.551 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
     Info (332119):     0.325               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.878               0.000 CLOCK_50 
-    Info (332119):    18.644               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.883               0.000 CLOCK_50 
+    Info (332119):    18.645               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -1037,46 +1015,43 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
-Info (332146): Worst-case setup slack is -26.929
+Info (332146): Worst-case setup slack is -4.364
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -26.929          -58184.607 clock_div:clock_component|temp2 
-    Info (332119):   -15.350            -224.865 CLOCK_50 
-    Info (332119):    -4.640             -55.562 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -3.327              -6.653 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    17.486               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -2.584
+    Info (332119):    -4.364             -52.053 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -3.531              -6.942 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -3.491             -70.711 CLOCK_50 
+    Info (332119):    20.152               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is -0.234
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.584             -35.180 CLOCK_50 
-    Info (332119):    -1.321            -194.545 clock_div:clock_component|temp2 
-    Info (332119):     0.433               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     0.437               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     2.676               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case recovery slack is -4.436
+    Info (332119):    -0.234              -0.957 CLOCK_50 
+    Info (332119):     0.436               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.461               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     2.779               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case recovery slack is -4.714
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.436             -13.306 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -3.965             -43.692 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -3.835              -3.835 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):    -1.667             -46.419 CLOCK_50 
-Info (332146): Worst-case removal slack is -0.956
+    Info (332119):    -4.714             -14.137 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -3.906             -40.858 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -3.520              -3.520 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):    -2.005             -74.332 CLOCK_50 
+Info (332146): Worst-case removal slack is -0.235
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.956             -15.327 CLOCK_50 
-    Info (332119):     0.605               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     2.870               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     2.914               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -0.235              -0.235 CLOCK_50 
+    Info (332119):     0.542               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     2.498               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     3.095               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
 Info (332146): Worst-case minimum pulse width slack is -0.394
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.394           -1833.345 clock_div:clock_component|temp2 
-    Info (332119):    -0.394             -12.389 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -0.394              -1.548 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -0.394              -0.521 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):    -0.394             -11.323 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -0.394              -1.545 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -0.394              -0.541 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
     Info (332119):     0.325               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.833               0.000 CLOCK_50 
-    Info (332119):    18.624               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.835               0.000 CLOCK_50 
+    Info (332119):    18.628               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -1087,46 +1062,43 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
-Info (332146): Worst-case setup slack is -18.254
+Info (332146): Worst-case setup slack is -2.948
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -18.254          -36815.656 clock_div:clock_component|temp2 
-    Info (332119):   -10.454            -158.500 CLOCK_50 
-    Info (332119):    -2.421             -24.756 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -1.500              -3.000 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    27.640               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -1.388
+    Info (332119):    -2.948             -60.813 CLOCK_50 
+    Info (332119):    -2.057             -23.425 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -1.670              -3.241 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    29.453               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is 0.123
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.388             -16.495 CLOCK_50 
-    Info (332119):    -0.876            -138.633 clock_div:clock_component|temp2 
-    Info (332119):     0.040               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     0.272               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     1.261               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case recovery slack is -3.026
+    Info (332119):     0.123               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     0.129               0.000 CLOCK_50 
+    Info (332119):     0.269               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     1.319               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case recovery slack is -3.282
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.026              -9.076 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -1.935             -19.663 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -1.738              -1.738 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):    -1.515             -46.160 CLOCK_50 
-Info (332146): Worst-case removal slack is -0.381
+    Info (332119):    -3.282              -9.844 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -1.936             -18.749 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -1.765             -66.318 CLOCK_50 
+    Info (332119):    -1.553              -1.553 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+Info (332146): Worst-case removal slack is 0.124
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.381              -4.946 CLOCK_50 
-    Info (332119):     0.141               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     1.346               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     1.793               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case minimum pulse width slack is 0.109
+    Info (332119):     0.124               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     0.182               0.000 CLOCK_50 
+    Info (332119):     1.090               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     1.953               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case minimum pulse width slack is 0.091
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.109               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     0.125               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     0.126               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):     0.151               0.000 clock_div:clock_component|temp2 
+    Info (332119):     0.091               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     0.110               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     0.139               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
     Info (332119):     0.325               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.812               0.000 CLOCK_50 
-    Info (332119):    18.750               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.811               0.000 CLOCK_50 
+    Info (332119):    18.757               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332097): The following timing edges are non-unate.  TimeQuest will assume pos-unate behavior for these edges in the clock network.
     Info (332098): Cell: vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL  from: refclkin  to: fbclk
@@ -1135,52 +1107,49 @@ Info (332097): The following timing edges are non-unate.  TimeQuest will assume 
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the TimeQuest Timing Analyzer.
-Info (332146): Worst-case setup slack is -15.986
+Info (332146): Worst-case setup slack is -2.440
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -15.986          -32587.925 clock_div:clock_component|temp2 
-    Info (332119):    -9.065            -130.250 CLOCK_50 
-    Info (332119):    -2.254             -22.733 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -1.487              -2.974 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    28.480               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-Info (332146): Worst-case hold slack is -1.488
+    Info (332119):    -2.440             -44.854 CLOCK_50 
+    Info (332119):    -1.999             -21.600 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -1.638              -3.192 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    30.030               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+Info (332146): Worst-case hold slack is -0.030
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.488             -21.628 CLOCK_50 
-    Info (332119):    -0.824            -167.828 clock_div:clock_component|temp2 
-    Info (332119):     0.023               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -0.030              -0.091 CLOCK_50 
+    Info (332119):     0.062               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
     Info (332119):     0.242               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     1.258               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case recovery slack is -2.569
+    Info (332119):     1.315               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case recovery slack is -2.806
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.569              -7.705 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):    -1.855             -17.498 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):    -1.706              -1.706 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):    -1.046             -29.809 CLOCK_50 
-Info (332146): Worst-case removal slack is -0.581
+    Info (332119):    -2.806              -8.416 kbdex_ctrl:kbd_ctrl|sigsend 
+    Info (332119):    -1.853             -16.862 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):    -1.531              -1.531 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):    -1.276             -47.503 CLOCK_50 
+Info (332146): Worst-case removal slack is -0.115
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.581              -9.436 CLOCK_50 
-    Info (332119):     0.073               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     1.328               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     1.498               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-Info (332146): Worst-case minimum pulse width slack is 0.122
+    Info (332119):    -0.115              -0.119 CLOCK_50 
+    Info (332119):     0.053               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     1.116               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     1.672               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
+Info (332146): Worst-case minimum pulse width slack is 0.098
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.122               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
-    Info (332119):     0.132               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
-    Info (332119):     0.133               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
-    Info (332119):     0.149               0.000 clock_div:clock_component|temp2 
+    Info (332119):     0.098               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|parchecked 
+    Info (332119):     0.124               0.000 kbdex_ctrl:kbd_ctrl|ps2_iobase:ps2_ctrl|sigtrigger 
+    Info (332119):     0.141               0.000 kbdex_ctrl:kbd_ctrl|sigsend 
     Info (332119):     0.325               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
-    Info (332119):     8.804               0.000 CLOCK_50 
-    Info (332119):    18.750               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.802               0.000 CLOCK_50 
+    Info (332119):    18.753               0.000 vga_component|divider|vga_pll_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 5784 megabytes
-    Info: Processing ended: Tue Jun 12 05:25:49 2018
-    Info: Elapsed time: 00:01:31
-    Info: Total CPU time (on all processors): 00:03:37
+    Info: Peak virtual memory: 1482 megabytes
+    Info: Processing ended: Wed Jun 13 01:15:09 2018
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:32
 
 
